@@ -1,5 +1,5 @@
-site_name: "Cours de Première NSI - Groupe 1 - M. Gouygou"
-site_url: "https://cgouygou.github.io/1NSI/"
+site_name: "Cours de Terminale NSI - M. Gouygou"
+site_url: "https://cgouygou.github.io/TNSI/"
 
 theme:
   name: material
@@ -26,7 +26,7 @@ theme:
     # Light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
+      primary: deep orange
       accent: indigo
       toggle:
         icon: material/lightbulb-outline
@@ -35,7 +35,7 @@ theme:
     # Dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: indigo
+      primary: deep orange
       accent: blue
       toggle:
         icon: material/lightbulb
@@ -90,7 +90,7 @@ extra:
       name: Écrire à l'auteur
 
     - icon: fontawesome/brands/github
-      link: https://github.com/cgouygou/1NSI
+      link: https://github.com/cgouygou/TNSI
       name: Dépôt git
 
     - icon: fontawesome/solid/school
@@ -109,6 +109,6 @@ extra_css:
 
 copyright:  CC BY-SA / C. Gouygou
 
-repo_url: https://github.com/cgouygou/1NSI
-repo_name: cgouygou/1NSI
+repo_url: https://github.com/cgouygou/TNSI
+repo_name: cgouygou/TNSI
 
