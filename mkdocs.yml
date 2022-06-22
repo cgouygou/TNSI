@@ -1,0 +1,114 @@
+site_name: "Cours de Première NSI - Groupe 1 - M. Gouygou"
+site_url: "https://cgouygou.github.io/1NSI/"
+
+theme:
+  name: material
+  site_url: ""
+  custom_dir: my_theme_customizations/
+  font: false
+  language: fr
+
+  icon:
+    logo: fontawesome/solid/laptop-code
+    repo : fontawesome/brands/github
+  favicon: xtra/favicon.svg
+  
+  features:
+    - navigation.instant
+    - navigation.tabs
+    # - navigation.expand
+    - navigation.top
+    - toc.integrate
+    - header.autohide
+    - content.code.annotate
+
+  palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/lightbulb-outline
+        name: Mode sombre
+
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/lightbulb
+        name: Mode clair
+
+
+markdown_extensions:
+  - meta
+  - abbr
+  - admonition
+  - def_list
+  - attr_list
+  - md_in_html
+  - footnotes
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.snippets
+  - pymdownx.details
+  - pymdownx.highlight:
+      linenums: None
+  - pymdownx.tasklist:
+      custom_checkbox: false
+      clickable_checkbox: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences
+  - pymdownx.keys
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.arithmatex:
+      generic: true
+  - toc:
+      permalink: ⚓︎
+      toc_depth: 3
+
+
+plugins:
+  - search
+  - awesome-pages:
+      collapse_single_pages: true
+  - macros
+
+extra:
+  social:
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:cedric.gouygou@ac-poitiers.fr
+      name: Écrire à l'auteur
+
+    - icon: fontawesome/brands/github
+      link: https://github.com/cgouygou/1NSI
+      name: Dépôt git
+
+    - icon: fontawesome/solid/school
+      link: https://lyceevalois.com
+      name: Lycée Marguerite de Valois - Angoulême (16)
+
+extra_javascript:
+  - xtra/javascripts/interpreter.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js
+
+extra_css:
+  - stylesheets/extra.css
+  - xtra/stylesheets/pyoditeur.css
+
+copyright:  CC BY-SA / C. Gouygou
+
+repo_url: https://github.com/cgouygou/1NSI
+repo_name: cgouygou/1NSI
+
