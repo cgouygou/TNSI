@@ -1,1 +1,1 @@
-# Thème 4 : Bases de données
+# Thème 3 : Algorithmique
