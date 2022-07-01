@@ -135,7 +135,37 @@
     - *Informatique et Sciences du Numérique*, G. Dowek, Eyrolles
     - Les ressources disponibles sur [https://gitlab.com/eskool/profs-info](https://gitlab.com/eskool/profs-info){:target="_blank"} et sur le [forum NSI - INRIA](https://mooc-forums.inria.fr/moocnsi/){:target="_blank"}
   
+=== "Légende du site"
+    !!! abstract "Cours/À savoir"
 
+    !!! info "Remarque"
+
+    !!! note "Exemple"
+
+    !!! gear "Méthode/algorithme"
+
+    !!! code "Code/Programme"
+    
+    !!! example "Exercice/TP"
+
+    !!! tip "Astuce/conseil"
+
+    !!! check "Solution/Correction"
+
+    !!! warning "Attention/Remarque importante"
+
+    !!! quote "Citation"
+
+    !!! history "Histoire de l'informatique"
+
+    !!! video "Video"
+
+    !!! lien "Lien externe"
+
+    !!! capytale "Lien vers activité Capytale"
+
+    !!! pydefi "Pydéfi - c0d1ng UP"
+    
 <!-- === "Progression"
     Cette progression est découpée selon les 5 périodes entre les vacances.
 
