@@ -1,4 +1,14 @@
-# Devoir en temps libre 0001
+# DL 0001 : le masque jetable
+
+!!! history "Histoire de l'informatique"
+    L'algorithme de cryptographie du masque jetable est le seul qui offre une sécurité théorique absolue. Cela a été prouvé en 1949 par [Claude Shannon](https://fr.wikipedia.org/wiki/Claude_Shannon){:target="_blank"}. Cependant pour que cet algorithme soit parfaitement sûr, il faut respecter 3 règles:
+
+    - la clé doit être **aussi longue** que le message à chiffrer;
+    - la clé doit être générée de façon **aléatoire**;
+    - la clé doit être **à usage unique**.
+
+    Ces règles empêchent un usage pratique de cette méthode, car il est très compliqué de communiquer les clés. Certains gouvernements l'utilisent parfois, en faisant passer les clés par [valise diplomatique](https://fr.wikipedia.org/wiki/Valise_diplomatique){:target="_blank"}.
+
 
 *Pour une meilleure lisibilité, des espaces sont placées dans les écritures binaires des nombres. Il ne faut pas les prendre en compte dans les calculs.*
 
@@ -103,3 +113,4 @@ Les fonctions Python permettant d'obtenir le code Unicode d'un caractère et ré
 ### Partie 3 - Bonus
 
 Résoudre le pydéfi suivant : [La clé endommagée](https://pydefis.callicode.fr/defis/MasqueJetable/txt){:target="_blank"} 
+
