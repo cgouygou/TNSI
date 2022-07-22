@@ -3,8 +3,6 @@
 ![mdv](images/logo_MdV_site.png){: .center width=640} 
 
 
-
-
 [Lien vers le site de Première.](https://cgouygou.github.io/1NSI/){:target="_blank"}
 
 <br>
