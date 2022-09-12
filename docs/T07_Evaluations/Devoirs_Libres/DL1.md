@@ -99,7 +99,7 @@ Les fonctions Python permettant d'obtenir le code Unicode d'un caractère et ré
 2. Écrire une fonction `masque_jetable` qui correspond à la spécification ci-dessous:
 
     ```python linenums='1'
-    def masque_jetable(message:chr, cle:chr) -> chr:
+    def masque_jetable(message:str, cle:str) -> str:
         '''
         renvoie la chaîne chiffrée par la méthode du masque jetable.
         message: chaîne à chiffrer
