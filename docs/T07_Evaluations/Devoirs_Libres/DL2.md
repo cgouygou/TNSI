@@ -1,18 +1,41 @@
-# DL 0010 : introduction à Pygame
+# DL 0010 : Travail sur les tableaux/listes (rappels)
+
+{{ initexo(0) }}
 
 
-## Introduction
-Commencer par consulter les pages:
+!!! example "{{ exercice() }}"
+    === "Énoncé" 
+        Écrire une fonction `maximum` qui prend en paramètre un tableau (type `list`) d'entiers et qui renvoie le plus grand élément du tableau). Si le tableau est vide, la fonction doit renvoyer `None`.
 
-- [Introduction à Pygame](https://cgouygou.github.io/1NSI/T08_Extras/3Pygame/01-Pygame_intro/){:target="_blank"} 
-- [Animation simple (sans événements)](https://cgouygou.github.io/1NSI/T08_Extras/3Pygame/02-Pygame_image/){:target="_blank"} 
-- [Dessiner avec Pygame](https://cgouygou.github.io/1NSI/T08_Extras/3Pygame/04-Pygame_extras/#2-dessiner-avec-pygame){:target="_blank"} 
+        ```python title='Exemples'
+        >>> maximum([2, 1, 8, 0, 42, 8, 12])
+        42
+        >>> maximum([4, 4, 4])
+        4
+        >>> maximum([])
+        None        
+        ```
 
-## Énoncé
+    === "Correction" 
+        {{ correction(False, 
+        "
+        "
+        ) }}
 
-1. À partir du code donné en exemple avec une représentation de la balle par un cercle (cf. *Dessiner avec Pygame*), terminer le programme pour faire rebondir la balle sur tous les bords de la fenêtre.
-2. Ajouter une deuxième balle, dont la position de départ, la couleur et le déplacement seront aléatoires (utiliser le module `random`).
-3. Gérer la collision entre deux balles:
-    - en créant une fonction `distance` qui renvoie la distance entre les centres de deux balles;
-    - en échangeant les déplacements des balles lorsqu'il y a collision.
+!!! example "{{ exercice() }}"
+    === "Énoncé" 
+        Écrire une fonction `indice` qui prend en paramètre un tableau (type `list`) d'entiers et un entier, et qui renvoie l'indice de la première occurence de l'entier dans le tableau. Si l'entier n'appartient pas à la liste, la fonction doit renvoyer `None`.
 
+        ```python title='Exemples'
+        >>> indice([2, 1, 8, 0, 42, 8, 12], 42)
+        4
+        >>> indice([2, 1, 8, 0, 42, 8, 12], 8)
+        2
+        >>> indice([2, 1, 8, 0, 42, 8, 12], 5)
+        None        
+        ```
+    === "Correction" 
+        {{ correction(False, 
+        "
+        "
+        ) }}
