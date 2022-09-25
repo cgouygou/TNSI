@@ -5,6 +5,8 @@
 
 !!! example "{{ exercice() }}"
     === "Énoncé" 
+        À rendre sur [Capytale](https://capytale2.ac-paris.fr/web/c/654c-726825/mlc){:target="_blank"}.
+
         Écrire une fonction `maximum` qui prend en paramètre un tableau (type `list`) d'entiers et qui renvoie le plus grand élément du tableau). Si le tableau est vide, la fonction doit renvoyer `None`.
 
         ```python title='Exemples'
@@ -24,6 +26,8 @@
 
 !!! example "{{ exercice() }}"
     === "Énoncé" 
+        À rendre sur [Capytale](https://capytale2.ac-paris.fr/web/c/01c4-726834/mlc){:target="_blank"} 
+
         Écrire une fonction `indice` qui prend en paramètre un tableau (type `list`) d'entiers et un entier, et qui renvoie l'indice de la première occurence de l'entier dans le tableau. Si l'entier n'appartient pas à la liste, la fonction doit renvoyer `None`.
 
         ```python title='Exemples'
