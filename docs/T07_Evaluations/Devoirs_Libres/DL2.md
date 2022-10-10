@@ -19,8 +19,16 @@
         ```
 
     === "Correction" 
-        {{ correction(False, 
+        {{ correction(True, 
         "
+        def maximum(tab:list) -> int:
+            if tab == []:
+                return None
+            maxi = tab[0]
+            for elt in tab:
+                if elt > maxi:
+                    maxi = elt
+            return maxi
         "
         ) }}
 
@@ -39,7 +47,12 @@
         None        
         ```
     === "Correction" 
-        {{ correction(False, 
+        {{ correction(True, 
         "
+        def indice(tab:list, n:int) -> int:
+            for i in range(len(tab)):
+                if tab[i] == n:
+                    return i
+            return None
         "
         ) }}
