@@ -21,6 +21,7 @@
     === "Correction" 
         {{ correction(True, 
         "
+        ```python
         def maximum(tab:list) -> int:
             if tab == []:
                 return None
@@ -29,6 +30,7 @@
                 if elt > maxi:
                     maxi = elt
             return maxi
+        ```
         "
         ) }}
 
@@ -49,10 +51,12 @@
     === "Correction" 
         {{ correction(True, 
         "
+        ```python
         def indice(tab:list, n:int) -> int:
             for i in range(len(tab)):
                 if tab[i] == n:
                     return i
             return None
+        ```
         "
         ) }}
