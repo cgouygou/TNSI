@@ -21,14 +21,29 @@
     === "Correction" 
         {{ correction(True, 
         "
+        On peut parcourir le tableau sur ses éléments: 
+
+        ```python
         def maximum(tab:list) -> int:
             if tab == []:
                 return None
             maxi = tab[0]
-            for elt in tab:
+            for elt in tab:   # parcours de liste sur les éléments
                 if elt > maxi:
                     maxi = elt
             return maxi
+        ```
+        Ou bien sur les indices:
+        ```python
+        def maximum(tab:list) -> int:
+            if tab == []:
+                return None
+            maxi = tab[0]
+            for i in range(len(tab)):   # parcours de liste sur les indices
+                if tab[i] > maxi:
+                    maxi = tab[i]
+            return maxi
+        ```
         "
         ) }}
 
@@ -49,10 +64,12 @@
     === "Correction" 
         {{ correction(True, 
         "
+        ```python
         def indice(tab:list, n:int) -> int:
             for i in range(len(tab)):
                 if tab[i] == n:
                     return i
             return None
+        ```
         "
         ) }}

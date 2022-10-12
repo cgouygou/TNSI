@@ -45,7 +45,7 @@
 
 
 !!! tip "Indications"
-    {{ correction(False, 
+    {{ correction(True, 
     "
     1. Écrire une fonction `plus_grand(lst, k)` qui renvoie l'indice du plus grand élément de la liste `lst` **après** la position `k`.
 
