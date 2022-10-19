@@ -10,18 +10,18 @@
 === "Programme"
     Le [programme](data/Tle_NSI_Specialite_Voie_G_1126614.pdf) de terminale NSI est articulé autour de cinq thèmes.
 
-    Nous traiterons les différentes entrées du programme dans les chapitres suivants:
+    Nous traiterons les différentes entrées du programme dans les chapitres suivants, où la mention  **→ BAC** indique les chapitres pouvant être évalués lors de l'épreuve écrite terminale de mars 2023.
 
     === "Thème 1"
         **[Thème 1: Structures de données](https://cgouygou.github.io/TNSI/T01_StructuresDonnees/accueil/)**
 
-        1.1 Listes chaînées
+        1.1 Listes chaînées **→ BAC**
         
-        1.2 Piles et Files
+        1.2 Piles et Files **→ BAC**
 
-        1.3 Dictionnaires
+        1.3 Dictionnaires **→ BAC**
 
-        1.4 Arbres
+        1.4 Arbres **→ BAC**
         
         1.5 Graphes
 
@@ -29,9 +29,9 @@
     === "Thème 2"
         **[Thème 2:  Langages et programmation](https://cgouygou.github.io/TNSI/T02_Programmation/accueil/)**
 
-        2.1 Programmation orientée objet
+        2.1 Programmation orientée objet **→ BAC**
 
-        2.2 Récursivité
+        2.2 Récursivité **→ BAC**
 
         2.3 Calculabilité et décidabilité
 
@@ -40,7 +40,7 @@
     === "Thème 3"
         **[Thème 3: Algorithmique](https://cgouygou.github.io/TNSI/T03_Algorithmique/accueil/)**
 
-        3.1 Diviser pour régner
+        3.1 Diviser pour régner **→ BAC**
 
         3.2 Programmation dynamique
 
@@ -49,9 +49,9 @@
     === "Thème 4"
         **[Thème 4: Bases de données](https://cgouygou.github.io/TNSI/T04_BasesDonnees/accueil/)**
 
-        4.1 Modèle relationnel
+        4.1 Modèle relationnel **→ BAC**
 
-        4.2 Langage SQL
+        4.2 Langage SQL **→ BAC**
 
 
     === "Thème 5"
@@ -59,9 +59,9 @@
 
         5.1 Système sur puce
 
-        5.2 Gestion des processus
+        5.2 Gestion des processus **→ BAC**
 
-        5.3 Protocoles de routage
+        5.3 Protocoles de routage **→ BAC**
 
         5.4 Sécurisation des communications
 
