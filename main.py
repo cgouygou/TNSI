@@ -26,6 +26,11 @@ def define_env(env):
             return texte
 #---------------- </exo perso>-------------------- 
 
+#--------------- BDD - schéma de relation --------
+    @env.macro
+    def relation(nom, primaire, *reste) -> str:
+        return f'<code><strong>{nom}</strong> (<span class="cle_primaire">{primaire}</span>, {", ".join(reste)})</code>'
+
 
 #---------------- <PYODIDE>-------------------- 
     env.variables['term_counter'] = 0

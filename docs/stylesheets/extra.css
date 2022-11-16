@@ -19,6 +19,14 @@
     width: 640px;
 }
 
+.cle_primaire {
+  text-decoration-line: underline;
+  text-underline-offset: 0.37em;
+  text-decoration-thickness: 1.5px; 
+}
+
+
+
 th {
   border: 1px solid var(--md-typeset-table-color);
   border-spacing: 0;
