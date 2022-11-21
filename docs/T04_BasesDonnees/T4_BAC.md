@@ -1,2 +1,0 @@
-# Exercices type BAC
-
