@@ -1,4 +1,4 @@
-# Exercice 1 : Base de données musicale
+# Exercice BAC 1 : Base de données musicale
 
 > D'après 2022, Métropole, J2, Ex. 4
  

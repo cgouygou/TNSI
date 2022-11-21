@@ -1,4 +1,4 @@
-# Exercice 2: Mesures du réchauffement climatique
+# Exercice BAC 2: Mesures du réchauffement climatique
 
 Dans le cadre d'une étude sur le réchauffement climatique, un centre météorologique rassemble des données. On considère que la base de données contient deux relations (tables). La relation **`Centres`** qui contient l'identifiant des centres météorologiques, la ville, la latitude, la longitude et l'altitude du centre. La relation **`Mesures`** qui contient l'identifiant de la mesure, l'identifiant du centre, la date de la mesure, la température, la pression et la pluviométrie mesurées.
 
