@@ -111,6 +111,7 @@
     Quelques sites de challenges/énigmes/défis de programmation:
 
     - [PyDéfis](https://pydefis.callicode.fr/){:target="_blank"} 
+    - [Codémoi](https://iremsinfo.callicode.fr/concours/infos/){:target="_blank"}
     - [Advent of Code](https://adventofcode.com/){:target="_blank"} 
     - [MicroContest](http://www.microcontest.com/){:target="_blank"} 
     - [Hackinscience](https://www.hackinscience.org/){:target="_blank"} 
