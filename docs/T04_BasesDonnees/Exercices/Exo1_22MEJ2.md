@@ -79,3 +79,47 @@ INSERT INTO interpretes
 
 
 
+<!-- ??? check "Proposition de correction"
+    **1.a.** On obtient les titres `'Hey Jude'` et `'I Want To hold Your Hand'`.
+
+
+    **1.b.** `#!sql SELECT nom FROM interpretes WHERE pays = 'Angleterre';` 
+
+    **1.c.** On obtient :
+
+    | `titre`                  | `annee` |
+    | :----------------------- | :-----: |
+    | I Want To hold Your Hand |  1963   |
+    | Like a Rolling Stone     |  1965   |
+    | Respect                  |  1967   |
+    | Hey Jude                 |  1968   |
+    | Imagine                  |  1970   |
+    | Smells Like Teen Spirit  |  1991   |
+
+    **1.d.** `#!sql SELECT COUNT(*) FROM morceaux;` 
+
+    **1.e.** `#!sql SELECT titre FROM morceaux ORDER BY titre ASC;` 
+
+    **2.a.** La clé étrangère est `id_interprete` qui fait référence à la clé primaire  de la table **`interpretes`**.
+
+    **2.b.** Schéma des deux relations:
+
+    - **interpretes**(<span class="cle_primaire">id_interprete : INT</span>, nom : TEXT, pays : TEXT)
+    - **morceaux**(<span class="cle_primaire">id_morceau : INT</span>, titre : TEXT, annee : INT, #id_interprete : INT)
+
+    **2.c.** Cette requête provoque une erreur, car elle essaye d’ajouter à la table **interpretes** une entrée ayant pour `id_interprete` 1. Or, l’attribut `id_interprete` (qui est une clé primaire) a déjà une entrée avec la valeur 1 (la clé primaire    doit être unique).
+
+    **3.a.** `#!sql UPDATE FROM morceaux SET annee = 1971 WHERE titre = 'Imagine';` 
+
+    **3.b.** `#!sql INSERT INTO interpretes VALUES (6, 'The Who', 'Angleterre');` 
+
+    **3.c.** `#!sql INSERT INTO morceaux VALUES (7, 'My Generation', 1965, 6);` 
+
+    **4.**
+    
+    ```sql 
+    SELECT morceaux.titre FROM morceaux
+    JOIN interpretes ON morceaux.id_interprete = interpretes.id_interprete
+    WHERE interpretes.pays = 'États-Unis';
+    ``` -->
+    
