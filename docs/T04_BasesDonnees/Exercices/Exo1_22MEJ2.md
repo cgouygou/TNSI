@@ -79,7 +79,7 @@ INSERT INTO interpretes
 
 
 
-<!-- ??? check "Proposition de correction"
+??? check "Proposition de correction"
     **1.a.** On obtient les titres `'Hey Jude'` et `'I Want To hold Your Hand'`.
 
 
@@ -121,5 +121,5 @@ INSERT INTO interpretes
     SELECT morceaux.titre FROM morceaux
     JOIN interpretes ON morceaux.id_interprete = interpretes.id_interprete
     WHERE interpretes.pays = 'États-Unis';
-    ``` -->
+    ```
     
