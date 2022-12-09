@@ -253,8 +253,69 @@ Exécuter le code suivant et contrôler en même temps avec **DB Browser**.
         ![](../images/ezgif-ex1-2.gif){: .center} 
 
     === "Correction" 
-        {{ correction(False, 
+        {{ correction(True, 
         "
+        ```python
+        import sqlite3
+        
+        def insertion():
+            go = True
+            while go:
+                nom = input('Nom ? ')
+                if nom.lower() == 'q':
+                    go = False
+                else:
+                    note = input('Note ? ')
+                    c.execute("INSERT INTO devoir VALUES (?, ?);", (nom, note))
+
+        def consultation():
+            go = True
+            while go:
+                nom = input('Nom ? ')
+                if nom.lower() == 'q':
+                    go = False
+                else:
+                    rq = c.execute("SELECT note FROM devoir WHERE nom = ?;", [nom])
+                    note = rq.fetchone()
+                    if note is None:
+                        print("Élève inconnu")
+                    else:
+                        print("Note : ", note[0])
+
+        #Connexion
+        connexion = sqlite3.connect('devoir.db')
+
+        #Récupération d'un curseur
+        c = connexion.cursor()
+
+        # ---- début des instructions SQL
+
+        #Création d'une table
+        c.execute("""
+            CREATE TABLE IF NOT EXISTS devoir(
+            nom TEXT,
+            note INTEGER);
+            """)
+
+        go = True
+
+        while go:
+            choix = input("Menu \n1. Saisir des notes\n2. Consulter des notes\n3. Quitter\nVotre choix: ")
+            if choix == '1':
+                insertion()
+            elif choix == '2':
+                consultation()
+            else:
+                go = False
+
+        # ---- fin des instructions SQL
+
+        #Validation
+        connexion.commit()
+
+        #Déconnexion
+        connexion.close()
+        ```
         "
         ) }}
 
@@ -272,6 +333,7 @@ Exécuter le code suivant et contrôler en même temps avec **DB Browser**.
         - les données doivent bien entendu être stockées dans une base de données.
         - on ne doit pas pouvoir choisir un login déjà utilisé.
         - les mots de passe doivent être hachés. Voir [ici](https://fr.wikipedia.org/wiki/Fonction_de_hachage){:target="_blank"}  pour le principe et [ici](https://www.programiz.com/python-programming/methods/built-in/hash){:target="_blank"} pour la fonction de hachage à utiliser.
+        
     === "Correction" 
         {{ correction(False, 
         "
