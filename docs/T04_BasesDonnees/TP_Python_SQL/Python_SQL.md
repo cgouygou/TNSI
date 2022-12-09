@@ -253,8 +253,6 @@ Exécuter le code suivant et contrôler en même temps avec **DB Browser**.
         ![](../images/ezgif-ex1-2.gif){: .center} 
 
     === "Correction" 
-        {{ correction(True, 
-        "
         ```python
         import sqlite3
         
@@ -316,8 +314,7 @@ Exécuter le code suivant et contrôler en même temps avec **DB Browser**.
         #Déconnexion
         connexion.close()
         ```
-        "
-        ) }}
+        
 
 
 !!! example "Mini-Projet"
@@ -333,7 +330,7 @@ Exécuter le code suivant et contrôler en même temps avec **DB Browser**.
         - les données doivent bien entendu être stockées dans une base de données.
         - on ne doit pas pouvoir choisir un login déjà utilisé.
         - les mots de passe doivent être hachés. Voir [ici](https://fr.wikipedia.org/wiki/Fonction_de_hachage){:target="_blank"}  pour le principe et [ici](https://www.programiz.com/python-programming/methods/built-in/hash){:target="_blank"} pour la fonction de hachage à utiliser.
-        
+
     === "Correction" 
         {{ correction(False, 
         "
