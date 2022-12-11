@@ -79,7 +79,7 @@ INSERT INTO interpretes
 
 
 
-<!-- ??? check "Proposition de correction"
+??? check "Proposition de correction"
     **1.a.** On obtient les titres `'Hey Jude'` et `'I Want To hold Your Hand'`.
 
 
@@ -109,7 +109,7 @@ INSERT INTO interpretes
 
     **2.c.** Cette requête provoque une erreur, car elle essaye d’ajouter à la table **interpretes** une entrée ayant pour `id_interprete` 1. Or, l’attribut `id_interprete` (qui est une clé primaire) a déjà une entrée avec la valeur 1 (la clé primaire    doit être unique).
 
-    **3.a.** `#!sql UPDATE FROM morceaux SET annee = 1971 WHERE titre = 'Imagine';` 
+    **3.a.** `#!sql UPDATE morceaux SET annee = 1971 WHERE titre = 'Imagine';` 
 
     **3.b.** `#!sql INSERT INTO interpretes VALUES (6, 'The Who', 'Angleterre');` 
 
@@ -121,5 +121,5 @@ INSERT INTO interpretes
     SELECT morceaux.titre FROM morceaux
     JOIN interpretes ON morceaux.id_interprete = interpretes.id_interprete
     WHERE interpretes.pays = 'États-Unis';
-    ``` -->
+    ```
     
