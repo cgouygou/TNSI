@@ -6,7 +6,7 @@ Devoir du 09/12/2022
 
 On veut créer une base de données ```baseHopital.db```  qui contiendra les trois tables correspondant au diagramme relationnel suivant :
 
-![](diag_ex1_b.png)
+![](../images/diag_ex1_b.png)
 
 On suppose que les dates sont données sous la forme ```aaaa--mm-jj```.
 
@@ -14,7 +14,7 @@ On suppose que les dates sont données sous la forme ```aaaa--mm-jj```.
 
 1. Écrire le schéma de la relation **ordonnances**. Souligner la clé primaire et  marquer d'un # les clés étrangères.
 
-**ordonnance**s(<span class="cle-primaire"> code Int</span>, #id_patient Int, #matricule_medecin Int, date_ord Date, medicmaents String)
+**ordonnances** (<span class="cle_primaire"> code Int</span>, #id_patient Int, #matricule_medecin Int, date_ord Date, medicaments String)
 
 2. Donner l'instruction SQL permettant de créer la table/relation **ordonnances**.
 ```sql
@@ -54,7 +54,7 @@ WHERE m.specialite = "psychiatrie" AND o.date_ord LIKE "2020-04%";
 
 On considère ci-dessous le diagramme de la base de données du stock d'un supermarché :
 
-![](diag_ex2_b.png)
+![](../images/diag_ex2_b.png)
 
 1. Proposer un type de domaine SQL pertinent pour l'attribut `cp`  de la table **fournisseur**.
 
