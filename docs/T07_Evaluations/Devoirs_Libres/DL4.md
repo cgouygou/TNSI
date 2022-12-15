@@ -1,4 +1,4 @@
-# DL 0101: files d'attente
+# DL 0100: files d'attente
 
 Pour rappel, l'énoncé est [ici (ex 7)](https://cgouygou.github.io/TNSI/T01_StructuresDonnees/T1.2_FifoLifo/T1.2_FifoLifo/#124-exercices){:target='_blank'}
 
