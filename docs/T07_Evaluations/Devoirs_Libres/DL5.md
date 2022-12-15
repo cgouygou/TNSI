@@ -1,6 +1,10 @@
-# TP n°2
+# DL 101
 
-L'objectif de ce TP est de résoudre l'épreuve du [day 7 d'AOC 2022](https://adventofcode.com/2022/day/7){:target="_blank"} .
+!!! capytale "Lien vers l'activité Capytale"
+    Devoir à faire et à rendre ici : [https://capytale2.ac-paris.fr/web/c/f1db-1133073](https://capytale2.ac-paris.fr/web/c/f1db-1133073){:target="_blank"} 
+
+
+L'objectif de ce DL est de résoudre l'épreuve du [day 7 d'AOC 2022](https://adventofcode.com/2022/day/7){:target="_blank"} .
 
 Les données d'entrée sont dans [ce fichier](../data/input_day7.txt){:target="_blank"}.
 
@@ -20,13 +24,17 @@ Les données d'entrée sont dans [ce fichier](../data/input_day7.txt){:target="_
     === "Représentation des données"        
         On crée une classe `Repertoire`, qui possède 4 attributs (à vous de les trouver) et plusieurs méthodes:
 
-        - une méthode pour ajouter un fichier au répertoire
-        - une méthode pour ajouter un (sous-)répertoire au répertoire
-        - une méthode pour calculer la taille du répertoire (méthode récursive)
-        - une méthode pour récupèrer un sous-répertoire
+        - une méthode pour ajouter un fichier au répertoire;
+        - une méthode pour ajouter un (sous-)répertoire au répertoire;
+        - une méthode pour calculer la taille du répertoire (méthode récursive), qui correspond à la somme de la taille de ses fichiers et des tailles de ses sous-répertoires;
+        - une méthode pour récupèrer un sous-répertoire à partir de son nom.
 
     === "Parcours des données"
         On parcourt les données pour construire l'arborescence du répertoire «home» `\`, en identifiant les actions à effectuer en fonction de la chaîne de caractère sur chaque ligne. Penser à gérer le **répertoire courant**.
 
     === "Analyse des données"
         Créer une fonction récursive qui prend en paramètre un répertoire, ajoute sa taille (si elle convient) à une variable (de type `list`) **globale** puis examine ses sous-dossiers de la même façon.
+
+
+!!! check "Test du programme"
+    Comme indiqué dans l'énoncé sur le site d'AOC 2022, avec le [fichier d'entrée d'exemple](../data/input_day7.txt){:target="_blank"}, vous devez obtenir deux valeurs (94853 et 584) pour un réponse finale de 95437.
