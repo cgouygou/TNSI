@@ -1,4 +1,4 @@
-# DL 101
+# DL 0101: AOC22 day 7
 
 !!! capytale "Lien vers l'activité Capytale"
     Devoir à faire et à rendre ici : [https://capytale2.ac-paris.fr/web/c/f1db-1133073](https://capytale2.ac-paris.fr/web/c/f1db-1133073){:target="_blank"} 
@@ -37,4 +37,4 @@ Les données d'entrée sont dans [ce fichier](../data/input_day7.txt){:target="_
 
 
 !!! check "Test du programme"
-    Comme indiqué dans l'énoncé sur le site d'AOC 2022, avec le [fichier d'entrée d'exemple](../data/input_day7.txt){:target="_blank"}, vous devez obtenir deux valeurs (94853 et 584) pour un réponse finale de 95437.
+    Comme indiqué dans l'énoncé sur le site d'AOC 2022, avec le [fichier d'entrée d'exemple](../data/input_day7.txt){:target="_blank"}, vous devez obtenir deux valeurs (94853 et 584) pour une réponse finale de 95437.
