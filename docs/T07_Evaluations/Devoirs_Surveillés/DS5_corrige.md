@@ -1,16 +1,6 @@
-# Terminale NSI - DS 0101 - 09/12/2022
+# DS 0101 - Corrigé
 
-**Nom Prénom:**
-
----
-**Note/Appréciation:**
-
-<br>
-<br>
-<br>
-<br>
-
----
+Devoir du 09/12/2022
 
 ## Exercice 1 (8 points)
 
@@ -24,7 +14,7 @@ On suppose que les dates sont données sous la forme ```aaaa--mm-jj```.
 
 1. Écrire le schéma de la relation **ordonnances**. Souligner la clé primaire et  marquer d'un # les clés étrangères.
 
-**ordonnances(<span class="cle-primaire"> code Int</span>, #id_patient Int, #matricule_medecin Int, date_ord Date, medicmaents String)
+**ordonnance**s(<span class="cle-primaire"> code Int</span>, #id_patient Int, #matricule_medecin Int, date_ord Date, medicmaents String)
 
 2. Donner l'instruction SQL permettant de créer la table/relation **ordonnances**.
 ```sql
@@ -57,7 +47,7 @@ DELETE FROM medecins WHERE specialite = "épidémiologie";
 SELECT p.nom, p.prenom FROM patients AS p
 JOIN ordonnances AS o ON p.id = o.id_patient
 JOIN medecins AS m ON o.matricule_medecin = m.matricule
-WHERE m.specialite = "psychiatrie" AND o.date_ord LIKE "%04-2020%";
+WHERE m.specialite = "psychiatrie" AND o.date_ord LIKE "2020-04%";
 ```
 
 ## Exercice 2 (12 points)
@@ -66,7 +56,7 @@ On considère ci-dessous le diagramme de la base de données du stock d'un super
 
 ![](diag_ex2_b.png)
 
-1. Proposer un type de domaine pertinent pour l'attribut `cp`  de la table **fournisseur**.
+1. Proposer un type de domaine SQL pertinent pour l'attribut `cp`  de la table **fournisseur**.
 
 	L'attribut `cp` doit être représenté par un type `#!sql VARCHAR(5)` (ou `#!sql CHAR(5)`).
 
@@ -80,7 +70,7 @@ SELECT prix_achat FROM produits WHERE nom_court = 'Liq_Vaiss_1L';
 SELECT adresse, cp, ville FROM fournisseur WHERE nom = 'Avenir_confiseur';
 ```
 
-4. Quelle requête SQL donne les produits étant en rupture de stock ?
+4. Quelle requête SQL donne les noms des produits étant en rupture de stock ?
 ```sql
 SELECT produits.nom FROM produits
 JOIN stocks ON produits.id = stocks.produit
@@ -92,7 +82,7 @@ WHERE stocks.quantite = 0;
 SELECT nom FROM produits WHERE nom LIKE "%ampoule%";
 ```
 
-6. Quelle requête SQL permet d'avoir le prix moyen de ces ampoules ?
+6. Quelle requête SQL permet d'avoir le prix de vente moyen de ces ampoules ?
 ```sql
 SELECT AVG(prix_vente) FROM produits WHERE nom LIKE "%ampoule%";
 ```
