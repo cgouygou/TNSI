@@ -32,8 +32,41 @@ Les données d'entrée sont dans [ce fichier](../data/input_day7.txt){:target="_
     === "Parcours des données"
         On parcourt les données pour construire l'arborescence du répertoire «home» `\`, en identifiant les actions à effectuer en fonction de la chaîne de caractère sur chaque ligne. Penser à gérer le **répertoire courant**.
 
+        **Aide pour le parcours**: compléter les actions à effectuer en fonction de ce qui est lu dans le fichier (sachant qu'il n'y a rien à faire si la commande est `$ ls`) et que le `#!py else` correspond au dernier cas non envisagé...
+        ```python linenums='1'
+        for line in data[1:]:
+            if line == '$ cd ..':
+                ...
+            elif line[:5] == '$ cd ':
+                dir_name = line.split()[-1]
+                ...
+            elif line == '$ ls':
+                pass
+            elif line[:3] == 'dir':
+                ...
+            else:
+                ...
+        ```
+        
+
     === "Analyse des données"
         Créer une fonction récursive qui prend en paramètre un répertoire, ajoute sa taille (si elle convient) à une variable (de type `list`) **globale** puis examine ses sous-dossiers de la même façon.
+
+        **Aide pour la fonction récursive**
+        ```python linenums='1'
+        tailles = []
+
+        def exploration(rep:Repertoire) -> None:
+            t = rep.size()
+            if t ... :
+                tailles.append(..)
+            for sous_rep in ... :
+                ...(sous_rep)
+
+        exploration(home)
+        print(sum(...))
+        ```
+        
 
 
 !!! check "Test du programme"

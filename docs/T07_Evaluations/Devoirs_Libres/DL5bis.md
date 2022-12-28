@@ -1,4 +1,4 @@
-# DL 0101 bis
+# DL 0101 (bis) : carrés magiques
 
 !!! capytale "Lien vers l'activité Capytale"
     Devoir à faire et à rendre ici : [https://capytale2.ac-paris.fr/web/c/ec89-1139771](https://capytale2.ac-paris.fr/web/c/ec89-1139771){:target="_blank"} 
