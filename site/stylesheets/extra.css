@@ -19,6 +19,58 @@
     width: 640px;
 }
 
+.cle_primaire {
+  text-decoration-line: underline;
+  text-underline-offset: 0.37em;
+  text-decoration-thickness: 1.5px; 
+}
+
+
+
+th {
+  border: 1px solid var(--md-typeset-table-color);
+  border-spacing: 0;
+  border-bottom: none;
+  border-left: none;
+  border-top: none;
+  background-color: #ee9043;
+  color: #fff;
+}
+
+td {
+  border: 1px solid var(--md-typeset-table-color);
+  border-spacing: 0;
+  border-bottom: none;
+  border-left: none;
+  border-top: none;
+}
+
+
+.md-typeset__table {
+  line-height: 1;
+}
+
+.md-typeset__table table:not([class]) {
+  font-size: .74rem;
+  border-right: none;
+}
+
+
+.md-typeset__table table:not([class]) td,
+.md-typeset__table table:not([class]) th {
+  padding: 9px;
+}
+
+/* light mode alternating table bg colors
+.md-typeset__table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+} */
+
+/* dark mode alternating table bg colors */
+/* [data-md-color-scheme="slate"] .md-typeset__table tr:nth-child(2n) {
+  background-color: hsla(var(--md-hue),25%,25%,1)
+} */
+
 :root {
     --md-admonition-icon--video: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.75 3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25H1.75zM0 3.75C0 2.784.784 2 1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25v-8.5z"/><path d="M6 10.559V5.442a.25.25 0 0 1 .379-.215l4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559z"/></svg>')
   }
@@ -122,6 +174,50 @@ history.svg : <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path 
     -webkit-mask-image: var(--md-admonition-icon--lien);
             mask-image: var(--md-admonition-icon--lien);
   }
+
+:root {
+  --md-admonition-icon--pydefi: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M223.7 130.8L149.1 7.77C147.1 2.949 141.9 0 136.3 0H16.03c-12.95 0-20.53 14.58-13.1 25.18l111.3 158.9C143.9 156.4 181.7 137.3 223.7 130.8zM256 160c-97.25 0-176 78.75-176 176S158.8 512 256 512s176-78.75 176-176S353.3 160 256 160zM348.5 317.3l-37.88 37l8.875 52.25c1.625 9.25-8.25 16.5-16.63 12l-46.88-24.62L209.1 418.5c-8.375 4.5-18.25-2.75-16.63-12l8.875-52.25l-37.88-37C156.6 310.6 160.5 299 169.9 297.6l52.38-7.625L245.7 242.5c2-4.25 6.125-6.375 10.25-6.375S264.2 238.3 266.2 242.5l23.5 47.5l52.38 7.625C351.6 299 355.4 310.6 348.5 317.3zM495.1 0H375.7c-5.621 0-10.83 2.949-13.72 7.77l-73.76 122.1c42 6.5 79.88 25.62 109.5 53.38l111.3-158.9C516.5 14.58 508.9 0 495.1 0z"/></svg>')
+}
+.md-typeset .admonition.pydefi,
+.md-typeset details.pydefi {
+  border-color: rgb(255, 221, 87);
+}
+.md-typeset .pydefi > .admonition-title,
+.md-typeset .pydefi > summary {
+  background-color: rgba(255, 221, 87, 0.1);
+  border-color: rgb(255, 221, 87);
+}
+.md-typeset .pydefi > .admonition-title::before,
+.md-typeset .rappel > summary::before {
+  background-color: rgb(255, 221, 87);
+  -webkit-mask-image: var(--md-admonition-icon--pydefi);
+          mask-image: var(--md-admonition-icon--pydefi);
+}
+
+
+:root {
+  --md-admonition-icon--gear: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 2a2 2 0 0 0-2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0-2-2m-2 12c-.25 0-.46-.18-.5-.42l-.37-2.65c-.63-.25-1.17-.59-1.69-.99l-2.49 1.01c-.22.08-.49 0-.61-.22l-2-3.46a.493.493 0 0 1 .12-.64l2.11-1.66L4.5 12l.07-1-2.11-1.63a.493.493 0 0 1-.12-.64l2-3.46c.12-.22.39-.31.61-.22l2.49 1c.52-.39 1.06-.73 1.69-.98l.37-2.65c.04-.24.25-.42.5-.42h4c.25 0 .46.18.5.42l.37 2.65c.63.25 1.17.59 1.69.98l2.49-1c.22-.09.49 0 .61.22l2 3.46c.13.22.07.49-.12.64L19.43 11l.07 1-.07 1 2.11 1.63c.19.15.25.42.12.64l-2 3.46c-.12.22-.39.31-.61.22l-2.49-1c-.52.39-1.06.73-1.69.98l-.37 2.65c-.04.24-.25.42-.5.42h-4m1.25-18-.37 2.61c-1.2.25-2.26.89-3.03 1.78L5.44 7.35l-.75 1.3L6.8 10.2a5.55 5.55 0 0 0 0 3.6l-2.12 1.56.75 1.3 2.43-1.04c.77.88 1.82 1.52 3.01 1.76l.37 2.62h1.52l.37-2.61c1.19-.25 2.24-.89 3.01-1.77l2.43 1.04.75-1.3-2.12-1.55c.4-1.17.4-2.44 0-3.61l2.11-1.55-.75-1.3-2.41 1.04a5.42 5.42 0 0 0-3.03-1.77L12.75 4h-1.5z"/></svg>')
+}
+.md-typeset .admonition.gear,
+.md-typeset details.gear {
+  border-color: rgb(231, 114, 18);
+}
+.md-typeset .gear > .admonition-title,
+.md-typeset .gear > summary {
+  background-color: rgba(231, 114, 18, 0.1);
+  border-color: rgb(231, 114, 18);
+}
+.md-typeset .gear > .admonition-title::before,
+.md-typeset .rappel > summary::before {
+  background-color: rgb(231, 114, 18);
+  -webkit-mask-image: var(--md-admonition-icon--gear);
+          mask-image: var(--md-admonition-icon--gear);
+}
+
+
+
+
+
 /* :root {
     --md-primary-fg-color:        #EE0F0F;
     --md-primary-fg-color--light: #ECB7B7;

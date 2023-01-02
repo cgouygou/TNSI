@@ -1,0 +1,2395 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://cgouygou.github.io/TNSI/T01_StructuresDonnees/T1.2_FifoLifo/T1.2_FifoLifo/">
+      
+      <link rel="icon" href="../../../xtra/favicon_orange.svg">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.0">
+    
+    
+      
+        <title>T1.2 Piles et Files - Cours de Terminale NSI - M. Gouygou</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2e8b5541.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+  
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0l-30.1 30 97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2l-18.7-18.6zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.8 15.7-7.4 21.9-13.5l167.3-167.4-98-98-167.3 167.4zM96 64c-53 0-96 43-96 96v256c0 53 43 96 96 96h256c53 0 96-43 96-96v-96c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"/></svg>');}</style>
+
+
+    
+    
+    
+    <script src="../../../xtra/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../xtra/gifplayer/gif-player.es6.js" defer async></script>
+    <!-- Load CDNs : Pyodide (Python in WASM), Ace (Editor) and JQuery (Terminal) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ext-language_tools.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.asm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal@2.23.0/js/jquery.terminal.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/jquery.terminal@2.23.0/css/jquery.terminal.min.css" rel="stylesheet">
+
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../xtra/stylesheets/pyoditeur.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="deep-orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#t12-piles-et-files" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Cours de Terminale NSI - M. Gouygou" class="md-header__button md-logo" aria-label="Cours de Terminale NSI - M. Gouygou" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M64 96c0-35.3 28.7-64 64-64h384c35.3 0 64 28.7 64 64v256h-64V96H128v256H64V96zM0 403.2C0 392.6 8.6 384 19.2 384h601.6c10.6 0 19.2 8.6 19.2 19.2 0 42.4-34.4 76.8-76.8 76.8H76.8C34.4 480 0 445.6 0 403.2zM281 209l-31 31 31 31c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-48-48c-9.4-9.4-9.4-24.6 0-33.9l48-48c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9zm112-34 48 48c9.4 9.4 9.4 24.6 0 33.9l-48 48c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l31-31-31-31c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cours de Terminale NSI - M. Gouygou
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              T1.2 Piles et Files
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="deep-orange"  aria-label="Mode sombre"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Mode sombre" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="deep-orange"  aria-label="Mode clair"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Mode clair" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cgouygou/TNSI" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cgouygou/TNSI
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Accueil
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../accueil/" class="md-tabs__link md-tabs__link--active">
+        T1 Structures de données
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../T02_Programmation/accueil/" class="md-tabs__link">
+        T2 Programmation
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../T03_Algorithmique/accueil/" class="md-tabs__link">
+        T3 Algorithmique
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../T04_BasesDonnees/accueil/" class="md-tabs__link">
+        T4 Bases de données
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../T05_ArchiMaterielle/accueil/" class="md-tabs__link">
+        T5 Architecture matérielle
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../T06_BAC/bac/" class="md-tabs__link">
+      BAC NSI
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../T07_Evaluations/Devoirs_Libres/accueil/" class="md-tabs__link">
+        Évaluations
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../T08_Divers/01_GitHub/Github/" class="md-tabs__link">
+        Projets
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../T09_Extras/Hachage/" class="md-tabs__link">
+        Extras
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Cours de Terminale NSI - M. Gouygou" class="md-nav__button md-logo" aria-label="Cours de Terminale NSI - M. Gouygou" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M64 96c0-35.3 28.7-64 64-64h384c35.3 0 64 28.7 64 64v256h-64V96H128v256H64V96zM0 403.2C0 392.6 8.6 384 19.2 384h601.6c10.6 0 19.2 8.6 19.2 19.2 0 42.4-34.4 76.8-76.8 76.8H76.8C34.4 480 0 445.6 0 403.2zM281 209l-31 31 31 31c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-48-48c-9.4-9.4-9.4-24.6 0-33.9l48-48c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9zm112-34 48 48c9.4 9.4 9.4 24.6 0 33.9l-48 48c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l31-31-31-31c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0z"/></svg>
+
+    </a>
+    Cours de Terminale NSI - M. Gouygou
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cgouygou/TNSI" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cgouygou/TNSI
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Accueil
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          T1 Structures de données
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="T1 Structures de données" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          T1 Structures de données
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accueil/" class="md-nav__link">
+        Thème 1 : Structures de données
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TP/" class="md-nav__link">
+        TP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1.1_Listes/T1.1_Listes/" class="md-nav__link">
+        T1.1 Listes chaînées
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          T1.2 Piles et Files
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        T1.2 Piles et Files
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#121-les-piles" class="md-nav__link">
+    1.2.1 Les piles
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#122-les-files" class="md-nav__link">
+    1.2.2 Les files
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#123-implementations" class="md-nav__link">
+    1.2.3 Implémentations
+  </a>
+  
+    <nav class="md-nav" aria-label="1.2.3 Implémentations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1231-implementations-dune-pile" class="md-nav__link">
+    1.2.3.1 Implémentations d'une pile
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1232-implementations-dune-file" class="md-nav__link">
+    1.2.3.2 Implémentations d'une file
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#124-exercices" class="md-nav__link">
+    1.2.4 Exercices
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          T1.4 Arbres
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="T1.4 Arbres" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          T1.4 Arbres
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1.4_Arbres/T1.4.1_Arbres/" class="md-nav__link">
+        Généralités sur les arbres
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1.4_Arbres/T1.4.2_Arbres_binaires/" class="md-nav__link">
+        Arbres binaires
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1.4_Arbres/T1.4.3_ABR/" class="md-nav__link">
+        Arbres Binaires de Recherche (ABR)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T1.4_Arbres/T1.4_TP/" class="md-nav__link">
+        TP Arbres binaires
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          T2 Programmation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="T2 Programmation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          T2 Programmation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T02_Programmation/accueil/" class="md-nav__link">
+        Thème 2 : Langages et Programmation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          T2.1 POO
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="T2.1 POO" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          T2.1 POO
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T02_Programmation/T2.1_POO/T2.1_TP/" class="md-nav__link">
+        TP : introduction à Pygame
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T02_Programmation/T2.1_POO/T2.1_POO1/" class="md-nav__link">
+        T2.1 POO : Programmation Orientée Objet (part one)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T02_Programmation/T2.1_POO/T2.1_Exercices/" class="md-nav__link">
+        T2.1 POO: Exercices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T02_Programmation/T2.1_POO/T2.1_POO2/" class="md-nav__link">
+        T2.1 POO (part two)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T02_Programmation/T2.2_Recursivite/T2.2_Recursivite/" class="md-nav__link">
+        T2.2 Récursivité
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          T3 Algorithmique
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="T3 Algorithmique" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          T3 Algorithmique
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T03_Algorithmique/accueil/" class="md-nav__link">
+        Thème 3 : Algorithmique
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T03_Algorithmique/T3.1_Diviser/T3.1_Diviser/" class="md-nav__link">
+        T3.1 Diviser pour régner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T03_Algorithmique/T3.2_ProgDyn/T3.2_ProgDyn/" class="md-nav__link">
+        T3.2 Programmation dynamique
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T03_Algorithmique/T3.3_Texte/T3.3_RechercheTexte/" class="md-nav__link">
+        T3.3 Recherche textuelle
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          T4 Bases de données
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="T4 Bases de données" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          T4 Bases de données
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T04_BasesDonnees/accueil/" class="md-nav__link">
+        Thème 4 : Bases de données
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T04_BasesDonnees/prequel/" class="md-nav__link">
+        Prequel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T04_BasesDonnees/T4.1_ModeleRel/T4.1_ModeleRel/" class="md-nav__link">
+        T4.1 Modèle relationnel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T04_BasesDonnees/T4.2_SBGD/T4.2_SGBD/" class="md-nav__link">
+        T4.2 SGBD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5" type="checkbox" id="__nav_5_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_5">
+          T4.3 SQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="T4.3 SQL" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_5">
+          <span class="md-nav__icon md-icon"></span>
+          T4.3 SQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T04_BasesDonnees/T4.3_SQL/T4.3_SQL1/" class="md-nav__link">
+        T4.3 Langage SQL (partie 1)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T04_BasesDonnees/T4.3_SQL/T4.3_SQL2/" class="md-nav__link">
+        T4.3 Langage SQL (partie 2)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_6" type="checkbox" id="__nav_5_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_6">
+          Exercices
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Exercices" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_6">
+          <span class="md-nav__icon md-icon"></span>
+          Exercices
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T04_BasesDonnees/Exercices/Exercices/" class="md-nav__link">
+        Exercices interactifs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T04_BasesDonnees/Exercices/Exo1_22MEJ2/" class="md-nav__link">
+        Exercice BAC 1 : Base de données musicale
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T04_BasesDonnees/Exercices/Exo2_22CEJ1/" class="md-nav__link">
+        Exercice BAC 2: Mesures du réchauffement climatique
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T04_BasesDonnees/TP_Python_SQL/Python_SQL/" class="md-nav__link">
+        TP Python et SQL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          T5 Architecture matérielle
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="T5 Architecture matérielle" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          T5 Architecture matérielle
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T05_ArchiMaterielle/accueil/" class="md-nav__link">
+        Thème 5 : Architecture matérielle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T05_ArchiMaterielle/T5.1_Puce/T5.1_Puce/" class="md-nav__link">
+        T5.1 Systèmes sur puce
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T06_BAC/bac/" class="md-nav__link">
+        BAC NSI
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Évaluations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Évaluations" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Évaluations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_1" type="checkbox" id="__nav_8_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8_1">
+          Devoirs Libres
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Devoirs Libres" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_1">
+          <span class="md-nav__icon md-icon"></span>
+          Devoirs Libres
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Libres/accueil/" class="md-nav__link">
+        Devoirs en temps libre
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Libres/DL1/" class="md-nav__link">
+        DL 0001 : le masque jetable
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Libres/DL2/" class="md-nav__link">
+        DL 0010 : Travail sur les tableaux/listes (rappels)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Libres/DL3/" class="md-nav__link">
+        DL 0011
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Libres/DL4/" class="md-nav__link">
+        DL 0100: files d'attente
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Libres/DL5/" class="md-nav__link">
+        DL 0101: AOC22 day 7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Libres/DL5bis/" class="md-nav__link">
+        DL 0101 (bis) : carrés magiques
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Libres/DL6/" class="md-nav__link">
+        DL 0110
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2" type="checkbox" id="__nav_8_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8_2">
+          Devoirs Surveillés
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Devoirs Surveillés" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_2">
+          <span class="md-nav__icon md-icon"></span>
+          Devoirs Surveillés
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Surveill%C3%A9s/DS1/" class="md-nav__link">
+        DS 0001
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Surveill%C3%A9s/DS2/" class="md-nav__link">
+        DS 0010 - 20/10/2022 - Corrigé
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Surveill%C3%A9s/DS5_corrige/" class="md-nav__link">
+        DS 0101 - Corrigé
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          Projets
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Projets" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Projets
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T08_Divers/01_GitHub/Github/" class="md-nav__link">
+        Github
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_2" type="checkbox" id="__nav_9_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9_2">
+          Projets
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Projets" data-md-level="2">
+        <label class="md-nav__title" for="__nav_9_2">
+          <span class="md-nav__icon md-icon"></span>
+          Projets
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T08_Divers/Projets/Projet1/" class="md-nav__link">
+        Projet 1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T08_Divers/Projets/Projet2/" class="md-nav__link">
+        Projet2
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          Extras
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Extras" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Extras
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T09_Extras/Hachage/" class="md-nav__link">
+        Hachage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T09_Extras/Trucs/" class="md-nav__link">
+        Trucs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+    
+                  
+
+  <a href="https://github.com/cgouygou/TNSI/edit/master/docs/T01_StructuresDonnees/T1.2_FifoLifo/T1.2_FifoLifo.md" title="Editer cette page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="t12-piles-et-files">T1.2 Piles et Files<a class="headerlink" href="#t12-piles-et-files" title="Permanent link">⚓︎</a></h1>
+<h2 id="121-les-piles">1.2.1 Les piles<a class="headerlink" href="#121-les-piles" title="Permanent link">⚓︎</a></h2>
+<p>Une <strong>pile</strong> (stack) est une structure de données <em>linéaire</em> contenant des éléments généralement <em>homogènes</em> fondée sur le principe «dernier arrivé, premier sorti» (en anglais <strong>LIFO</strong> : Last In, First Out).</p>
+<p><img alt="" class="center" src="../../images/pile_crepe.png" width="320" /> </p>
+<p><strong>Exemples de situations utilisant une pile:</strong></p>
+<ul>
+<li>historiques: de navigation sur le Web, d'annulation d'instructions (Ctrl+Z)</li>
+<li>appels de fonctions récursives</li>
+<li>la Chandeleur</li>
+<li>parcours en profondeur d'un arbre/graphe (plus tard...)</li>
+</ul>
+<div class="admonition abstract">
+<p class="admonition-title">Interface</p>
+<p>On dispose (ou souhaite disposer) sur une pile des méthodes/primitives suivantes:</p>
+<ul>
+<li>déterminer si la pile est vide (<code>est_vide</code>, <code>is_empty</code>)</li>
+<li><strong>empiler</strong> un nouvel élément au sommet de la pile (<code>empiler</code>, <code>push</code>)</li>
+<li><strong>dépiler</strong> l'élément du sommet de la pile (<code>depiler</code>, <code>pop</code>) et le renvoyer</li>
+</ul>
+<p>Ces opérations doivent être réalisées <strong>en temps constant</strong>, soit en <span class="arithmatex">\(O(1)\)</span>.</p>
+<p><img alt="" class="center" src="../../images/pile.png" /> </p>
+</div>
+<h2 id="122-les-files">1.2.2 Les files<a class="headerlink" href="#122-les-files" title="Permanent link">⚓︎</a></h2>
+<p>Une <strong>file</strong> (queue) est une structure de données <em>linéaire</em> contenant des éléments généralement <em>homogènes</em> fondée sur le principe «premier arrivé, premier sorti» (en anglais <strong>FIFO</strong> : Fast In, First Out).</p>
+<p><img alt="" class="center" src="../../images/file.jpg" width="320" /> </p>
+<p><strong>Exemples de situations utilisant une file:</strong></p>
+<ul>
+<li>file d'attente : documents soumis à impression, élèves à la cantine...</li>
+<li>gestion des processus</li>
+<li>parcours en largeur d'un arbre/graphe (plus tard...)</li>
+</ul>
+<div class="admonition abstract">
+<p class="admonition-title">Interface</p>
+<p>On dispose (ou souhaite disposer) sur une file des méthodes/primitives suivantes:</p>
+<ul>
+<li>déterminer si la file est vide (<code>is_empty</code>)</li>
+<li><strong>enfiler</strong> (ajouter) un nouvel élément dans la file (<code>enqueue</code>)</li>
+<li><strong>défiler</strong> l'élément de tête de la file (<code>dequeue</code>) et le renvoyer</li>
+</ul>
+<p>Ces opérations doivent être réalisées <strong>en temps constant</strong>, soit en <span class="arithmatex">\(O(1)\)</span>.</p>
+<p><img alt="" class="center" src="../../images/file.png" /> </p>
+</div>
+<h2 id="123-implementations">1.2.3 Implémentations<a class="headerlink" href="#123-implementations" title="Permanent link">⚓︎</a></h2>
+<h3 id="1231-implementations-dune-pile">1.2.3.1 Implémentations d'une pile<a class="headerlink" href="#1231-implementations-dune-pile" title="Permanent link">⚓︎</a></h3>
+<div class="admonition code">
+<p class="admonition-title">Liste Python</p>
+<p>L’implémentation Python du type <code>list</code> en fait un bon candidat pour la structure de pile :<code>append</code> (pour <code>push</code>) et <code>pop</code> sont les deux opérations utilisables sur les piles, toutes les deux en <span class="arithmatex">\(O(1)\)</span>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Test de l'implémentation</p>
+<p>Dans les deux exercices qui suivent, quelle que soit l'implémentation de la pile, le code suivant:</p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">p</span> <span class="o">=</span> <span class="n">Pile</span><span class="p">()</span>
+<span class="n">p</span><span class="o">.</span><span class="n">empiler</span><span class="p">(</span><span class="s2">&quot;prems&quot;</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">empiler</span><span class="p">(</span><span class="s2">&quot;deuz&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">depiler</span><span class="p">())</span>
+<span class="n">p</span><span class="o">.</span><span class="n">empiler</span><span class="p">(</span><span class="s2">&quot;troiz&quot;</span><span class="p">)</span>
+<span class="k">while</span> <span class="ow">not</span> <span class="n">p</span><span class="o">.</span><span class="n">est_vide</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">depiler</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div>
+doit afficher:
+<div class="highlight"><pre><span></span><code><span class="n">deuz</span>
+<span class="n">troiz</span>
+<span class="n">prems</span>
+</code></pre></div></p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exercice  1: avec une liste de Python</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Énoncé</label><label for="__tabbed_1_2">Correction</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Implémenter une classe <code>Pile</code> contenant les méthodes <code>est_vide</code>, <code>empiler</code> et <code>depiler</code> à l'aide des méthodes natives sur les listes de Python.</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Pile</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">contenu</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">est_vide</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">contenu</span> <span class="o">==</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">empiler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">contenu</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">valeur</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">depiler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">est_vide</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s1">&#39;dépiler sur une pile vide&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">contenu</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exercice  2: avec une liste chaînée</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Énoncé</label><label for="__tabbed_2_2">Correction</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Implémenter une classe <code>Pile</code> contenant les méthodes <code>est_vide</code>, <code>empiler</code> et <code>depiler</code> à l'aide d'une liste chaînée:</p>
+<ul>
+<li>empiler un nouvel élément revient à ajouter un élément en tête de liste;</li>
+<li>dépiler un élément revient à supprimer l'élément de tête.</li>
+</ul>
+<p>La classe <code>Pile</code> contient ainsi un seul attribut <code>contenu</code> associé à la liste chaînée contenant les éléments de la pile.</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">Pile</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">contenu</span> <span class="o">=</span> <span class="n">Liste</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">est_vide</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">contenu</span><span class="o">.</span><span class="n">est_vide</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">empiler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">contenu</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="n">valeur</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">depiler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">valeur</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">contenu</span><span class="o">.</span><span class="n">tete</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">contenu</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">contenu</span><span class="o">.</span><span class="n">queue</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">valeur</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+<h3 id="1232-implementations-dune-file">1.2.3.2 Implémentations d'une file<a class="headerlink" href="#1232-implementations-dune-file" title="Permanent link">⚓︎</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Test de l'implémentation</p>
+<p>Dans les trois exercices qui suivent, quelle que soit l'implémentation de la file, le code suivant:</p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">f</span> <span class="o">=</span> <span class="n">File</span><span class="p">()</span>
+<span class="n">f</span><span class="o">.</span><span class="n">enfiler</span><span class="p">(</span><span class="s2">&quot;prems&quot;</span><span class="p">)</span>
+<span class="n">f</span><span class="o">.</span><span class="n">enfiler</span><span class="p">(</span><span class="s2">&quot;deuz&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">defiler</span><span class="p">())</span>
+<span class="n">f</span><span class="o">.</span><span class="n">enfiler</span><span class="p">(</span><span class="s2">&quot;troiz&quot;</span><span class="p">)</span>
+<span class="k">while</span> <span class="ow">not</span> <span class="n">f</span><span class="o">.</span><span class="n">est_vide</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">defiler</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div>
+doit afficher:
+<div class="highlight"><pre><span></span><code><span class="n">prems</span>
+<span class="n">deuz</span>
+<span class="n">troiz</span>
+</code></pre></div></p>
+</div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Liste Python</label><label for="__tabbed_3_2">Avec deux piles</label><label for="__tabbed_3_3">Avec une liste chaînée (modifiée)</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="admonition example">
+<p class="admonition-title">Exercice  3</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Énoncé</label><label for="__tabbed_4_2">Correction</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Implémenter une classe <code>File</code> contenant les méthodes <code>est_vide</code>, <code>enfiler</code> et <code>defiler</code> à l'aide des méthodes natives sur les listes de Python (consulter l'aide sur la méthode <code>pop</code>).</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">File</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">contenu</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">est_vide</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">contenu</span> <span class="o">==</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">enfiler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">contenu</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">valeur</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">defiler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">contenu</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Liste Python</p>
+<p>Pour une file en revanche, le type <code>list</code>  de Python ne fournit pas une bonne implémentation d'une file, car la suppression en début de liste ne se fait pas en temps constant mais en temps linéaire <span class="arithmatex">\(O(n)\)</span> : il faut décaler les éléments un à un.</p>
+</div>
+</div>
+<div class="tabbed-block">
+<p>Le principe est de disposer d'une pile d'entrée et d'une pile de sortie...</p>
+<div class="admonition example">
+<p class="admonition-title">Exercice  4</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Énoncé</label><label for="__tabbed_5_2">Correction</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Terminer l'implémentation d'une classe <code>File</code> ayant comme attributs une pile d'entrée et une pile de sortie.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">File</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">entree</span> <span class="o">=</span> <span class="n">Pile</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sortie</span> <span class="o">=</span> <span class="n">Pile</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>Cette implémentation respecte-t-elle la contrainte de complexité sur l'insertion en fin de file? la suppression en début de file?</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">File</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">entree</span> <span class="o">=</span> <span class="n">Pile</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sortie</span> <span class="o">=</span> <span class="n">Pile</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">est_vide</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">entree</span><span class="o">.</span><span class="n">est_vide</span><span class="p">()</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">sortie</span><span class="o">.</span><span class="n">est_vide</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">enfiler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">entree</span><span class="o">.</span><span class="n">empiler</span><span class="p">(</span><span class="n">valeur</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">defiler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sortie</span><span class="o">.</span><span class="n">est_vide</span><span class="p">():</span>
+            <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">entree</span><span class="o">.</span><span class="n">est_vide</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">sortie</span><span class="o">.</span><span class="n">empiler</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">entree</span><span class="o">.</span><span class="n">depiler</span><span class="p">())</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sortie</span><span class="o">.</span><span class="n">depiler</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<p>Comme pour une pile, on peut vouloir implémenter une file à l'aide d'une liste chaînée: si la suppression en tête de file (<code>defiler</code>) se fait en temps constant, en revanche l'ajout d'un élément en queue de liste se fait en temps linéaire... Il est donc nécessaire de modifier la structure de liste chaînée en lui attribuant également une référence vers le dernier élément de la liste: c'est une structure de type <strong>deque</strong> (<em>double-ended queue</em>).</p>
+<div class="admonition code">
+<p class="admonition-title">Implémentation d'une file avec une deque</p>
+<p>La principale différence avec une liste chaînée est qu'il doit y avoir un attribut référençant le dernier élément:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">File</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot; Implémentation d&#39;une file à partir d&#39;une liste</span>
+<span class="sd">        chainée</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_first</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_last</span> <span class="o">=</span> <span class="kc">None</span>
+</code></pre></div></td></tr></table></div>
+<p>Pour les méthodes <code>enfiler</code> et <code>defiler</code>, il faut gérer les références à la tête <strong>et</strong> à la fin de la liste.</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exercice  5</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Énoncé</label><label for="__tabbed_6_2">Correction</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Terminer l'implémentation de la classe <code>File</code>.</p>
+</div>
+<div class="tabbed-block"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<h2 id="124-exercices">1.2.4 Exercices<a class="headerlink" href="#124-exercices" title="Permanent link">⚓︎</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Exercice  6: calculatrice polonaise inverse</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:3"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Énoncé</label><label for="__tabbed_7_2">Indication</label><label for="__tabbed_7_3">Correction</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>L'écriture polonaise inverse des expressions arithmétiques place l'opérateur après ses opérandes. Cette notation ne nécessite aucune parenthèse ni aucune règle de priorité.</p>
+<p>Ainsi l'expression polonaise inverse décrite par la chaîne de caractères: <code>'1 2 3 * + 4 *'</code> désigne l'expression traditionnellement notée <span class="arithmatex">\((1+2\times3)\times4\)</span>.</p>
+<p>Écrire une fonction <code>eval_pol_inv</code> prenant en paramètre une chaîne de caractères représentant une expression en notation polonaise inverse composée d'additions et de multiplications de nombres entiers et renvoyant la valeur de cette expression. On supposera que les éléments de l'expression sont séparés par des espaces.</p>
+<p>Attention: cette fonction ne doit pas renvoyer de résultat (ou <code>None</code>) si l'expression est mal écrite.</p>
+<p><strong>Quelques tests:</strong>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">assert</span> <span class="n">eval_pol_inv</span><span class="p">(</span><span class="s1">&#39;2 1 7 + 5 * +&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">42</span>
+<span class="k">assert</span> <span class="n">eval_pol_inv</span><span class="p">(</span><span class="s1">&#39;1 + 2&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">None</span>
+</code></pre></div></td></tr></table></div></p>
+</div>
+<div class="tabbed-block">
+<p>La valeur d'une telle expression peut être calculée facilement en utilisant une pile pour stocker les résultats intermédiaires. Pour cela, on observe un à un les éléments de l'expression et on effectue les actions suivantes :</p>
+<ul>
+<li>si on voit un nombre, on le place sur la pile;</li>
+<li>si on voit un opérateur binaire, on récupère les deux nombres au sommet de la pile, on leur applique l'opérateur, et on replace le résultat sur la pile.</li>
+</ul>
+<p>Si l'expression était bien écrite, il y a bien toujours deux nombres sur la pile lorsque l'on voit un opérateur, et à la fin du processus il reste exactement un nombre sur la pile, qui est le résultat.</p>
+</div>
+<div class="tabbed-block"></div>
+</div>
+</div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exercice  7</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">Énoncé</label><label for="__tabbed_8_2">Correction</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Dans cet exercice, on utilise une classe <code>Pile</code> implémentée avec une liste de Python et possédant ses quatre éléments d'interface usuels:</p>
+<ul>
+<li>Un constructeur qui permet de créer une pile vide, représentée par <code>[]</code> ;</li>
+<li>La méthode <code>est_vide()</code> qui renvoie <code>True</code> si l'objet est une pile ne contenant aucun élément, et <code>False</code> sinon ;</li>
+<li>La méthode <code>empiler</code> qui prend un objet quelconque en paramètre et ajoute cet objet au sommet de la pile. Dans la représentation de la pile dans la console, cet objet apparaît à droite des autres éléments de la pile ;</li>
+<li>La méthode <code>depiler</code> qui renvoie l'objet présent au sommet de la pile et le retire de la pile.</li>
+</ul>
+<p><strong>Exemples:</strong>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">mapile</span> <span class="o">=</span> <span class="n">Pile</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">mapile</span><span class="o">.</span><span class="n">empiler</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">mapile</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">mapile</span><span class="o">.</span><span class="n">empiler</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">mapile</span><span class="o">.</span><span class="n">empiler</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">mapile</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">mapile</span><span class="o">.</span><span class="n">depiler</span><span class="p">()</span>
+<span class="mi">50</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">mapile</span>
+<span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</code></pre></div></p>
+<ol>
+<li>
+<p>La méthode <code>est_triee</code> ci-dessous renvoie <code>True</code> si, en dépilant tous les éléments un par un , ils
+sont traités dans l'ordre croissant, et <code>False</code> sinon. Compléter les lignes 6 et 8.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">est_triee</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">est_vide</span><span class="p">()</span> <span class="p">:</span>
+        <span class="n">e1</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">depiler</span><span class="p">()</span>
+        <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">est_vide</span><span class="p">():</span>
+            <span class="n">e2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">depiler</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">e1</span> <span class="o">...</span> <span class="n">e2</span> <span class="p">:</span>
+                <span class="k">return</span> <span class="kc">False</span>
+            <span class="n">e1</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="k">return</span> <span class="kc">True</span>
+</code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>On crée dans la console la pile <code>A</code> représentée par <code>[1, 2, 3, 4]</code>.</p>
+<p><strong>a.</strong> Donner la valeur renvoyée par l'appel <code>A.est_triee()</code>.</p>
+<p><strong>b.</strong> Donner le contenu de la pile <code>A</code> après l'exécution de cette instruction.</p>
+</li>
+<li>
+<p>On souhaite maintenant écrire le code d'une méthode <code>depileMax</code> d'une pile non vide
+ne contenant que des nombres entiers et renvoyant le plus grand élément de cette pile
+en le retirant de la pile.</p>
+<p>Après l'exécution de <code>p.depileMax()</code>, le nombre d'éléments de la pile <code>p</code> diminue donc de 1.</p>
+<p>Compléter les lignes 9 et 11 :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">depileMax</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">assert</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">est_vide</span><span class="p">(),</span> <span class="s2">&quot;Pile vide&quot;</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">Pile</span><span class="p">()</span>
+    <span class="n">maxi</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">depiler</span><span class="p">()</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">est_vide</span><span class="p">()</span> <span class="p">:</span>
+        <span class="n">elt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">depiler</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">maxi</span> <span class="o">&lt;</span> <span class="n">elt</span> <span class="p">:</span>
+            <span class="n">q</span><span class="o">.</span><span class="n">empiler</span><span class="p">(</span><span class="n">maxi</span><span class="p">)</span>
+            <span class="n">maxi</span> <span class="o">=</span> <span class="o">...</span>
+        <span class="k">else</span> <span class="p">:</span>
+            <span class="o">...</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">q</span><span class="o">.</span><span class="n">est_vide</span><span class="p">():</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">empiler</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">depiler</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">maxi</span>
+</code></pre></div></td></tr></table></div>
+</li>
+<li>
+<p>On crée la pile <code>B</code> représentée par <code>[9, -7, 8, 12, 4]</code> et on effectue l’appel <code>B.depileMax()</code>.</p>
+<p><strong>a.</strong> Donner le contenu des piles <code>B</code> et <code>q</code> à la fin de chaque itération de la boucle <code>while</code> de la ligne 5.</p>
+<p><strong>b.</strong> Donner le contenu des piles <code>B</code> et <code>q</code> avant l’exécution de la ligne 14.</p>
+<p><strong>c.</strong> Donner un exemple de pile qui montre que l'ordre des éléments restants n’est pas préservé après l’exécution de <code>depileMax</code>.</p>
+</li>
+<li>
+<p>On donne le code de la fonction <code>traite</code> :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">traite</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">Pile</span><span class="p">()</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">est_vide</span><span class="p">():</span>
+        <span class="n">q</span><span class="o">.</span><span class="n">empile</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">depile_max</span><span class="p">())</span>
+    <span class="k">while</span> <span class="ow">not</span> <span class="n">q</span><span class="o">.</span><span class="n">est_vide</span><span class="p">():</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">empile</span><span class="p">(</span><span class="n">q</span><span class="o">.</span><span class="n">depile</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div>
+<p><strong>a.</strong> Donner les contenus successifs des piles <code>B</code> et <code>q</code></p>
+<ul>
+<li>avant la ligne 3,</li>
+<li>avant la ligne 5,</li>
+<li>à la fin de l'exécution de la fonction <code>traite</code></li>
+</ul>
+<p>lorsque la fonction <code>traite</code> est appelée avec la pile <code>B</code> contenant <code>[1, 6, 4, 3, 7, 2]</code>.</p>
+<p><strong>b.</strong> Expliquer le traitement effectué par cette fonction.</p>
+</li>
+</ol>
+</div>
+<div class="tabbed-block"></div>
+</div>
+</div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exercice  8: files d'attente</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><div class="tabbed-labels"><label for="__tabbed_9_1">Énoncé</label><label for="__tabbed_9_2">Correction</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Dans cet exercice, on se propose d'évaluer le temps d'attente de clients à des guichets, en comparant la solution d'une unique file d'attente et la solution d'une file d'attente par guichet.</p>
+<p>Pour cela, on modélise le temps par une variable globale, qui est incrémentée à chaque tour de boucle. Lorsqu'un nouveau client arrive, il est placé dans une file sous la forme d'un entier égal à la valeur de l'horloge, c'est-à-dire égal à son heure d'arrivée. Lorsqu'un client est servi, c'est-à-dire lorsqu'il sort de sa file d'attente, on obtient son temps d'attente en faisant la soustraction de la valeur courante de l'horloge et de la valeur qui vient d'être retirée de la file.</p>
+<p>L'idée est de faire tourner une telle simulation relativement longtemps, tout en totalisant le nombre de clients servis et le temps d'attente cumulé sur tous les clients. Le rapport de ces deux quantités nous donne le temps d'attente moyen. On peut alors comparer plusieurs stratégies (une ou plusieurs files, choix d'une file au hasard quand il y en a plusieurs, choix de la file où il y a le moins de clients, etc.).</p>
+<p>On se donne un nombre N de guichets (par exemple, N = 5). Pour simuler la disponibilité d'un guichet, on peut se donner un tableau d'entiers <code>dispo</code> de taille N. La valeur de <code>dispo[i]</code> indique le nombre de tours d'hor loge où le guichet <code>i</code> sera occupé. En particulier, lorsque cette valeur vaut 0, cela veut dire que le guichet est libre et peut donc servir un nouveau client. Lorsqu'un client est servi par le guichet 1, on choisit un temps de traitement pour ce client, au hasard entre 0 et N, et on l'affecte à <code>dispo[i]</code>.</p>
+<p>À chaque tour d'horloge, on réalise deux opérations:</p>
+<ul>
+<li>on fait apparaître un nouveau client;</li>
+<li>pour chaque guichet <code>i</code>:<ul>
+<li>s'il est disponible, il sert un nouveau client (pris dans sa propre file ou dans l'unique file, selon le modèle), le cas échéant;</li>
+<li>sinon, on décrémente <code>dispo[i]</code>.</li>
+</ul>
+</li>
+</ul>
+<p>Écrire un programme qui effectue une telle simulation, sur 100 tours d'horloge, et affiche au final le temps d'attente moyen. Comparer avec différentes stratégies.</p>
+</div>
+<div class="tabbed-block"></div>
+</div>
+</div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exercice  9</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="10:2"><input checked="checked" id="__tabbed_10_1" name="__tabbed_10" type="radio" /><input id="__tabbed_10_2" name="__tabbed_10" type="radio" /><div class="tabbed-labels"><label for="__tabbed_10_1">Énoncé</label><label for="__tabbed_10_2">Correction</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><a href="https://adventofcode.com/2018/day/5" target="_blank">https://adventofcode.com/2018/day/5</a> </p>
+</div>
+<div class="tabbed-block"></div>
+</div>
+</div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exercice  10</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="11:3"><input checked="checked" id="__tabbed_11_1" name="__tabbed_11" type="radio" /><input id="__tabbed_11_2" name="__tabbed_11" type="radio" /><input id="__tabbed_11_3" name="__tabbed_11" type="radio" /><div class="tabbed-labels"><label for="__tabbed_11_1">Énoncé</label><label for="__tabbed_11_2">Code de départ pour les fainéant.e.s</label><label for="__tabbed_11_3">Correction</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><a href="https://adventofcode.com/2022/day/5" target="_blank">https://adventofcode.com/2022/day/5</a> </p>
+<p>On travaillera avec la situation de départ suivante : </p>
+<p><img alt="" class="center" src="../../images/aoc22_day5_input.png" width="480" /> </p>
+<p>Et <a href="../../data/input_day5.txt" target="_blank">ce fichier d'instructions</a>.</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">data</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;input_day5.txt&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+
+<span class="k">class</span> <span class="nc">Pile</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">lst</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">contenu</span> <span class="o">=</span> <span class="n">lst</span>
+
+    <span class="k">def</span> <span class="nf">est_vide</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">contenu</span> <span class="o">==</span> <span class="p">[]</span>
+
+    <span class="k">def</span> <span class="nf">empiler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">valeur</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">contenu</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">valeur</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">depiler</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">est_vide</span><span class="p">():</span>
+            <span class="k">raise</span> <span class="ne">IndexError</span><span class="p">(</span><span class="s2">&quot;dépiler sur une liste vide&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">contenu</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+<span class="n">piles</span> <span class="o">=</span> <span class="p">[</span><span class="n">Pile</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;QMGCL&#39;</span><span class="p">)),</span>
+         <span class="n">Pile</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;RDLCTFHG&#39;</span><span class="p">)),</span>
+         <span class="n">Pile</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;VJFNMTWR&#39;</span><span class="p">)),</span>
+         <span class="n">Pile</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;JFDVQP&#39;</span><span class="p">)),</span>
+         <span class="n">Pile</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;NFMSLBT&#39;</span><span class="p">)),</span>
+         <span class="n">Pile</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;RNVHCDP&#39;</span><span class="p">)),</span>
+         <span class="n">Pile</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;HCT&#39;</span><span class="p">)),</span>
+         <span class="n">Pile</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;GSJVZNHP&#39;</span><span class="p">)),</span>
+         <span class="n">Pile</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;ZFHG&#39;</span><span class="p">))]</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block"></div>
+</div>
+</div>
+</div>
+
+
+
+
+
+                
+    <script src="../../../js/ide.js"></script> 
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Retour en haut de la page
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Pied de page" >
+      
+        
+        <a href="../../T1.1_Listes/T1.1_Listes/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: T1.1 Listes chaînées" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Précédent
+              </span>
+              T1.1 Listes chaînées
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../T1.4_Arbres/T1.4.1_Arbres/" class="md-footer__link md-footer__link--next" aria-label="Suivant: Généralités sur les arbres" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Suivant
+              </span>
+              Généralités sur les arbres
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      CC BY-SA / C. Gouygou
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="mailto:cedric.gouygou@ac-poitiers.fr" target="_blank" rel="noopener" title="Écrire à l&#39;auteur" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6l-126.3-52.5-40.1 74.5c-5.2 9.7-16.3 14.6-27 11.9S192 499 192 488v-96c0-5.3 1.8-10.5 5.1-14.7l165.3-212.6c2.5-7.1-6.5-14.3-13-8.4l-179 161.9-32 28.9c-9.2 8.3-22.3 10.6-33.8 5.8l-85-35.4C8.4 312.8.8 302.2.1 290s5.5-23.7 16.1-29.8l448-256c10.7-6.1 23.9-5.5 34 1.4z"/></svg>
+    </a>
+  
+    
+    
+    <a href="https://github.com/cgouygou/TNSI" target="_blank" rel="noopener" title="Dépôt git" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    <a href="https://lyceevalois.com" target="_blank" rel="noopener" title="Lycée Marguerite de Valois - Angoulême (16)" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M337.8 5.4c-10.8-7.2-24.8-7.2-35.6 0l-139 92.7L37.6 126C15.6 130.9 0 150.3 0 172.8V464c0 26.5 21.5 48 48 48h544c26.5 0 48-21.5 48-48V172.8c0-22.5-15.6-42-37.6-46.9L476.8 98.1l-139-92.7zM256 416c0-35.3 28.7-64 64-64s64 28.7 64 64v96H256v-96zM96 192h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16H96c-8.8 0-16-7.2-16-16v-64c0-8.8 7.2-16 16-16zm400 16c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16v-64zM96 320h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16H96c-8.8 0-16-7.2-16-16v-64c0-8.8 7.2-16 16-16zm400 16c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16v-64zm-88-160c0 48.6-39.4 88-88 88s-88-39.4-88-88 39.4-88 88-88 88 39.4 88 88zm-88-48c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-16v-16c0-8.8-7.2-16-16-16z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "toc.integrate", "header.autohide", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.config.lang": "fr", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Rechercher", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version.title": "S\u00e9lectionner la version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.48f2be22.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="../../../xtra/javascripts/interpreter.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+      
+    
+  </body>
+</html>

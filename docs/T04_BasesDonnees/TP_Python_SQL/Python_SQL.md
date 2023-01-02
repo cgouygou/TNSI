@@ -332,8 +332,7 @@ Exécuter le code suivant et contrôler en même temps avec **DB Browser**.
         - les mots de passe doivent être hachés. Voir [ici](https://fr.wikipedia.org/wiki/Fonction_de_hachage){:target="_blank"}  pour le principe et [ici](https://docs.python.org/fr/3/library/hashlib.html){:target="_blank"} pour la fonction de hachage à utiliser.
 
     === "Proposition de correction" 
-        {{ correction(True, 
-        "
+        ```python linenums='1'
         import sqlite3
         import hashlib
 
@@ -430,5 +429,4 @@ Exécuter le code suivant et contrôler en même temps avec **DB Browser**.
 
         #Déconnexion
         connexion.close()
-        "
-        ) }}
+        ```

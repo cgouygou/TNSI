@@ -1,0 +1,2236 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://cgouygou.github.io/TNSI/T04_BasesDonnees/T4.1_ModeleRel/T4.1_ModeleRel/">
+      
+      <link rel="icon" href="../../../xtra/favicon_orange.svg">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.0">
+    
+    
+      
+        <title>T4.1 Modèle relationnel - Cours de Terminale NSI - M. Gouygou</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2e8b5541.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+  
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0l-30.1 30 97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2l-18.7-18.6zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.8 15.7-7.4 21.9-13.5l167.3-167.4-98-98-167.3 167.4zM96 64c-53 0-96 43-96 96v256c0 53 43 96 96 96h256c53 0 96-43 96-96v-96c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z"/></svg>');}</style>
+
+
+    
+    
+    
+    <script src="../../../xtra/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../xtra/gifplayer/gif-player.es6.js" defer async></script>
+    <!-- Load CDNs : Pyodide (Python in WASM), Ace (Editor) and JQuery (Terminal) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ext-language_tools.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.asm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal@2.23.0/js/jquery.terminal.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/jquery.terminal@2.23.0/css/jquery.terminal.min.css" rel="stylesheet">
+
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../xtra/stylesheets/pyoditeur.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="deep-orange">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#t41-modele-relationnel" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Cours de Terminale NSI - M. Gouygou" class="md-header__button md-logo" aria-label="Cours de Terminale NSI - M. Gouygou" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M64 96c0-35.3 28.7-64 64-64h384c35.3 0 64 28.7 64 64v256h-64V96H128v256H64V96zM0 403.2C0 392.6 8.6 384 19.2 384h601.6c10.6 0 19.2 8.6 19.2 19.2 0 42.4-34.4 76.8-76.8 76.8H76.8C34.4 480 0 445.6 0 403.2zM281 209l-31 31 31 31c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-48-48c-9.4-9.4-9.4-24.6 0-33.9l48-48c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9zm112-34 48 48c9.4 9.4 9.4 24.6 0 33.9l-48 48c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l31-31-31-31c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cours de Terminale NSI - M. Gouygou
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              T4.1 Modèle relationnel
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="deep-orange"  aria-label="Mode sombre"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Mode sombre" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="deep-orange"  aria-label="Mode clair"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Mode clair" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cgouygou/TNSI" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cgouygou/TNSI
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Accueil
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../T01_StructuresDonnees/accueil/" class="md-tabs__link">
+        T1 Structures de données
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../T02_Programmation/accueil/" class="md-tabs__link">
+        T2 Programmation
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../T03_Algorithmique/accueil/" class="md-tabs__link">
+        T3 Algorithmique
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../accueil/" class="md-tabs__link md-tabs__link--active">
+        T4 Bases de données
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../T05_ArchiMaterielle/accueil/" class="md-tabs__link">
+        T5 Architecture matérielle
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../T06_BAC/bac/" class="md-tabs__link">
+      BAC NSI
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../T07_Evaluations/Devoirs_Libres/accueil/" class="md-tabs__link">
+        Évaluations
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../T08_Divers/01_GitHub/Github/" class="md-tabs__link">
+        Projets
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../T09_Extras/Hachage/" class="md-tabs__link">
+        Extras
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Cours de Terminale NSI - M. Gouygou" class="md-nav__button md-logo" aria-label="Cours de Terminale NSI - M. Gouygou" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M64 96c0-35.3 28.7-64 64-64h384c35.3 0 64 28.7 64 64v256h-64V96H128v256H64V96zM0 403.2C0 392.6 8.6 384 19.2 384h601.6c10.6 0 19.2 8.6 19.2 19.2 0 42.4-34.4 76.8-76.8 76.8H76.8C34.4 480 0 445.6 0 403.2zM281 209l-31 31 31 31c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-48-48c-9.4-9.4-9.4-24.6 0-33.9l48-48c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9zm112-34 48 48c9.4 9.4 9.4 24.6 0 33.9l-48 48c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l31-31-31-31c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0z"/></svg>
+
+    </a>
+    Cours de Terminale NSI - M. Gouygou
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cgouygou/TNSI" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    cgouygou/TNSI
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Accueil
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          T1 Structures de données
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="T1 Structures de données" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          T1 Structures de données
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T01_StructuresDonnees/accueil/" class="md-nav__link">
+        Thème 1 : Structures de données
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T01_StructuresDonnees/TP/" class="md-nav__link">
+        TP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T01_StructuresDonnees/T1.1_Listes/T1.1_Listes/" class="md-nav__link">
+        T1.1 Listes chaînées
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T01_StructuresDonnees/T1.2_FifoLifo/T1.2_FifoLifo/" class="md-nav__link">
+        T1.2 Piles et Files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          T1.4 Arbres
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="T1.4 Arbres" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          T1.4 Arbres
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T01_StructuresDonnees/T1.4_Arbres/T1.4.1_Arbres/" class="md-nav__link">
+        Généralités sur les arbres
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T01_StructuresDonnees/T1.4_Arbres/T1.4.2_Arbres_binaires/" class="md-nav__link">
+        Arbres binaires
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T01_StructuresDonnees/T1.4_Arbres/T1.4.3_ABR/" class="md-nav__link">
+        Arbres Binaires de Recherche (ABR)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T01_StructuresDonnees/T1.4_Arbres/T1.4_TP/" class="md-nav__link">
+        TP Arbres binaires
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3">
+          T2 Programmation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="T2 Programmation" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          T2 Programmation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T02_Programmation/accueil/" class="md-nav__link">
+        Thème 2 : Langages et Programmation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2">
+          T2.1 POO
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="T2.1 POO" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          T2.1 POO
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T02_Programmation/T2.1_POO/T2.1_TP/" class="md-nav__link">
+        TP : introduction à Pygame
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T02_Programmation/T2.1_POO/T2.1_POO1/" class="md-nav__link">
+        T2.1 POO : Programmation Orientée Objet (part one)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T02_Programmation/T2.1_POO/T2.1_Exercices/" class="md-nav__link">
+        T2.1 POO: Exercices
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T02_Programmation/T2.1_POO/T2.1_POO2/" class="md-nav__link">
+        T2.1 POO (part two)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T02_Programmation/T2.2_Recursivite/T2.2_Recursivite/" class="md-nav__link">
+        T2.2 Récursivité
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_4">
+          T3 Algorithmique
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="T3 Algorithmique" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          T3 Algorithmique
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T03_Algorithmique/accueil/" class="md-nav__link">
+        Thème 3 : Algorithmique
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T03_Algorithmique/T3.1_Diviser/T3.1_Diviser/" class="md-nav__link">
+        T3.1 Diviser pour régner
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T03_Algorithmique/T3.2_ProgDyn/T3.2_ProgDyn/" class="md-nav__link">
+        T3.2 Programmation dynamique
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T03_Algorithmique/T3.3_Texte/T3.3_RechercheTexte/" class="md-nav__link">
+        T3.3 Recherche textuelle
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          T4 Bases de données
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="T4 Bases de données" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          T4 Bases de données
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accueil/" class="md-nav__link">
+        Thème 4 : Bases de données
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prequel/" class="md-nav__link">
+        Prequel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          T4.1 Modèle relationnel
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        T4.1 Modèle relationnel
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#411-le-modele-relationnel" class="md-nav__link">
+    4.1.1 Le modèle relationnel
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#412-cles-primaires-et-etrangeres" class="md-nav__link">
+    4.1.2 Clés primaires et étrangères
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#413-normalisation-des-bases-de-donnees-redondance-et-atomicite-des-donnees" class="md-nav__link">
+    4.1.3 Normalisation des bases de données : redondance et atomicité des données
+  </a>
+  
+    <nav class="md-nav" aria-label="4.1.3 Normalisation des bases de données : redondance et atomicité des données">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple-de-redondance-des-donnees" class="md-nav__link">
+    Exemple de redondance des données
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#atomicite-des-donnees" class="md-nav__link">
+    Atomicité des données
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#414-contraintes-dintegrite" class="md-nav__link">
+    4.1.4 Contraintes d'intégrité
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#415-exercices" class="md-nav__link">
+    4.1.5 Exercices
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4.2_SBGD/T4.2_SGBD/" class="md-nav__link">
+        T4.2 SGBD
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_5" type="checkbox" id="__nav_5_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_5">
+          T4.3 SQL
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="T4.3 SQL" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_5">
+          <span class="md-nav__icon md-icon"></span>
+          T4.3 SQL
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4.3_SQL/T4.3_SQL1/" class="md-nav__link">
+        T4.3 Langage SQL (partie 1)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T4.3_SQL/T4.3_SQL2/" class="md-nav__link">
+        T4.3 Langage SQL (partie 2)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_6" type="checkbox" id="__nav_5_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5_6">
+          Exercices
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Exercices" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_6">
+          <span class="md-nav__icon md-icon"></span>
+          Exercices
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercices/Exercices/" class="md-nav__link">
+        Exercices interactifs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercices/Exo1_22MEJ2/" class="md-nav__link">
+        Exercice BAC 1 : Base de données musicale
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Exercices/Exo2_22CEJ1/" class="md-nav__link">
+        Exercice BAC 2: Mesures du réchauffement climatique
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../TP_Python_SQL/Python_SQL/" class="md-nav__link">
+        TP Python et SQL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_6">
+          T5 Architecture matérielle
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="T5 Architecture matérielle" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          T5 Architecture matérielle
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T05_ArchiMaterielle/accueil/" class="md-nav__link">
+        Thème 5 : Architecture matérielle
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T05_ArchiMaterielle/T5.1_Puce/T5.1_Puce/" class="md-nav__link">
+        T5.1 Systèmes sur puce
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T06_BAC/bac/" class="md-nav__link">
+        BAC NSI
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8">
+          Évaluations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Évaluations" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Évaluations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_1" type="checkbox" id="__nav_8_1" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8_1">
+          Devoirs Libres
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Devoirs Libres" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_1">
+          <span class="md-nav__icon md-icon"></span>
+          Devoirs Libres
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Libres/accueil/" class="md-nav__link">
+        Devoirs en temps libre
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Libres/DL1/" class="md-nav__link">
+        DL 0001 : le masque jetable
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Libres/DL2/" class="md-nav__link">
+        DL 0010 : Travail sur les tableaux/listes (rappels)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Libres/DL3/" class="md-nav__link">
+        DL 0011
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Libres/DL4/" class="md-nav__link">
+        DL 0100: files d'attente
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Libres/DL5/" class="md-nav__link">
+        DL 0101: AOC22 day 7
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Libres/DL5bis/" class="md-nav__link">
+        DL 0101 (bis) : carrés magiques
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Libres/DL6/" class="md-nav__link">
+        DL 0110
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_8_2" type="checkbox" id="__nav_8_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_8_2">
+          Devoirs Surveillés
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Devoirs Surveillés" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_2">
+          <span class="md-nav__icon md-icon"></span>
+          Devoirs Surveillés
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Surveill%C3%A9s/DS1/" class="md-nav__link">
+        DS 0001
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Surveill%C3%A9s/DS2/" class="md-nav__link">
+        DS 0010 - 20/10/2022 - Corrigé
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Surveill%C3%A9s/DS5_corrige/" class="md-nav__link">
+        DS 0101 - Corrigé
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9" type="checkbox" id="__nav_9" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9">
+          Projets
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Projets" data-md-level="1">
+        <label class="md-nav__title" for="__nav_9">
+          <span class="md-nav__icon md-icon"></span>
+          Projets
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T08_Divers/01_GitHub/Github/" class="md-nav__link">
+        Github
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_9_2" type="checkbox" id="__nav_9_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_9_2">
+          Projets
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Projets" data-md-level="2">
+        <label class="md-nav__title" for="__nav_9_2">
+          <span class="md-nav__icon md-icon"></span>
+          Projets
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T08_Divers/Projets/Projet1/" class="md-nav__link">
+        Projet 1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T08_Divers/Projets/Projet2/" class="md-nav__link">
+        Projet2
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_10" type="checkbox" id="__nav_10" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_10">
+          Extras
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Extras" data-md-level="1">
+        <label class="md-nav__title" for="__nav_10">
+          <span class="md-nav__icon md-icon"></span>
+          Extras
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T09_Extras/Hachage/" class="md-nav__link">
+        Hachage
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T09_Extras/Trucs/" class="md-nav__link">
+        Trucs
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+    
+                  
+
+  <a href="https://github.com/cgouygou/TNSI/edit/master/docs/T04_BasesDonnees/T4.1_ModeleRel/T4.1_ModeleRel.md" title="Editer cette page" class="md-content__button md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25Z"/></svg>
+  </a>
+
+
+<h1 id="t41-modele-relationnel">T4.1 Modèle relationnel<a class="headerlink" href="#t41-modele-relationnel" title="Permanent link">⚓︎</a></h1>
+<p>En classe de première nous avons commencé à <a href="https://cgouygou.github.io/1NSI/T03_TraitementDonnees/T3.1_Manipulation/T3.1_Manipulation/#311-donnees-tabulees" target="_blank">appréhender les tables de données</a> , sous forme (plate) d'une liste de dictionnaires.</p>
+<p>Nous avons également vu que la manipulation de ces données ainsi structurées n'est pas toujours pratique. Aujourd'hui, on doit stocker et manipuler rapidement des données de tailles gigantesques et il faut donc adopter un modèle plus efficace  : le <strong>modèle relationnel</strong>.</p>
+<p><img align="right" alt="" src="../../images/Edgar_F_Codd.jpg" width="150" /></p>
+<div class="admonition history">
+<p class="admonition-title">Histoire de l'informatique</p>
+<p>Théorisé en 1970 par le Britannique Edgar F. Codd, le modèle relationnel est à ce jour le modèle de base de données le plus utilisé, même si l'ère actuelle du Big Data tend à mettre en avant d'autres modèles non relationnels.</p>
+</div>
+<h2 id="411-le-modele-relationnel">4.1.1 Le modèle relationnel<a class="headerlink" href="#411-le-modele-relationnel" title="Permanent link">⚓︎</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Exemple-type: la base de donnée «Bibliothèque»</p>
+<p>Pour illustrer ce chapitre, on s'intéressera à l'exemple classique de la gestion des emprunts dans une bibliothèque. Ce <em>système d'information</em> - système technique (informatique) permettant de gérer de l'information - contient plusieurs catégories d'«objets»:</p>
+<ul>
+<li>des <strong>livres</strong>: par exemple «Algorithmes, notions de base», Thomas H. Cormen, Dunod, 2013, 978-2-10-070151-3</li>
+<li>des <strong>usagers</strong>: Alice Martin, amartin@protonmail.fr, n° abonné 125</li>
+<li>des <strong>emprunts</strong>: «Algorithmes, notions de base», Alice Martin, 14/11/2022</li>
+</ul>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Vocabulaire</p>
+<p>Dans le modèle relationnel, on décrit chaque objet - appelé plutôt <em>entité</em> ou <em>enregistrement</em> - de chaque catégorie - appelée <em>relation</em> - par un n-uplet de valeurs (qui peuvent être des chaines de caractères, des nombres, etc.) associées à des <em>attributs</em>.</p>
+<p>Une <em>relation</em> est donc un ensemble de n-uplets dont les valeurs appartiennent aux <em>domaines</em> des attributs, qu'on représente sous forme de <em>table</em> (on confond parfois les termes de <em>table</em> et de <em>relation</em>).</p>
+<p>Le <em>cardinal</em> d'une relation R est le nombre d'éléments (ou enregistrements ou entités) qu'elle contient.  On le note #R.</p>
+</div>
+<p>Dans l'exemple-type, on a donc trois relations. Dans la première relation, les «livres», on décrit une entité par 5 attributs:</p>
+<ul>
+<li>le titre, domaine : <code>String</code></li>
+<li>l'auteur (ou les auteurs), domaine : <code>String</code></li>
+<li>l'éditeur, domaine : <code>String</code></li>
+<li>l'année de parution, domaine : <code>Int</code></li>
+<li>l'ISBN, domaine : <code>String</code></li>
+</ul>
+<details class="info">
+<summary>Domaines</summary>
+<p>Les domaines sont des ensembles de valeurs que peut prendre une donnée (comme les types en Python): chaines de caractères, entiers, flottants, booléens, dates, temps...</p>
+</details>
+<p><strong>Table/relation «Livres»</strong></p>
+<p><img alt="" class="center" src="../../images/exemple_table.png" /> </p>
+<p>Dans cette table, <code>('Histoire des codes secrets', 'Simon Singh', 'Le livre de poche', 1999, '978-2-253-15097-8')</code> est un élément/enregistrement/entité de la relation sous forme d'un n-uplet.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Schéma d'une relation / schéma relationnel</p>
+<ul>
+<li>
+<p>On appelle <em>schéma</em> d'une relation l'ensemble <strong>ordonné</strong> de ses attributs sous la forme : nom <code>domaine</code>.</p>
+<p><strong>Exemple:</strong></p>
+<p><strong>Livres</strong> (titre <code>String</code>, auteur <code>String</code>, éditeur <code>String</code>, année <code>Int</code>, ISBN <code>String</code>)</p>
+</li>
+<li>
+<p>Lorsqu'une base de données contient plusieurs relations, l'ensemble des schémas des relations constitue le <em>schéma relationnel</em> de la base de données.</p>
+</li>
+</ul>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exercice  1</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Énoncé</label><label for="__tabbed_1_2">Correction</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Écrire ce que pourraient être les schémas des relations <strong>Usagers</strong> et <strong>Emprunts</strong> de la base de données «Bibliothèque».</p>
+</div>
+<div class="tabbed-block">
+<p><strong>Emprunts</strong> (nom <code>String</code>, prenom <code>String</code>, id_usager <code>Int</code>)</p>
+<p><strong>Emprunts</strong> (ISBN <code>String</code>, id_usager <code>Int</code>, retour <code>Date</code>)</p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Modélisation et contraintes d'une base de données</p>
+<p>Modéliser des données avec pour but de construire une base de données se fait en plusieurs étapes:</p>
+<ol>
+<li>Déterminer les entités que l'on souhaite manipuler;</li>
+<li>Regrouper les entités en relations/tables en choisissant les domaines adéquats pour les attributs;</li>
+<li>Définir les <em>contraintes</em> (d'intégrité) de la base de données, c'est-à-dire les règles qui assurent la cohérence logique des données.</li>
+</ol>
+</div>
+<h2 id="412-cles-primaires-et-etrangeres">4.1.2 Clés primaires et étrangères<a class="headerlink" href="#412-cles-primaires-et-etrangeres" title="Permanent link">⚓︎</a></h2>
+<div class="admonition abstract">
+<p class="admonition-title">Clé primaire</p>
+<p>Une des premières contraintes dont il faut s'occuper, c'est la <strong>contrainte de relation</strong>: les données doivent pouvoir être identifiées de manière unique.</p>
+<p>Pour cela, chaque relation doit posséder un attribut (ou parfois un ensemble d'attributs) dont la valeur va permettre d'identifier chaque entité de manière unique. On l'appelle <em>clé primaire</em> de la relation, et on la souligne dans le schéma de la relation.</p>
+<p>Si lors de la modélisation on ne dispose pas d'attribut pouvant servir de clé primaire, on crée la plupart du temps une valeur numérique servant de clé primaire: un numéro d'identifiant.</p>
+<details class="check">
+<summary>Schéma de la relation «Livres»</summary>
+<p>Le seul attribut de cette relation pouvant servir de clé primaire est l'ISBN  (c'est d'ailleurs <a href="https://fr.wikipedia.org/wiki/International_Standard_Book_Number" target="_blank">sa raison d'être</a>...)</p>
+<p>On écrit donc le schéma en soulignant la clé primaire:</p>
+<p><strong>Livres</strong> (titre <code>String</code>, auteur <code>String</code>, éditeur <code>String</code>, année <code>Int</code>, <ins>ISBN <code>String</code></ins>)</p>
+</details>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exercice  2</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Énoncé</label><label for="__tabbed_2_2">Correction</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Quelles sont les clés primaires des relations <strong>Usagers</strong> et <strong>Emprunts</strong> ?</p>
+</div>
+<div class="tabbed-block">
+<p>La clé primaire de la relation <strong>Usagers</strong> est l'attribut <em>id_usager</em> et celle de la relation <strong>Emprunts</strong> est <em>ISBN</em>.</p>
+</div>
+</div>
+</div>
+</div>
+<p>Les clés primaires servent également à créer des références entre différentes tables. Par exemple, l'utilisation d'un attribut «nom» dans la relation <strong>Emprunts</strong> peut causer une erreur ou anomalie dans la base de données si deux personnes homonymes figurent dans la relation <strong>Usagers</strong>. Il est donc préférable d'utiliser la clé primaire de la table <strong>Usagers</strong> pour identifier l'emprunteur dans la relation <strong>Emprunts</strong>.</p>
+<div class="admonition abstract">
+<p class="admonition-title">Clé étrangère</p>
+<p>Une <em>clé étrangère</em> d'une relation est un attribut qui sert à caractériser une entité et qui est une clé primaire dans une relation liée.</p>
+<p>Dans le schéma d'une relation, on indique les clés étrangères en les soulignant en pointillés ou précédées d'un <code>#</code>.</p>
+<p>Les clés étrangères servent à vérifier les <em>contraintes d'intégrité référentielles</em>.</p>
+<details class="note">
+<summary>Exemple</summary>
+<p>Une clé étrangère peut être également clé primaire.</p>
+<p><strong>Emprunts</strong> (<span class="cle_primaire">#ISBN <code>String</code></span>, #id_usager <code>Int</code>, retour <code>Date</code>)</p>
+</details>
+</div>
+<h2 id="413-normalisation-des-bases-de-donnees-redondance-et-atomicite-des-donnees">4.1.3 Normalisation des bases de données : redondance et atomicité des données<a class="headerlink" href="#413-normalisation-des-bases-de-donnees-redondance-et-atomicite-des-donnees" title="Permanent link">⚓︎</a></h2>
+<p>Outre les contraintes d'intégrité, on souhaite respecter certains principes pour éviter les anomalies dans une base de données: on parle de normalisation de la base. Parmi ces principes, il faut s'assurer de la <em>non-redondance des données</em> (les données ne doivent pas apparaître plusieurs fois) et de l'<em>atomicité des données</em> (les données doivent être insécables, pas de listes par exemple).</p>
+<h3 id="exemple-de-redondance-des-donnees">Exemple de redondance des données<a class="headerlink" href="#exemple-de-redondance-des-donnees" title="Permanent link">⚓︎</a></h3>
+<p>Considérons une autre conception de la relation <strong>Emprunts</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>id_usager</th>
+<th>date_retour</th>
+<th>Nom</th>
+<th>Prénom</th>
+<th>titre</th>
+<th>auteur</th>
+<th>ISBN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>845</td>
+<td>27/11/2022</td>
+<td>DURAND</td>
+<td>Bob</td>
+<td>Histoire des codes secrets</td>
+<td>Simon Singh</td>
+<td>978-2-253-15097-8</td>
+</tr>
+<tr>
+<td>125</td>
+<td>03/12/2022</td>
+<td>MARTIN</td>
+<td>Alice</td>
+<td>La disparition</td>
+<td>Georges Perec</td>
+<td>978-2-07-071523-7</td>
+</tr>
+<tr>
+<td>125</td>
+<td>03/12/2022</td>
+<td>MARTIN</td>
+<td>Alice</td>
+<td>La loi des séries</td>
+<td>Manu Larcenet</td>
+<td>978-2-85-815217-9</td>
+</tr>
+</tbody>
+</table>
+<p>En quoi cette relation contredit le principe de non-redondance des données?</p>
+<h3 id="atomicite-des-donnees">Atomicité des données<a class="headerlink" href="#atomicite-des-donnees" title="Permanent link">⚓︎</a></h3>
+<p>Comme on l'a vu en introduction, il est plutôt compliqué de devoir faire des recherches dans des données composées (comme des listes par exemple). Si l'on veut faire une requête dans notre base de données sur les ouvrages écrits par J.K. Rowling par exemple, on constate que dans la relation <strong>Livres</strong> apparaît un livre comportant plusieurs auteurs, dont J.K. Rowling. Pour améliorer les performances de la base de données, il faut éviter cela : on parle d'<em>atomicité des données</em>.</p>
+<p>Pour y remédier, on va simplifier la relation <strong>Livres</strong> en supprimant les auteurs:</p>
+<table>
+<thead>
+<tr>
+<th>titre</th>
+<th>éditeur</th>
+<th>année</th>
+<th>ISBN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Algorithmes, notions de base</td>
+<td>Dunod</td>
+<td>2013</td>
+<td>978-2-10-070151-3</td>
+</tr>
+<tr>
+<td>Harry Potter à l’école des sorciers, version illustrée</td>
+<td>Gallimard Jeunesse</td>
+<td>2015</td>
+<td>978-2-07-066907-3</td>
+</tr>
+<tr>
+<td>Harry Potter et la coupe de feu</td>
+<td>Gallimard Jeunesse</td>
+<td>2017</td>
+<td>978-2-07-058520-4</td>
+</tr>
+<tr>
+<td>Histoire des codes secrets</td>
+<td>Le livre de Poche</td>
+<td>1999</td>
+<td>978-2-253-15097-8</td>
+</tr>
+<tr>
+<td>La disparition</td>
+<td>Gallimard</td>
+<td>1989</td>
+<td>978-2-07-071523-7</td>
+</tr>
+<tr>
+<td>La loi des séries</td>
+<td>Dargaud</td>
+<td>1999</td>
+<td>978-2-85-815217-9</td>
+</tr>
+</tbody>
+</table>
+<p>Puis construire une relation <strong>Auteurs</strong> et une relation <strong>Auteur_de</strong> qui relie les auteurs à leurs ouvrages.</p>
+<div class="admonition example">
+<p class="admonition-title">Exercice  3</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Énoncé</label><label for="__tabbed_3_2">Correction</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Proposer un schéma de chacune de ces relations, puis construire les tables.</p>
+</div>
+<div class="tabbed-block"></div>
+</div>
+</div>
+</div>
+<!--
+        **Auteurs**(<span class="cle_primaire">id_auteur `Int`</span>, nom `String`, prénom `String`)
+
+        |id_auteur|nom|prénom|
+        |-|-|-|
+        |1|Cormen|Thomas H.|
+        |2|Rowling| J.K.|
+        |3|Kay|Jim|
+        |4|Singh|Simon|
+        |5|Pérec|Georges|
+        |6|Larcenet|Manu|
+
+        **Auteur_de**(<span class="cle_primaire">#id_auteur `Int`, #ISBN `String`</span>)
+
+        |id_auteur|ISBN|
+        |-|-|
+        |1|978-2-10-070151-3|
+        |2|978-2-07-066907-3|
+        |2|978-2-07-058520-4|
+        |3|978-2-07-066907-3|
+        |4|978-2-253-15097-8|
+        |5|978-2-07-071523-7|
+        |6|978-2-85-815217-9|
+
+        -->
+
+<!-- ??? check "Schéma relationnel de la base de données «Bibliothèque»"
+    ![](../images/schema_bibliotheque.png){: .center}  -->
+
+<h2 id="414-contraintes-dintegrite">4.1.4 Contraintes d'intégrité<a class="headerlink" href="#414-contraintes-dintegrite" title="Permanent link">⚓︎</a></h2>
+<p>Pour terminer, récapitulons les différentes contraintes d'intégrité, c'est-à-dire les règles qui assurent la cohérence des données au sein de la base de données.</p>
+<ul>
+<li><strong>Contrainte de relation</strong>: chaque entité est identifiée de manière unique, à l'aide d'une clé primaire.</li>
+<li><strong>Contrainte de domaine</strong>: les valeurs d'un attribut sont restreintes à un domaine, ce qui évite qu'on puisse donner une valeur illégale.</li>
+<li>
+<p><strong>Contrainte de référence</strong>: dans deux relations associées, la clé étrangère permet de garantir l'existence d'une entité dans la relation primaire. En particulier:</p>
+<ul>
+<li>une clé étrangère est impérativement une clé primaire dans la relation à laquelle elle se réfère;</li>
+<li>une entité de la relation primaire ne peut pas être supprimée si elle possède des entités liées;</li>
+<li>si des entités sont liés, la clé primaire ne peut pas être changée .</li>
+</ul>
+</li>
+</ul>
+<h2 id="415-exercices">4.1.5 Exercices<a class="headerlink" href="#415-exercices" title="Permanent link">⚓︎</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Exercice  4</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Énoncé</label><label for="__tabbed_4_2">Correction</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Deux relations modélisent la flotte de voitures d'un réseau de location de voitures.</p>
+<p><strong>Agences</strong></p>
+<table>
+<thead>
+<tr>
+<th>id_agence</th>
+<th>Ville</th>
+<th>Département</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Poitiers</td>
+<td>86</td>
+</tr>
+<tr>
+<td>2</td>
+<td>La Rochelle</td>
+<td>17</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Angoulême</td>
+<td>16</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Cognac</td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Voitures</strong></p>
+<table>
+<thead>
+<tr>
+<th>id_voiture</th>
+<th>Marque</th>
+<th>Modèle</th>
+<th>Kilométrage</th>
+<th>Couleur</th>
+<th>id_agence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Renault</td>
+<td>Clio</td>
+<td>12000</td>
+<td>Rouge</td>
+<td>2</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Peugeot</td>
+<td>206</td>
+<td>22000</td>
+<td>Noir</td>
+<td>3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Toyota</td>
+<td>Yaris</td>
+<td>33500</td>
+<td>Rouge</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Quelle relation a pour cardinal 3 ?</li>
+<li>Peut-on ajouter une entité <code>(2, 'Rochefort', 17)</code> à la relation <strong>Agences</strong>? Pourquoi?</li>
+<li>Donner le schéma de chaque relation.</li>
+<li>Quelle table peut contenir des données redondantes? Comment y remédier?</li>
+</ol>
+</div>
+<div class="tabbed-block"></div>
+</div>
+</div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exercice  5</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">Énoncé</label><label for="__tabbed_5_2">Correction</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>On souhaite modéliser un annuaire téléphonique dans lequel chaque personne est représentée par son nom, son prénom et son numéro de téléphone. </p>
+<p>Proposer un schéma de cette relation, en précisant la clé primaire.</p>
+</div>
+<div class="tabbed-block">
+<p><code><strong>Annuaire</strong> (<span class="cle_primaire">numéro STRING</span>, nom STRING, prénom STRING)</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exercice  6</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">Énoncé</label><label for="__tabbed_6_2">Correction</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Donner la modélisation relationnelle d'un bulletin scolaire. Préciser les clés primaires et étrangères.</p>
+<p>On doit pouvoir représenter:</p>
+<ul>
+<li>des élèves, possédant un numéro d'étudiant alphanumérique (INE);</li>
+<li>des matières;</li>
+<li>au plus une note sur 20, par matière et par élève.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p><img alt="" class="center" src="../../images/schema_bulletin.png" /> </p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exercice  7</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">Énoncé</label><label for="__tabbed_7_2">Correction</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Donner la modélisation relationnelle correspondant à la situation du «Prequel». </p>
+<p>Peupler chaque table de quelques enregistrements pour illustrer.</p>
+</div>
+<div class="tabbed-block"></div>
+</div>
+</div>
+</div>
+<!-- 
+La relation <code><strong>individu</strong> (<span class="cle_primaire">id_ind</span>, nom, prenom, naissance)</code>
+
+<code><strong>Emprunts</strong> (<span class="cle_primaire">idEmprunt (INT)</span>, #idEleve (INT), #isbn (CHAR 13), dateEmprunt (DATE), dateRetour (Date))</code> -->
+
+
+
+
+
+                
+    <script src="../../../js/ide.js"></script> 
+
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Retour en haut de la page
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Pied de page" >
+      
+        
+        <a href="../../prequel/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: Prequel" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Précédent
+              </span>
+              Prequel
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../T4.2_SBGD/T4.2_SGBD/" class="md-footer__link md-footer__link--next" aria-label="Suivant: T4.2 SGBD" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Suivant
+              </span>
+              T4.2 SGBD
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      CC BY-SA / C. Gouygou
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="mailto:cedric.gouygou@ac-poitiers.fr" target="_blank" rel="noopener" title="Écrire à l&#39;auteur" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6l-126.3-52.5-40.1 74.5c-5.2 9.7-16.3 14.6-27 11.9S192 499 192 488v-96c0-5.3 1.8-10.5 5.1-14.7l165.3-212.6c2.5-7.1-6.5-14.3-13-8.4l-179 161.9-32 28.9c-9.2 8.3-22.3 10.6-33.8 5.8l-85-35.4C8.4 312.8.8 302.2.1 290s5.5-23.7 16.1-29.8l448-256c10.7-6.1 23.9-5.5 34 1.4z"/></svg>
+    </a>
+  
+    
+    
+    <a href="https://github.com/cgouygou/TNSI" target="_blank" rel="noopener" title="Dépôt git" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    <a href="https://lyceevalois.com" target="_blank" rel="noopener" title="Lycée Marguerite de Valois - Angoulême (16)" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M337.8 5.4c-10.8-7.2-24.8-7.2-35.6 0l-139 92.7L37.6 126C15.6 130.9 0 150.3 0 172.8V464c0 26.5 21.5 48 48 48h544c26.5 0 48-21.5 48-48V172.8c0-22.5-15.6-42-37.6-46.9L476.8 98.1l-139-92.7zM256 416c0-35.3 28.7-64 64-64s64 28.7 64 64v96H256v-96zM96 192h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16H96c-8.8 0-16-7.2-16-16v-64c0-8.8 7.2-16 16-16zm400 16c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16v-64zM96 320h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16H96c-8.8 0-16-7.2-16-16v-64c0-8.8 7.2-16 16-16zm400 16c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v64c0 8.8-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16v-64zm-88-160c0 48.6-39.4 88-88 88s-88-39.4-88-88 39.4-88 88-88 88 39.4 88 88zm-88-48c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16s-7.2-16-16-16h-16v-16c0-8.8-7.2-16-16-16z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "toc.integrate", "header.autohide", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.ecf98df9.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.config.lang": "fr", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Rechercher", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version.title": "S\u00e9lectionner la version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.48f2be22.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="../../../xtra/javascripts/interpreter.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js"></script>
+      
+    
+  </body>
+</html>
