@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#macro-syntax-error" class="md-skip">
+        <a href="#tp-python-et-sql" class="md-skip">
           Aller au contenu
         </a>
       
@@ -1627,10 +1627,735 @@
   </a>
 
 
-<h1 id="macro-syntax-error"><em>Macro Syntax Error</em><a class="headerlink" href="#macro-syntax-error" title="Permanent link">⚓︎</a></h1>
-<p><em>Line 350 in Markdown file:</em> <strong>expected token ',', got 'Choix'</strong> 
-<div class="highlight"><pre><span></span><code>                <span class="n">nom</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Choix de l&#39;identifiant : &quot;</span><span class="p">)</span>
-</code></pre></div></p>
+<h1 id="tp-python-et-sql">TP Python et SQL<a class="headerlink" href="#tp-python-et-sql" title="Permanent link">⚓︎</a></h1>
+<p>Dans ce TP, nous allons voir comment utiliser Python pour créer une base de données, créer des tables et effectuer des requêtes en SQL sur cette base de données.</p>
+<p>Exécuter le code suivant et contrôler en même temps avec <strong>DB Browser</strong>.</p>
+<div class="admonition code">
+<p class="admonition-title">Modèle-type d'un script Python-SQL</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Module <code>sqlite3</code></label><label for="__tabbed_1_2">Connexion à la base de données</label><label for="__tabbed_1_3">Curseur</label><label for="__tabbed_1_4">Requêtes</label><label for="__tabbed_1_5">Validation</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="hll"><span class="kn">import</span> <span class="nn">sqlite3</span>
+</span>
+<span class="c1">#Connexion</span>
+<span class="n">connexion</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;mabase.db&#39;</span><span class="p">)</span>
+
+<span class="c1">#Récupération d&#39;un curseur</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="c1"># ---- début des instructions SQL</span>
+<span class="c1">#Création d&#39;une table</span>
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    CREATE TABLE IF NOT EXISTS prof(</span>
+<span class="s2">    id INTEGER,</span>
+<span class="s2">    nom TEXT,</span>
+<span class="s2">    matière TEXT);</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="c1">#Insertion de valeurs</span>
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO prof VALUES (1, &#39;Gouygou&#39;, &#39;NSI&#39;);&quot;</span><span class="p">)</span>
+
+<span class="n">autre_profs</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Morel&#39;</span><span class="p">,</span> <span class="s1">&#39;Maths&#39;</span><span class="p">),</span>
+               <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Philippe&#39;</span><span class="p">,</span> <span class="s1">&#39;Maths&#39;</span><span class="p">),</span>
+               <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;Atingdobe&#39;</span><span class="p">,</span> <span class="s1">&#39;Philosophie&#39;</span><span class="p">),</span>
+               <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Renault&#39;</span><span class="p">,</span> <span class="s1">&#39;Arts Plastiques&#39;</span><span class="p">),</span>
+               <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;Sartorel&#39;</span><span class="p">,</span> <span class="s1">&#39;Histoire-Géographie&#39;</span><span class="p">),</span>
+               <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;Touchais&#39;</span><span class="p">,</span> <span class="s1">&#39;Anglais&#39;</span><span class="p">),</span>
+               <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;Gouygou&#39;</span><span class="p">,</span> <span class="s1">&#39;Maths&#39;</span><span class="p">)]</span>
+<span class="n">c</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="s2">&quot;INSERT INTO prof VALUES (?, ?, ?)&quot;</span><span class="p">,</span> <span class="n">autre_profs</span><span class="p">)</span>
+
+<span class="n">requete</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT id, nom FROM prof WHERE matière = &#39;Maths&#39;;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">requete</span><span class="o">.</span><span class="n">fetchone</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">requete</span><span class="o">.</span><span class="n">fetchall</span><span class="p">())</span>
+<span class="c1"># ---- fin des instructions SQL</span>
+
+<span class="c1">#Validation</span>
+<span class="n">connexion</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+<span class="c1">#Déconnexion</span>
+<span class="n">connexion</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<ul>
+<li>La ligne 4 permet d'ouvrir une base de données, ou d'en créer une si le fichier <code>.db</code> n'existe pas, et de créer une <em>connexion</em> à cette base de données.</li>
+<li>La ligne 39 met fin à cette connexion.</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">sqlite3</span>
+
+<span class="c1">#Connexion</span>
+<span class="hll"><span class="n">connexion</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;mabase.db&#39;</span><span class="p">)</span>
+</span>
+<span class="c1">#Récupération d&#39;un curseur</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="c1"># ---- début des instructions SQL</span>
+<span class="c1">#Création d&#39;une table</span>
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    CREATE TABLE IF NOT EXISTS prof(</span>
+<span class="s2">    id INTEGER,</span>
+<span class="s2">    nom TEXT,</span>
+<span class="s2">    matière TEXT);</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="c1">#Insertion de valeurs</span>
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO prof VALUES (1, &#39;Gouygou&#39;, &#39;NSI&#39;);&quot;</span><span class="p">)</span>
+
+<span class="n">autre_profs</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Morel&#39;</span><span class="p">,</span> <span class="s1">&#39;Maths&#39;</span><span class="p">),</span>
+            <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Philippe&#39;</span><span class="p">,</span> <span class="s1">&#39;Maths&#39;</span><span class="p">),</span>
+            <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;Atingdobe&#39;</span><span class="p">,</span> <span class="s1">&#39;Philosophie&#39;</span><span class="p">),</span>
+            <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Renault&#39;</span><span class="p">,</span> <span class="s1">&#39;Arts Plastiques&#39;</span><span class="p">),</span>
+            <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;Sartorel&#39;</span><span class="p">,</span> <span class="s1">&#39;Histoire-Géographie&#39;</span><span class="p">),</span>
+            <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;Touchais&#39;</span><span class="p">,</span> <span class="s1">&#39;Anglais&#39;</span><span class="p">),</span>
+            <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;Gouygou&#39;</span><span class="p">,</span> <span class="s1">&#39;Maths&#39;</span><span class="p">)]</span>
+<span class="n">c</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="s2">&quot;INSERT INTO prof VALUES (?, ?, ?)&quot;</span><span class="p">,</span> <span class="n">autre_profs</span><span class="p">)</span>
+
+<span class="n">requete</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT id, nom FROM prof WHERE matière = &#39;Maths&#39;;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">requete</span><span class="o">.</span><span class="n">fetchone</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">requete</span><span class="o">.</span><span class="n">fetchall</span><span class="p">())</span>
+<span class="c1"># ---- fin des instructions SQL</span>
+
+<span class="c1">#Validation</span>
+<span class="n">connexion</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+<span class="c1">#Déconnexion</span>
+<span class="hll"><span class="n">connexion</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</span></code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<p>On crée ensuite ligne 7 un objet de type <code>cursor</code> qui va permettre d'envoyer des requêtes sur la base données.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">sqlite3</span>
+
+<span class="c1">#Connexion</span>
+<span class="n">connexion</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;mabase.db&#39;</span><span class="p">)</span>
+
+<span class="c1">#Récupération d&#39;un curseur</span>
+<span class="hll"><span class="n">c</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+</span>
+<span class="c1"># ---- début des instructions SQL</span>
+<span class="c1">#Création d&#39;une table</span>
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    CREATE TABLE IF NOT EXISTS prof(</span>
+<span class="s2">    id INTEGER,</span>
+<span class="s2">    nom TEXT,</span>
+<span class="s2">    matière TEXT);</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="c1">#Insertion de valeurs</span>
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO prof VALUES (1, &#39;Gouygou&#39;, &#39;NSI&#39;);&quot;</span><span class="p">)</span>
+
+<span class="n">autre_profs</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Morel&#39;</span><span class="p">,</span> <span class="s1">&#39;Maths&#39;</span><span class="p">),</span>
+               <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Philippe&#39;</span><span class="p">,</span> <span class="s1">&#39;Maths&#39;</span><span class="p">),</span>
+               <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;Atingdobe&#39;</span><span class="p">,</span> <span class="s1">&#39;Philosophie&#39;</span><span class="p">),</span>
+               <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Renault&#39;</span><span class="p">,</span> <span class="s1">&#39;Arts Plastiques&#39;</span><span class="p">),</span>
+               <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;Sartorel&#39;</span><span class="p">,</span> <span class="s1">&#39;Histoire-Géographie&#39;</span><span class="p">),</span>
+               <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;Touchais&#39;</span><span class="p">,</span> <span class="s1">&#39;Anglais&#39;</span><span class="p">),</span>
+               <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;Gouygou&#39;</span><span class="p">,</span> <span class="s1">&#39;Maths&#39;</span><span class="p">)]</span>
+<span class="n">c</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="s2">&quot;INSERT INTO prof VALUES (?, ?, ?)&quot;</span><span class="p">,</span> <span class="n">autre_profs</span><span class="p">)</span>
+
+<span class="n">requete</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT id, nom FROM prof WHERE matière = &#39;Maths&#39;;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">requete</span><span class="o">.</span><span class="n">fetchone</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">requete</span><span class="o">.</span><span class="n">fetchall</span><span class="p">())</span>
+<span class="c1"># ---- fin des instructions SQL</span>
+
+<span class="c1">#Validation</span>
+<span class="n">connexion</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+<span class="c1">#Déconnexion</span>
+<span class="n">connexion</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Requête simple</label><label for="__tabbed_2_2">Requête multiple</label><label for="__tabbed_2_3">Récupérer des résultats d'une requête <code class="highlight"><span class="k">SELECT</span><span class="w"></span></code></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>La méthode <code>execute</code> permet d'effectuer une requête, que l'on passe en argument sous forme d'une chaîne de caractères. Si on souhaite l'écrire sur plusieurs lignes, on l'écrit entre <strong>triples double-quotes</strong>.</p>
+<p>À noter l'option <code class="highlight"><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"></span></code> qui permet de ne pas écraser une table déjà existante.</p>
+</div>
+<div class="tabbed-block">
+<p>La méthode <code>executemany</code> permet d'effectuer plusieurs requêtes, une par élément d'une liste passée en argument. On utilise des <em>placeholders</em> <code>?</code> pour indiquer où remplacer par les valeurs des éléments de la liste.</p>
+</div>
+<div class="tabbed-block">
+<p>On stocke la table des résultats d'une requête <code class="highlight"><span class="k">SELECT</span><span class="w"></span></code> dans une variable, sur laquelle on peut ensuite itérer:</p>
+<ul>
+<li><code>fetchone</code> renvoie la première ligne, et passe à la suivante.</li>
+<li><code>fetchall</code> renvoie l'ensemble des lignes, sous forme d'une liste.</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">sqlite3</span>
+
+<span class="c1">#Connexion</span>
+<span class="n">connexion</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;mabase.db&#39;</span><span class="p">)</span>
+
+<span class="c1">#Récupération d&#39;un curseur</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="c1"># ---- début des instructions SQL</span>
+<span class="hll"><span class="c1">#Création d&#39;une table</span>
+</span><span class="hll"><span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+</span><span class="hll"><span class="s2">    CREATE TABLE IF NOT EXISTS prof(</span>
+</span><span class="hll"><span class="s2">    id INTEGER,</span>
+</span><span class="hll"><span class="s2">    nom TEXT,</span>
+</span><span class="hll"><span class="s2">    matière TEXT);</span>
+</span><span class="hll"><span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
+</span><span class="hll">
+</span><span class="hll"><span class="c1">#Insertion de valeurs</span>
+</span><span class="hll"><span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO prof VALUES (1, &#39;Gouygou&#39;, &#39;NSI&#39;);&quot;</span><span class="p">)</span>
+</span><span class="hll">
+</span><span class="hll"><span class="n">autre_profs</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Morel&#39;</span><span class="p">,</span> <span class="s1">&#39;Maths&#39;</span><span class="p">),</span>
+</span><span class="hll">               <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Philippe&#39;</span><span class="p">,</span> <span class="s1">&#39;Maths&#39;</span><span class="p">),</span>
+</span><span class="hll">               <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;Atingdobe&#39;</span><span class="p">,</span> <span class="s1">&#39;Philosophie&#39;</span><span class="p">),</span>
+</span><span class="hll">               <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Renault&#39;</span><span class="p">,</span> <span class="s1">&#39;Arts Plastiques&#39;</span><span class="p">),</span>
+</span><span class="hll">               <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;Sartorel&#39;</span><span class="p">,</span> <span class="s1">&#39;Histoire-Géographie&#39;</span><span class="p">),</span>
+</span><span class="hll">               <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;Touchais&#39;</span><span class="p">,</span> <span class="s1">&#39;Anglais&#39;</span><span class="p">),</span>
+</span><span class="hll">               <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;Gouygou&#39;</span><span class="p">,</span> <span class="s1">&#39;Maths&#39;</span><span class="p">)]</span>
+</span><span class="hll"><span class="n">c</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="s2">&quot;INSERT INTO prof VALUES (?, ?, ?)&quot;</span><span class="p">,</span> <span class="n">autre_profs</span><span class="p">)</span>
+</span><span class="hll">
+</span><span class="hll"><span class="n">requete</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT id, nom FROM prof WHERE matière = &#39;Maths&#39;;&quot;</span><span class="p">)</span>
+</span><span class="hll"><span class="nb">print</span><span class="p">(</span><span class="n">requete</span><span class="o">.</span><span class="n">fetchone</span><span class="p">())</span>
+</span><span class="hll"><span class="nb">print</span><span class="p">(</span><span class="n">requete</span><span class="o">.</span><span class="n">fetchall</span><span class="p">())</span>
+</span><span class="c1"># ---- fin des instructions SQL</span>
+
+<span class="c1">#Validation</span>
+<span class="n">connexion</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+<span class="c1">#Déconnexion</span>
+<span class="n">connexion</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<p>On valide ligne 36 les requêtes pour exécution sur la base de données.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">sqlite3</span>
+
+<span class="c1">#Connexion</span>
+<span class="n">connexion</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;mabase.db&#39;</span><span class="p">)</span>
+
+<span class="c1">#Récupération d&#39;un curseur</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="c1"># ---- début des instructions SQL</span>
+<span class="c1">#Création d&#39;une table</span>
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    CREATE TABLE IF NOT EXISTS prof(</span>
+<span class="s2">    id INTEGER,</span>
+<span class="s2">    nom TEXT,</span>
+<span class="s2">    matière TEXT);</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="c1">#Insertion de valeurs</span>
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO prof VALUES (1, &#39;Gouygou&#39;, &#39;NSI&#39;);&quot;</span><span class="p">)</span>
+
+<span class="n">autre_profs</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Morel&#39;</span><span class="p">,</span> <span class="s1">&#39;Maths&#39;</span><span class="p">),</span>
+               <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;Philippe&#39;</span><span class="p">,</span> <span class="s1">&#39;Maths&#39;</span><span class="p">),</span>
+               <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;Atingdobe&#39;</span><span class="p">,</span> <span class="s1">&#39;Philosophie&#39;</span><span class="p">),</span>
+               <span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;Renault&#39;</span><span class="p">,</span> <span class="s1">&#39;Arts Plastiques&#39;</span><span class="p">),</span>
+               <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;Sartorel&#39;</span><span class="p">,</span> <span class="s1">&#39;Histoire-Géographie&#39;</span><span class="p">),</span>
+               <span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="s1">&#39;Touchais&#39;</span><span class="p">,</span> <span class="s1">&#39;Anglais&#39;</span><span class="p">),</span>
+               <span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;Gouygou&#39;</span><span class="p">,</span> <span class="s1">&#39;Maths&#39;</span><span class="p">)]</span>
+<span class="n">c</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span><span class="s2">&quot;INSERT INTO prof VALUES (?, ?, ?)&quot;</span><span class="p">,</span> <span class="n">autre_profs</span><span class="p">)</span>
+
+<span class="n">requete</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT id, nom FROM prof WHERE matière = &#39;Maths&#39;;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">requete</span><span class="o">.</span><span class="n">fetchone</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">requete</span><span class="o">.</span><span class="n">fetchall</span><span class="p">())</span>
+<span class="c1"># ---- fin des instructions SQL</span>
+
+<span class="c1">#Validation</span>
+<span class="hll"><span class="n">connexion</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+</span>
+<span class="c1">#Déconnexion</span>
+<span class="n">connexion</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exercice</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Énoncé</label><label for="__tabbed_3_2">Correction</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>
+<p>Écrire un programme qui crée une table <strong>devoir</strong>(nom <code>String</code>, note <code>Int</code>) et qui demande ensuite en boucle un nom et une note en les ajoutant à la table. Le programme stoppe dès qu'on entre comme nom <code>q</code> ou <code>Q</code>.</p>
+</li>
+<li>
+<p>Améliorer le programme précédent pour permettre de rentrer des notes ou des consulter des notes.</p>
+</li>
+</ol>
+<p><img alt="" class="center" src="../../images/ezgif-ex1-2.gif" /> </p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">sqlite3</span>
+
+<span class="k">def</span> <span class="nf">insertion</span><span class="p">():</span>
+    <span class="n">go</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">while</span> <span class="n">go</span><span class="p">:</span>
+        <span class="n">nom</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Nom ? &#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">nom</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;q&#39;</span><span class="p">:</span>
+            <span class="n">go</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">note</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Note ? &#39;</span><span class="p">)</span>
+            <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO devoir VALUES (?, ?);&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">nom</span><span class="p">,</span> <span class="n">note</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">consultation</span><span class="p">():</span>
+    <span class="n">go</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">while</span> <span class="n">go</span><span class="p">:</span>
+        <span class="n">nom</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Nom ? &#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">nom</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;q&#39;</span><span class="p">:</span>
+            <span class="n">go</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">rq</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT note FROM devoir WHERE nom = ?;&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">nom</span><span class="p">])</span>
+            <span class="n">note</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">note</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Élève inconnu&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Note : &quot;</span><span class="p">,</span> <span class="n">note</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1">#Connexion</span>
+<span class="n">connexion</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;devoir.db&#39;</span><span class="p">)</span>
+
+<span class="c1">#Récupération d&#39;un curseur</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="c1"># ---- début des instructions SQL</span>
+
+<span class="c1">#Création d&#39;une table</span>
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    CREATE TABLE IF NOT EXISTS devoir(</span>
+<span class="s2">    nom TEXT,</span>
+<span class="s2">    note INTEGER);</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="n">go</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">while</span> <span class="n">go</span><span class="p">:</span>
+    <span class="n">choix</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Menu </span><span class="se">\n</span><span class="s2">1. Saisir des notes</span><span class="se">\n</span><span class="s2">2. Consulter des notes</span><span class="se">\n</span><span class="s2">3. Quitter</span><span class="se">\n</span><span class="s2">Votre choix: &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">choix</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span>
+        <span class="n">insertion</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">choix</span> <span class="o">==</span> <span class="s1">&#39;2&#39;</span><span class="p">:</span>
+        <span class="n">consultation</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">go</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># ---- fin des instructions SQL</span>
+
+<span class="c1">#Validation</span>
+<span class="n">connexion</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+<span class="c1">#Déconnexion</span>
+<span class="n">connexion</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Mini-Projet</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Énoncé</label><label for="__tabbed_4_2">Proposition de correction</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Dans ce mini-projet, vous devez écrire un système d'authentification par login/mot de passe à un service qui permet de stocker une phrase secrète. Comme précédemment le menu doit contenir trois choix:</p>
+<ul>
+<li><strong>login</strong> : s'authentifier puis afficher la phrase secrète. Proposer de changer cette phrase.</li>
+<li><strong>register</strong>: s'enregistrer puis saisir la phrase secrète à stocker.</li>
+<li><strong>quit</strong>: pour ... quitter le programme.</li>
+</ul>
+<p><strong>Remarques:</strong></p>
+<ul>
+<li>les données doivent bien entendu être stockées dans une base de données.</li>
+<li>on ne doit pas pouvoir choisir un login déjà utilisé.</li>
+<li>les mots de passe doivent être hachés. Voir <a href="https://fr.wikipedia.org/wiki/Fonction_de_hachage" target="_blank">ici</a>  pour le principe et <a href="https://docs.python.org/fr/3/library/hashlib.html" target="_blank">ici</a> pour la fonction de hachage à utiliser.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span>
+<span class="normal">89</span>
+<span class="normal">90</span>
+<span class="normal">91</span>
+<span class="normal">92</span>
+<span class="normal">93</span>
+<span class="normal">94</span>
+<span class="normal">95</span>
+<span class="normal">96</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">sqlite3</span>
+<span class="kn">import</span> <span class="nn">hashlib</span>
+
+<span class="k">def</span> <span class="nf">hachage</span><span class="p">(</span><span class="n">chaine</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    renvoie le condensé de chaine en utilisant la fonction de</span>
+<span class="sd">    hachage md5 du module hashlib.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">chaine</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">register</span><span class="p">():</span>
+    <span class="n">go</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">while</span> <span class="n">go</span><span class="p">:</span>
+        <span class="n">nom</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Choix de l&#39;identifiant : &quot;</span><span class="p">)</span>
+        <span class="n">rq</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users WHERE pseudo = ?;&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">nom</span><span class="p">])</span>
+        <span class="n">resultat</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">resultat</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mdp</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Choix du mdp : &quot;</span><span class="p">)</span>
+            <span class="n">ps</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Saisissez votre phrase secrète : &quot;</span><span class="p">)</span>
+            <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;INSERT INTO users VALUES (?, ?, ?);&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">nom</span><span class="p">,</span> <span class="n">hachage</span><span class="p">(</span><span class="n">mdp</span><span class="p">),</span> <span class="n">ps</span><span class="p">])</span>
+            <span class="n">go</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Identifiant déjà attribué. Veuillez recommencer.&quot;</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">login</span><span class="p">():</span>
+    <span class="n">nom</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Identifiant ? &#39;</span><span class="p">)</span>
+    <span class="n">rq</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM users WHERE pseudo = ?;&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">nom</span><span class="p">])</span>
+    <span class="n">resultat</span> <span class="o">=</span> <span class="n">rq</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">resultat</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Identifiant inconnu&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">mdp</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s1">&#39;Mot de passe ? &#39;</span><span class="p">)</span>
+        <span class="n">mdp_hash</span> <span class="o">=</span> <span class="n">hachage</span><span class="p">(</span><span class="n">mdp</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">mdp_hash</span> <span class="o">==</span> <span class="n">resultat</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Authentification réussie&#39;</span><span class="p">)</span>
+            <span class="n">menu_login</span><span class="p">(</span><span class="n">nom</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mot de passe erroné&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">menu_login</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
+    <span class="n">go</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="k">while</span> <span class="n">go</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="mi">15</span> <span class="o">*</span> <span class="s2">&quot;-&quot;</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">1. Consulter la phrase secrète</span><span class="se">\n</span><span class="s2">2. Modifier la phrase secrète</span><span class="se">\n</span><span class="s2">3. Quitter</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="mi">15</span> <span class="o">*</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span>
+        <span class="n">choix</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Votre choix: &quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">choix</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span>
+            <span class="n">consulter</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">choix</span> <span class="o">==</span> <span class="s1">&#39;2&#39;</span><span class="p">:</span>
+            <span class="n">modifier</span><span class="p">(</span><span class="n">user</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">go</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="k">def</span> <span class="nf">consulter</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
+    <span class="n">rq</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT content FROM users WHERE pseudo = ?;&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">user</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Phrase secrète: </span><span class="si">{</span><span class="n">rq</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">modifier</span><span class="p">(</span><span class="n">user</span><span class="p">):</span>
+    <span class="n">ps</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Saisissez votre nouvelle phrase secrète : &quot;</span><span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;UPDATE users SET content = ? WHERE pseudo = ?;&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">ps</span><span class="p">,</span> <span class="n">user</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Modification effectuée&quot;</span><span class="p">)</span>
+
+<span class="c1">#Connexion</span>
+<span class="n">connexion</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s1">&#39;miniprojet.db&#39;</span><span class="p">)</span>
+
+<span class="c1">#Récupération d&#39;un curseur</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">connexion</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+
+<span class="c1"># ---- début des instructions SQL</span>
+
+<span class="c1">#Création d&#39;une table</span>
+<span class="n">c</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    CREATE TABLE IF NOT EXISTS users(</span>
+<span class="s2">    pseudo TEXT PRIMARY KEY,</span>
+<span class="s2">    mdp INTEGER,</span>
+<span class="s2">    content TEXT);</span>
+<span class="s2">    &quot;&quot;&quot;</span><span class="p">)</span>
+
+<span class="n">go</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">while</span> <span class="n">go</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">15</span> <span class="o">*</span> <span class="s2">&quot;-&quot;</span><span class="o">+</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Menu </span><span class="se">\n</span><span class="s2">1. login</span><span class="se">\n</span><span class="s2">2. register</span><span class="se">\n</span><span class="s2">3. quit</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="mi">15</span> <span class="o">*</span> <span class="s2">&quot;-&quot;</span><span class="p">)</span>
+    <span class="n">choix</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Votre choix: &quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">choix</span> <span class="o">==</span> <span class="s1">&#39;1&#39;</span><span class="p">:</span>
+        <span class="n">login</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">choix</span> <span class="o">==</span> <span class="s1">&#39;2&#39;</span><span class="p">:</span>
+        <span class="n">register</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">go</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="c1"># ---- fin des instructions SQL</span>
+
+<span class="c1">#Validation</span>
+<span class="n">connexion</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+
+<span class="c1">#Déconnexion</span>
+<span class="n">connexion</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+</div>
 
 
 
