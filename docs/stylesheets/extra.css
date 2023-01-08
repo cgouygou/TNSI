@@ -25,6 +25,11 @@
   text-decoration-thickness: 1.5px; 
 }
 
+.centre {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 
 th {
