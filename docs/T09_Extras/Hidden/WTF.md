@@ -17,7 +17,7 @@ Je suis en train de terminer - pour la première année d'enseignement de NSI en
 
 J'ai finalement opté pour cette dernière option, après avoir lu [ce billet](https://sebhoa.gitlab.io/iremi/03_Didactique/arbres/){:target="_blank"}.
 
-J'obtiens donc l'implémentation suivante[^2] pour les ABR, dans lquelle je décide d'intégrer les différents algos au programme en tant que méthodes et non fonctions hors de la classe[^3]:
+J'obtiens donc l'implémentation suivante[^2] pour les ABR, dans laquelle je décide d'intégrer les différents algos au programme en tant que méthodes et non fonctions hors de la classe[^3]:
 
 [^2]: Vous pouvez déjà critiquer ce choix...
 [^3]: ça aussi...
@@ -87,9 +87,9 @@ Se pose donc la question d'adapter la méthode `infixe` pour qu'elle retourne un
 !!! danger "Stupeur"
     Je m'aperçois avec effroi que je n'ai pas vraiment anticipé la méthode car il me semble que ce n'est pas très bon en terme de complexité, n'est-ce pas?
 
-    J'essaie alors de réfléchir avec les neurones dont je dispose. D'habitude, lorsque je dois faire un DFS - plutôt sur un graphe -  je stocke dans *une variable globale* (je sais, je sais) les sommets/noeuds visités. Et je me dis qu'en POO à l'intérieur de la classe ça va être compliqué...
+    J'essaie alors de réfléchir avec les neurones dont je dispose. D'habitude, lorsque je dois faire un DFS - plutôt sur un graphe -  je stocke dans *une variable globale* (je sais, je sais) les sommets/nœuds visités. Et je me dis qu'en POO à l'intérieur de la classe ça va être compliqué...
 
-Des élèves proposent donc d'utiliser une liste en paramètre de la méthode et d'y ajouter successivement les clés des noueuds visités. On obtient alors cette modification de la méthode `infixe`:
+Des élèves proposent donc d'utiliser une liste en paramètre de la méthode et d'y ajouter successivement les clés des nœuds visités. On obtient alors cette modification de la méthode `infixe`:
 
 ```python linenums='1'
     def infixe(self, ordre=[]):
@@ -169,7 +169,7 @@ Son test:
         return p, sorted(p)
     ```
 
-Bon voilà c'est fini, c'est surtout la question 2 qui me chifonne, je ne comprends pas du tout la gestion de la liste lors de deux appels de la méthode `infixe` successifs.
+Bon voilà c'est fini, c'est surtout la question 2 qui me chiffonne, je ne comprends pas du tout la gestion de la liste lors de deux appels de la méthode `infixe` successifs.
 
 J'espère que je suis clair, et pas trop à côté de la plaque. Merci de ne pas déchirer mon DIU sinon.
 
