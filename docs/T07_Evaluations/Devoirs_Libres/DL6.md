@@ -55,7 +55,13 @@ Voici un extrait des tables **`groupes`**, **`musiciens`** et **`concerts`** :
 
 **1.**  Citer les attributs de la table **`groupes`**.
 
+??? success "Réponse"
+    Les attributs de la table groupes sont : id_groupe, nom, style et nb_pers.
+
 **2.**  Justifier que l'attribut `nom` de la table **`musiciens`** ne peut pas être une clé primaire.
+
+??? success "Réponse"
+    Une clé primaire doit être unique. Le nom 'Garrett' apparait plusieurs fois, donc le nom ne peut être une clé primaire.
 
 **3.** En s'appuyant uniquement sur l'extrait des tables fourni ci-dessus écrire ce que renvoie la requête :
 
@@ -65,15 +71,39 @@ FROM groupes
 WHERE style = 'Jazz Fusion';
 ```
 
+??? success "Réponse"
+    La requête renvoie : `'Weather Report'` et `'Return to Forever'`.
+
 **4.** Le concert dont l'`id_concert` est `36` finira à 22 h 30 au lieu de 22 h 00. 
 
 Écrire une requête SQL permettant de mettre à jour la relation **`concerts`** pour modifier l'horaire de fin de ce concert.
 
+??? success "Réponse"
+
+    ```sql
+    UPDATE concerts
+    SET heure_fin = '22 h 30'
+    WHERE id_concert = 36;
+    ```
 
 **5.** Fournir une seule requête SQL permettant d'ajouter dans la relation **`groupes`** le groupe `'Smooth Jazz Fourplay'`, de style `'Free Jazz'`, composé de 4 membres. Ce groupe aura un `id_groupe` de 15.
 
+??? success "Réponse"
+    ```sql
+    INSERT INTO groupes (id_groupe, nom, style, nb_pers)
+    VALUES (15, 'Smooth Jazz Fourplay', 'Free Jazz', 4);
+    ```
+
 **6.**  Donner une seule requête SQL permettant de récupérer le nom de tous les groupes qui jouent sur la scène 1.
 
+??? success "Réponse"
+
+    ```sql
+    SELECT groupes.nom FROM groupes
+    JOIN concerts
+    ON concerts.id_groupe = groupes.id_groupe
+    WHERE concerts.scene = 1;
+    ```
 
 Les données sont ensuite récupérées pour être analysées par la société qui produit les festivals de musique. Pour ce faire, elle utilise la programmation en Python afin d'effectuer certaines opérations plus complexes.
 
@@ -95,6 +125,18 @@ Elle stocke les données relatives aux musiciens sous forme d'un tableau de dict
 
 **7.**  Écrire la fonction `recherche_nom` ayant pour unique paramètre un tableau de dictionnaires (comme `musiciens` présenté précédemment) renvoyant une liste contenant le nom de tous les musiciens ayant participé à au moins 4 concerts.
 
+??? success "Réponse"
+
+    ```python
+    def recherche_nom(musiciens):
+        resultat = []
+        for musicien in musiciens:
+            if musicien['nb_concerts'] >= 4:
+                resultat.append(musicien['nom'])
+        return resultat
+    ```
+
+
 ## Exercice 2: Réseaux (rappels de Première)
 
 !!! info "Rappels"
@@ -109,9 +151,21 @@ Elle stocke les données relatives aux musiciens sous forme d'un tableau de dict
 
 **1.** Comment s'appelle la valeur `n` dans la notation `a.b.c.d/n`? Dans le cas où cette valeur vaut 24, comment la note-t-on également?
 
+??? success "Réponse"
+	`n` est la valeur du masque de sous-réseau. Si elle vaut 24, on l'écrit avec les 24 bits de poids fort égaux à 1, le reste à 0, c'est-à-dire `11111111.11111111.11111111.00000000`, ou bien encore `255.255.255.0`.
+
 **2.a.** Donner en écriture décimale l'adresse IPv4 correspondant à l'écriture binaire : 11000000.10101000.10000000.10000011.
 
+??? success "Réponse"
+	On obtient l'adresse `192.168.128.131`.
+
+
 **2.b** L'adresse IPv4 `192.168.128.145` et celle de la question précédente font-elle partie du même sous-réseau `192.168.128.128/28`?
+
+??? success "Réponse"
+	Puisque le masque est de 28 pour ce sous-réseau, les adresses doivent avoir en commun leurs 28 bits de poids forts. C'est le cas pour les 24 premiers puisque les 3 adresses commencent par `192.168.128`. Il ne reste donc qu'à comparer les 4 bits de poids fort du dernier octet des  adresses.
+
+	Or 128 s'écrit `10000000`, 131 s'écrit `10000011` et 145 s'écrit `10010001`. La première adresse en fait donc partie, mais pas la deuxième.
 
 À partir de la question suivante, on considère le réseau représenté ci-dessous:
 
@@ -123,14 +177,33 @@ Elle stocke les données relatives aux musiciens sous forme d'un tableau de dict
 
 **3.a.** Donner l'adresse du réseau sur lequel se trouve cette machine.
 
+??? success "Réponse"
+	L'adresse du réseau est `192.168.1.0`
+
 **3.b.** Donner l'adresse de diffusion (broadcast) de ce réseau.
+
+??? success "Réponse"
+	L'adresse de diffusion de ce réseau est `192.168.1.255`
 
 **3.c.** Donner le nombre maximal de machines que l'on peut connecter sur ce réseau.
 
+??? success "Réponse"
+	On peut donc connecter à ce réseau 254 machines (256 moins les 2 précédentes).
+
 **3.d.** On souhaite ajouter une machine sur ce réseau, proposer une adresse IPv4 possible pour cette machine.
 
+??? success "Réponse"
+	On peut proposer n'importe quelle adresse de la forme `192.168.1.d` où `d` est un entier compris entre 1 et 254.
 
 **4.** La machine d'adresse IPv4 `192.168.1.1` transmet un paquet IPv4 à la machine d'adresse IPv4 `192.168.4.2`. Donner toutes les routes pouvant être empruntées par ce paquet IPv4, chaque routeur ne pouvant être traversé qu'une seule fois.
 
-
   Par exemple, une route possible est A → B → C → E → D.
+
+??? success "Réponse"
+	Outre A → B → C → E → D, les autres routes possibles sont:
+	
+	- A → B → C → F → D
+	- A → C → E → D
+	- A → C → F → D
+	- A → E → C → F → D
+	- A → E → D
