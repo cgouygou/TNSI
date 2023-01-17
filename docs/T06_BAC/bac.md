@@ -9,11 +9,31 @@
 
 ## Épreuve pratique
 
-- L'épreuve **pratique** de spécialité NSI dure 1h.
-- Elle comporte **deux** exercices de **programmation** notés chacun sur 4 points, pour un total donc de 8 points.
-- Vous pouvez retrouver en libre accès tous les sujets de la session 2022 à l'épreuve pratique de NSI: [https://eduscol.education.fr/2661/banque-des-epreuves-pratiques-de-specialite-nsi](https://eduscol.education.fr/2661/banque-des-epreuves-pratiques-de-specialite-nsi){:target="_blank"}.
+=== "Qu'est-ce que c'est?"
+    - L'épreuve **pratique** de spécialité NSI dure 1h.
+    - Elle comporte **deux** exercices de **programmation** sur ordinateur, notés chacun sur 4 points, pour un total donc de 8 points.
 
-Ou bien tous les télécharger en [un seul fichier pdf](BNS_2022_total_V2.pdf) (718 ko).
+    - Vous pouvez retrouver en libre accès tous les sujets de la session 2022 à l'épreuve pratique de NSI: [https://eduscol.education.fr/2661/banque-des-epreuves-pratiques-de-specialite-nsi](https://eduscol.education.fr/2661/banque-des-epreuves-pratiques-de-specialite-nsi){:target="_blank"}.
+
+    Ou bien tous les télécharger en [un seul fichier pdf](BNS_2022_total_V2.pdf) (718 ko).
+
+=== "Déroulement de l'épreuve"
+    Le candidat est évalué sur la base d’un **dialogue** avec un professeur-examinateur. Un examinateur évalue au maximum quatre élèves. L’examinateur ne peut pas évaluer un élève qu’il a eu en classe durant l’année en cours. L’évaluation de cette partie se déroule au cours du deuxième trimestre pendant la période de l’épreuve écrite de spécialité.
+
+    **Premier exercice**
+
+    Le premier exercice consiste à programmer un algorithme figurant explicitement au programme, ne présentant pas de difficulté particulière, dont on fournit une spécification. Il s’agit donc de restituer un algorithme rencontré et travaillé à plusieurs reprises en cours de formation. Le sujet peut proposer un jeu de test avec les réponses attendues pour permettre au candidat de vérifier son travail.
+
+    **Deuxième exercice**
+
+    Pour le second exercice, un programme est fourni au candidat. Cet exercice ne demande pas l’écriture complète d’un programme, mais permet de valider des compétences de programmation suivant des modalités variées : le candidat doit, par exemple, compléter un programme « à trous » afin de répondre à une spécification donnée, ou encore compléter un programme pour le documenter, ou encore compléter un programme en ajoutant des assertions, etc.
+
+=== "Grille d'évaluation"
+    |Critères d'évaluation |	Définition du critère |	Très insuffisant |	Insuffisant |	Satisfaisant |	Très satisfaisant|
+    |:------|:------|:------|:------|:------|:------|
+    |Connaissance des savoir-faire techniques |	Connaissance des concepts de base |	Besoin permanent d'assistance | 	A besoin de consignes complémentaires et d'assistance ponctuelle |	A rarement besoin de consignes complémentaires 	|Travaille de façon autonome|
+    |Qualité de mise en œuvre 	|Niveau de conformité des opérations réalisées |	Fait fréquemment des erreurs, exige une surveillance permanente 	|Produit un travail qu'il faut contrôler régulièrement |	Fait des erreurs minimes qu'il ou elle parvient à verbaliser et propose des solutions |	Travaille sans erreur|
+    |Qualité du dialogue 	|Justification |	Pas de réponse |	Pas clair 	|Relativement clair mais manque parfois de précision |	Démontre une capacité à reformuler pour bien se faire comprendre|
 
 ## Grand Oral
 

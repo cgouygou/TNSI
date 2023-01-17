@@ -57,13 +57,13 @@
     === "Thème 5"
         **[Thème 5: Architectures matérielles, systèmes d'exploitation et réseaux](https://cgouygou.github.io/TNSI/T05_ArchiMaterielle/accueil/)**
 
-        5.1 Système sur puce
+        5.1 Gestion des processus **→ BAC**
 
-        5.2 Gestion des processus **→ BAC**
+        5.2 Protocoles de routage **→ BAC**
 
-        5.3 Protocoles de routage **→ BAC**
+        5.3 Sécurisation des communications
 
-        5.4 Sécurisation des communications
+        5.4 Système sur puce
 
 === "Progression"
     <!-- - [Architecture Von Neumann (1ère)](https://glassus.github.io/premiere_nsi/T3_Architecture_materielle/3.2_Architecture_Von_Neumann/cours/)
