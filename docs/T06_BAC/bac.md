@@ -13,9 +13,6 @@
     - L'épreuve **pratique** de spécialité NSI dure 1h.
     - Elle comporte **deux** exercices de **programmation** sur ordinateur, notés chacun sur 4 points, pour un total donc de 8 points.
 
-    - Vous pouvez retrouver en libre accès tous les sujets de la session 2022 à l'épreuve pratique de NSI: [https://eduscol.education.fr/2661/banque-des-epreuves-pratiques-de-specialite-nsi](https://eduscol.education.fr/2661/banque-des-epreuves-pratiques-de-specialite-nsi){:target="_blank"}.
-
-    Ou bien tous les télécharger en [un seul fichier pdf](BNS_2022_total_V2.pdf) (718 ko).
 
 === "Déroulement de l'épreuve"
     Le candidat est évalué sur la base d’un **dialogue** avec un professeur-examinateur. Un examinateur évalue au maximum quatre élèves. L’examinateur ne peut pas évaluer un élève qu’il a eu en classe durant l’année en cours. L’évaluation de cette partie se déroule au cours du deuxième trimestre pendant la période de l’épreuve écrite de spécialité.
@@ -27,6 +24,58 @@
     **Deuxième exercice**
 
     Pour le second exercice, un programme est fourni au candidat. Cet exercice ne demande pas l’écriture complète d’un programme, mais permet de valider des compétences de programmation suivant des modalités variées : le candidat doit, par exemple, compléter un programme « à trous » afin de répondre à une spécification donnée, ou encore compléter un programme pour le documenter, ou encore compléter un programme en ajoutant des assertions, etc.
+
+=== "Banque de sujets"
+    
+    Vous pouvez retrouver en libre accès tous les sujets de la session 2022 à l'épreuve pratique de NSI: [https://eduscol.education.fr/2661/banque-des-epreuves-pratiques-de-specialite-nsi](https://eduscol.education.fr/2661/banque-des-epreuves-pratiques-de-specialite-nsi){:target="_blank"}.
+
+    Ou bien tous les télécharger en [un seul fichier pdf](BNS_2022_total_V2.pdf) (718 ko).
+
+    ???+ info "Sujets par thème"
+
+        |Sujet |Exercice 1 |Exercice 2|
+        |:---:|:---:|:---:|
+        | sujet 1 |nombre d'occurences |rendu monnaie, algo glouton récursif|
+        |sujet 2 |moyenne pondérée |triangle de Pascal|
+        |sujet 3 |codage par différence |arithmétique grâce à un arbre binaire|
+        |sujet 4 |recherche d'entiers consécutifs |composante d'image binaire|
+        |sujet 5 |minimum et maximum d'un tableau |paquet de carte, poo|
+        |sujet 6 |indice du maximum et maximum d'un tableau |recherche sous-chaine, ADN|
+        |sujet 7 |conversion décimal vers binaire |tri à bulle|
+        |sujet 8 |recherche élément dans un tableau |insertion d'un élément dans un tableau trié|
+        |sujet 9 |problème 3n+1, suite |mots parfaits|
+        |sujet 10 |occurence de caractères dans une phrase |fusion de liste triées|
+        |sujet 11 |recherche dichotomique |codage de César|
+        |sujet 12 |moyenne d'un tableau |tri tableau de 0 et 1|
+        |sujet 13 |rendu monaie, algorithme glouton |file avec liste chainée|
+        |sujet 14 |mots à trou |envois de messages, cycles|
+        |sujet 15 |nombre de répétitions (occurences) dans un tableau |conversion décimale vers binaire|
+        |sujet 16 |indice du maximum et maximum d'un tableau |extraction des entiers positifs d'une pile|
+        |sujet 17 |nombre de mots dans une phrase |parcours et recherche dans un ABR|
+        |sujet 18 |minimum de deux tableaux liés |nombre palindrome|
+        |sujet 19 |multiplication avec addition et soustraction |recherche dans un sous-tableau trié|
+        |sujet 20 |ou exclusif de deux tableaux |carré magique|
+        |sujet 21 |multiplication avec addition et soustraction |recherche par dichotomie|
+        |sujet 22 |renverser une chaîne de caractères |nombres premiers, crible d'Ératosthène|
+        |sujet 23 |likes dans un réseau social, dictionnaires |notation postfixe des expression arithmétiques|
+        |sujet 24 |maximum d'un tableau |parenthésage, piles|
+        |sujet 25 |animaux dans un refuge, dictionnaires |trouver l'intrus dans un tableau|
+        |sujet 26 |indice du minimum d'un tableau |tri d'un tableau de 0 et 1|
+        |sujet 27 |taille d'un arbre binaire, dictionnaires |tri par sélection (itératif)|
+        |sujet 28 |moyenne d'un tableau |conversion décimal vers binaire|
+        |sujet 29 |suite de Fibonnaci sans récursivité |listes liées de notes et d'élèves, maximum|
+        |sujet 30 |fusion de deux tableaux triés |conversion chiffres romains vers décimal|
+        |sujet 31 |nombre d'occurrence dans un tableau (float ou int) |rendu monaie, algorithme glouton|
+        |sujet 32 |indice d'un élément dans un tableau |adresses IP, POO|
+        |sujet 33 |conversion binaire vers décimal, tableaux |tri par insertion|
+        |sujet 34 |maximum d'occurences dans une chaine de caractères |image, pixels, négatif|
+        |sujet 35 |moyenne d'un tableau avec assertions |recherche par dichotomie dans un tableau trié|
+        |sujet 36 |indice de dernière occurence d'un entier dans un tableau |distance entre points|
+        |sujet 37 |vérification du tri d'un tableau |comptage des votes dans un tableau|
+        |sujet 38 |tri par sélection |jeu du plus ou moins|
+        |sujet 39 |moyenne d'un tableau |zoom sur dessin|
+        |sujet 40 |recherche dans un tableau, tableau d'indices |moyenne pondérée, dictionnaires |
+
 
 === "Grille d'évaluation"
     |Critères d'évaluation |	Définition du critère |	Très insuffisant |	Insuffisant |	Satisfaisant |	Très satisfaisant|
