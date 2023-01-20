@@ -128,12 +128,16 @@ Elle stocke les données relatives aux musiciens sous forme d'un tableau de dict
 ??? success "Réponse"
 
     ```python
-    def recherche_nom(musiciens):
+    def recherche_nom(musiciens: list) -> list:
         resultat = []
         for musicien in musiciens:
             if musicien['nb_concerts'] >= 4:
                 resultat.append(musicien['nom'])
         return resultat
+
+    #ou mieux en compréhension
+    def recherche_nom(musiciens: list) -> list:
+        return [musicien['nom'] for musicien in musiciens if musicien['nb_concerts'] >= 4]
     ```
 
 
