@@ -57,9 +57,9 @@
     === "Thème 5"
         **[Thème 5: Architectures matérielles, systèmes d'exploitation et réseaux](https://cgouygou.github.io/TNSI/T05_ArchiMaterielle/accueil/)**
 
-        5.1 Gestion des processus **→ BAC**
+        5.1 Protocoles de routage **→ BAC**
 
-        5.2 Protocoles de routage **→ BAC**
+        5.2 Gestion des processus **→ BAC**
 
         5.3 Sécurisation des communications
 
