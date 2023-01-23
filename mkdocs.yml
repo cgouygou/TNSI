@@ -86,6 +86,7 @@ plugins:
   - awesome-pages:
       collapse_single_pages: true
   - macros
+  - glightbox
 
 extra:
   social:
