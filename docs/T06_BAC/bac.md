@@ -27,11 +27,11 @@
 
 === "Banque de sujets"
     
-    Vous pouvez retrouver en libre accès tous les sujets de la session 2022 à l'épreuve pratique de NSI: [https://eduscol.education.fr/2661/banque-des-epreuves-pratiques-de-specialite-nsi](https://eduscol.education.fr/2661/banque-des-epreuves-pratiques-de-specialite-nsi){:target="_blank"}.
+    :new: Vous pouvez retrouver en libre accès les 45 sujets de la session **2023** à l'épreuve pratique de NSI: [https://cyclades.education.gouv.fr/delos/public/listPublicECE](https://cyclades.education.gouv.fr/delos/public/listPublicECE){:target="_blank"}. **Attention, certains sujets peuvent comporter des erreurs.**
 
-    Ou bien tous les télécharger en [un seul fichier pdf](BNS_2022_total_V2.pdf) (718 ko).
+    Les sujets **2022** à télécharger en [un seul fichier pdf](BNS_2022_total_V2.pdf) (718 ko).
 
-    ???+ info "Sujets par thème"
+    ???+ info "Sujets 2022 par thème"
 
         |Sujet |Exercice 1 |Exercice 2|
         |:---:|:---:|:---:|
