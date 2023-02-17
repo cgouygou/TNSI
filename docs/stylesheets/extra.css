@@ -155,7 +155,7 @@ history.svg : <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path 
     border-color: rgb(210, 180, 140);
   }
   .md-typeset .capytale > .admonition-title::before,
-  .md-typeset .rappel > summary::before {
+  .md-typeset .capytale > summary::before {
     background-color: rgb(210, 180, 140);
     -webkit-mask-image: var(--md-admonition-icon--capytale);
             mask-image: var(--md-admonition-icon--capytale);
@@ -174,7 +174,7 @@ history.svg : <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path 
     border-color: rgb(106, 38, 122);
   }
   .md-typeset .lien > .admonition-title::before,
-  .md-typeset .rappel > summary::before {
+  .md-typeset .lien > summary::before {
     background-color: rgb(106, 38, 122);
     -webkit-mask-image: var(--md-admonition-icon--lien);
             mask-image: var(--md-admonition-icon--lien);
@@ -193,7 +193,7 @@ history.svg : <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path 
   border-color: rgb(255, 221, 87);
 }
 .md-typeset .pydefi > .admonition-title::before,
-.md-typeset .rappel > summary::before {
+.md-typeset .pydefi > summary::before {
   background-color: rgb(255, 221, 87);
   -webkit-mask-image: var(--md-admonition-icon--pydefi);
           mask-image: var(--md-admonition-icon--pydefi);
@@ -213,7 +213,7 @@ history.svg : <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path 
   border-color: rgb(231, 114, 18);
 }
 .md-typeset .gear > .admonition-title::before,
-.md-typeset .rappel > summary::before {
+.md-typeset .gear > summary::before {
   background-color: rgb(231, 114, 18);
   -webkit-mask-image: var(--md-admonition-icon--gear);
           mask-image: var(--md-admonition-icon--gear);
