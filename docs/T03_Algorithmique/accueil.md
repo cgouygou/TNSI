@@ -11,7 +11,7 @@
     | Sélection        | $O(n^2)$     | $O(n^2)$     | $O(n^2)$     |
     | Insertion        | $O(n)$       | $O(n^2)$     | $O(n^2)$     |
     | Fusion           | $O(n\log n)$ | $O(n\log n)$ | $O(n\log n)$ |
-    | Rapide           | $O(n\log n)$ | $O(n\log n)$ | $O(n^2)$     |
+    | Rapide           | $O(n\log n)$ | $O(n^2)$     | $O(n\log n)$ |
     | Timsort (Python) | $O(n)$       | $O(n\log n)$ | $O(n\log n)$ |
 
     Source : [https://fr.wikipedia.org/wiki/Algorithme_de_tri](https://fr.wikipedia.org/wiki/Algorithme_de_tri){:target="_blank"} 
