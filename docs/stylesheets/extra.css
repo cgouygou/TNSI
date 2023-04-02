@@ -50,6 +50,11 @@ td {
   border-top: none;
 }
 
+.gif-player {
+  margin: 0 auto;
+  width: 100px;
+}
+
 
 .md-typeset__table {
   line-height: 1;
