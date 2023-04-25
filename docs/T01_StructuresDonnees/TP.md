@@ -1,6 +1,4 @@
-# TP
-
-## TP1: le crêpier psycho-rigide
+# TP d'introduction: le crêpier psycho-rigide
 
 !!! example "Énoncé"
     À la fin de sa journée, un crêpier dispose d'une pile désordonnée de crêpes. Le crêpier étant un peu psycho-rigide, il décide de ranger sa pile de crêpes, de la plus grande (en bas) à la plus petite (en haut).
