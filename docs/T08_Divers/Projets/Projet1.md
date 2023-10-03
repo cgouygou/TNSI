@@ -61,7 +61,7 @@
             pygame.display.flip()
             pygame.time.delay(100)
         ```
-!!! code "Proposition de correction"
+<!-- !!! code "Proposition de correction"
     ```python linenums='1'
     import pygame
     import random as rd
@@ -153,7 +153,7 @@
     pygame.quit()
 
 
-    ```
+    ``` -->
     
 
 
@@ -187,7 +187,7 @@
 
         ```
 
-!!! code "Proposition de correction"
+<!-- !!! code "Proposition de correction"
     ```python linenums='1'
     import pygame
     from pygame.locals import *
@@ -258,4 +258,4 @@
 
 
     ```
-    
+     -->
