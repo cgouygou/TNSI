@@ -69,42 +69,5 @@
     "
     ) }}
 
-!!! check "Correction"
-    ```python linenums='1'
-    from random import randint
 
-    def plus_grand(liste:list, k:int) -> int:
-        '''
-        renvoie l'indice du plus grand élément de la liste dont l'indice est
-        supérieur à k
-        '''
-        imax = k
-        m = 0
-        for i in range(k, len(liste)):
-            if liste[i] > m:
-                m = liste[i]
-                imax = i
-        return imax
-
-    def retourner_pile(liste:list, k:int) -> list:
-        '''
-        renvoie la liste retournée, c'est-à-dire consitutée des élements dans
-        l'ordre inverse, à partir de l'indice k
-        '''
-        retour = []
-        for i in range(len(liste)):
-            if i < k:
-                retour.append(liste[i])
-            else:
-                retour.append(liste.pop())
-        return retour
-
-    def ordonner_pile(liste:list, n:int):
-        if n == len(liste):
-            return liste
-        else:
-            lst1 = retourner_pile(liste, plus_grand(liste, n))
-            lst2 = retourner_pile(lst1, n)
-            return ordonner_pile(lst2, n+1)
-    ```
     
