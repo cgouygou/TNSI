@@ -51,7 +51,7 @@ def moyenne(tab:list) -> float:
     somme = 0
     for t in tab:
         somme += t
-    return t / len(tab)
+    return somme / len(tab)
 ```
 
 ## Exercice 3 (Sujet BNS 2022 - n°28, ex 2)

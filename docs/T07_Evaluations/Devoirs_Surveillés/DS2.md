@@ -115,12 +115,12 @@ True
 !!! check "Proposition de correction"
     ```python linenums='1'
     def est_palindrome(mot:str) -> bool:
-    if len(mot) == 0:
-        return True
-    elif mot[0] != mot[-1]:
-        return False
-    else:
-        return est_palindrome(mot[1:-1])
+        if len(mot) == 0:
+            return True
+        elif mot[0] != mot[-1]:
+            return False
+        else:
+            return est_palindrome(mot[1:-1])
 
     ```
 
