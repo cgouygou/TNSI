@@ -1,11 +1,16 @@
 # BAC NSI
 
+!!! info "Nature de l'épreuve"
+    L'épreuve terminale obligatoire de spécialité est composée de deux parties : une partie écrite et une partie
+    pratique, chacune notée sur 20. La note de la partie écrite a un coefficient de 0,75 et celle de la partie pratique
+    a un coefficient de 0,25. La note globale de l’épreuve est donnée sur 20 points.
+
+
+
 ## Épreuve écrite
 
 - L'épreuve **écrite** de spécialité NSI dure 3h30.
-- Elle comporte **trois** exercices notés chacun sur 4 points, pour un total donc de 12 points.
-- Les exercices portent sur les chapitres du programme signalés par **→ BAC** sur la page d'accueil.
-
+- Elle comporte **trois** exercices indépendants les uns des autres, portant sur l'intégralité du programme de première et de terminale.
 
 ## Épreuve pratique
 
@@ -89,7 +94,8 @@
 === "Qu'est-ce que c'est?"
     - Vous devez préparer deux sujets, dont au moins un a un rapport avec le programme de NSI. 
     - Ce sujet peut être croisé avec l'autre spécialité.
-    - L'oral dure 20 minutes (5 minutes d'exposé et 15 minutes d'échanges avec le jury) après une préparation de 20 minutes.
+    - L'oral dure 20 minutes (10 minutes d'exposé et 10 minutes d'échanges avec le jury) après une préparation de 20 minutes. Le candidat a la possibilité d’utiliser un tableau durant le second temps de l’épreuve.
+    - L'épreuve représente un coefficient 10 au bac général.
 
     ![](images/GO1.png){: .center} 
 
@@ -170,10 +176,6 @@
     ![](images/GO4.png){: .center} 
 
 
-=== "Projet d'orientation"
-    Le jury mesure la capacité du candidat à conduire et à exprimer une réflexion personnelle témoignant de sa curiosité
-    intellectuelle et de son aptitude à exprimer ses motivations.
-    ![](images/GO5.png){: .center} 
     
 === "Grille d'évaluation"
     ![](images/GO6.png){: .center} 
