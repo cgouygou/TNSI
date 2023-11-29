@@ -13,8 +13,9 @@
         3. Travail sur JOIN, (base de données Euro2012) : [ici](https://sqlzoo.net/wiki/The_JOIN_operation){. target="_blank"}.
 
     === "Correction" 
-        {{ correction(False, 
+        {{ correction(True, 
         "
+        À consulter ici : [https://github.com/jisaw/sqlzoo-solutions](https://github.com/jisaw/sqlzoo-solutions){. target="_blank"}.
         "
         ) }}
 
