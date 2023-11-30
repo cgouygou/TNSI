@@ -85,7 +85,7 @@
         """
         ??? success \"Correction\" 
             ```sql
-            SELECT nom 
+            SELECT nom, code 
             FROM Agences
             WHERE code LIKE '56%'
             ```            
@@ -229,7 +229,7 @@
         """
         ??? success \"Correction\" 
             ```sql
-            SELECT SUM(distance) 
+            SELECT SUM(kilometrage) 
             FROM Locations
             ```            
         """
