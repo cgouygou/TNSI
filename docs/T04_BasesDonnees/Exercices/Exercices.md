@@ -15,7 +15,7 @@
     === "Correction" 
         {{ correction(True, 
         "
-        À consulter ici : [https://github.com/jisaw/sqlzoo-solutions](https://github.com/jisaw/sqlzoo-solutions){. target="_blank"}.
+        À consulter ici : [https://github.com/jisaw/sqlzoo-solutions](https://github.com/jisaw/sqlzoo-solutions){. target=\"_blank\"}.
         "
         ) }}
 
