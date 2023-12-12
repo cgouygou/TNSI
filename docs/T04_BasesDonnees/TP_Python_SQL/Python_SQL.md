@@ -253,8 +253,68 @@ Exécuter le code suivant et contrôler en même temps avec **DB Browser**.
         ![](../images/ezgif-ex1-2.gif){: .center} 
 
     === "Correction" 
+        ```python
+        import sqlite3
+
+        #Connexion
+        connexion = sqlite3.connect('mondevoir.db')
         
+        #Récupération d'un curseur
+        c = connexion.cursor()
         
+        # ---- début des instructions SQL
+        #Création d'une table
+        c.execute("""
+            CREATE TABLE IF NOT EXISTS devoir(
+            nom TEXT,
+            note INTEGER);
+            """)
+        
+        def saisie():
+            go = True
+            while go:
+                nom = input('Nom ? ')
+                if nom.lower() == 'q':
+                    go = False
+                else:
+                    note = int(input('Note ? '))
+                    c.execute("INSERT INTO devoir VALUES (?, ?);", [nom, note])
+        
+        def consultation():
+            go = True
+            while go:
+                nom = input('Nom ? ')
+                if nom.lower() == 'q':
+                    go = False
+                else:
+                    rq = c.execute("SELECT note FROM devoir WHERE nom = ?;", [nom])
+                    if rq.fetchone() is None:
+                        print("Elève inconnu")
+                    else:
+                        print("Note: ", rq.fetchone()[0])
+        
+        go = True
+        
+        while go:
+            choix = input("Menu \n1. Saisir des notes\n2. Consulter des notes\n3. Quitter\nVotre choix: ")
+            if choix == '1':
+                saisie()
+            elif choix == '2':
+                consultation()
+            else:
+                go = False
+                
+                
+        # ---- fin des instructions SQL
+        
+        #Validation
+        connexion.commit()
+        
+        #Déconnexion
+        connexion.close()
+
+        ```
+
 
 
 !!! example "Mini-Projet"
