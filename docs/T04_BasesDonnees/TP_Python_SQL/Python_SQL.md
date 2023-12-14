@@ -287,11 +287,11 @@ Exécuter le code suivant et contrôler en même temps avec **DB Browser**.
                 if nom.lower() == 'q':
                     go = False
                 else:
-                    rq = c.execute("SELECT note FROM devoir WHERE nom = ?;", [nom])
-                    if rq.fetchone() is None:
+                    rq = c.execute("SELECT note FROM devoir WHERE nom = ?;", [nom]).fetchone()
+                    if rq is None:
                         print("Elève inconnu")
                     else:
-                        print("Note: ", rq.fetchone()[0])
+                        print("Note: ", rq[0])
         
         go = True
         
