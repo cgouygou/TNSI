@@ -48,6 +48,7 @@
     ```
 
 5. 
+
     ```python linenums='1'
     class Pile:
         def __init__(self):
@@ -72,7 +73,8 @@
 
 6. Cette méthode s'appelle un **accesseur** (ou *getter* en anglais).
 
-7.
+7. 
+
     ```python linenums='1'
     def sommet(p:Pile) -> int:
         '''
@@ -101,4 +103,46 @@
     INSERT INTO Reservation
     VALUES (13, 737, 3, 2);
     ```
-    
+
+3. Cette requête permet de déterminer le nombre de séances proposées les 10 et 11 janvier 2023.
+
+4. En SQL on obtient les requêtes:
+
+    **a.**
+
+    ```sql
+    SELECT nom, prenom FROM Abonne;
+    ```
+
+    **b.**
+
+    ```sql
+    SELECT titre, realisateur
+    FROM Film
+    WHERE duree < 120;
+    ```
+
+    **c.**
+
+    ```sql
+    SELECT Film.titre, Film.duree FROM Film
+    JOIN Seance ON Film.idFilm = Seance.idFilm
+    WHERE Seance.date = '2023-01-14' AND Seance.heure = '21:00';
+    ```
+
+5. **a.** On obtient:
+
+    ```sql
+    UPDATE Film
+    SET duree = 131 
+    WHERE titre = 'Wakanda forever';
+    ```
+
+    **b.** `idSéance` est une clé étrangère pour la relation **Réservation**. La suppression d’une séance risque donc de provoquer des problèmes dans la relation **Réservation** (avec un `Réservation.idSéance` ne correspondant à aucun `Séance.idRéservation`). Cela pourrait enfreindre la contrainte de référence.
+
+    **c.** On l'écrirait:
+
+    ```sql
+    DELETE FROM Seance
+    WHERE idSeance = 135;
+    ```
