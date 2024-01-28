@@ -21,6 +21,7 @@
             empiler(p, b) # on ne supprime pas b donc on l'empile
         empiler(p, a) # dans tous les cas on empile a
     ```
+
 4.  
 
     **a.** Il faut au minimum 3 éléments pour pouvoir simplifier et qu'il n'en reste que deux.
@@ -168,14 +169,14 @@
 
 5. On obtient le tableau:
 
-| Routeur | Destination | Passerelle | Distance |
-|:-------:|:-----------:|:----------:|:--------:|
-|    A    |      G      |      B     |     3    |
-|    B    |      G      |      F     |     2    |
-|    C    |      G      |      B     |     3    |
-|    D    |      G      |      E     |     3    |
-|    E    |      G      |      F     |     2    |
-|    F    |      G      |      -     |     1    |
+    | Routeur | Destination | Passerelle | Distance |
+    |:-------:|:-----------:|:----------:|:--------:|
+    |    A    |      G      |      B     |     3    |
+    |    B    |      G      |      F     |     2    |
+    |    C    |      G      |      B     |     3    |
+    |    D    |      G      |      E     |     3    |
+    |    E    |      G      |      F     |     2    |
+    |    F    |      G      |      -     |     1    |
 
 6. Le message transite via les routeurs A -> B -> F -> G.
 
