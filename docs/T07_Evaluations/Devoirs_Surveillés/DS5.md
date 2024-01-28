@@ -9,7 +9,9 @@
     Troisième passage: 4-2 (la pile est gagnante)
 
 2. La pile gagnante est la pile B.
-3. ```python linenums='1'
+3. 
+
+    ```python linenums='1'
     def reduire_triplet_au_sommet(p):
         a = depiler(p)
         b = depiler(p)
@@ -20,7 +22,7 @@
     ```
 4. **a.** Il faut au minimum 3 éléments pour pouvoir simplifier et qu'il n'en reste que deux.
 
-    ***b.** 
+    **b.** 
     ```python linenums='1'
     def parcourir_pile_en_reduisant(p):
         q = creer_pile_vide()
@@ -45,7 +47,8 @@
             return jouer(p) # sinon on recommence
     ```
 
-5. ```python linenums='1'
+5. 
+    ```python linenums='1'
     class Pile:
         def __init__(self):
             self.contenu = []
@@ -69,7 +72,8 @@
 
 6. Cette méthode s'appelle un **accesseur** (ou *getter* en anglais).
 
-7. ```python linenums='1'
+7.
+    ```python linenums='1'
     def sommet(p:Pile) -> int:
         '''
         Fonction qui renvoie l'élément au sommet de la pile p
@@ -79,3 +83,22 @@
             s = p.depiler()
             p.empiler(s)
             return s
+    ```
+
+## Exercice 2: Bases de données/SQL
+
+1. **a.** Une clé primaire d’une relation est un attribut (ou plusieurs attributs) dont la valeur permet d'identifier de manière unique un enregistrment (p-uplet) de la relation.
+
+    **b.** Une clé étrangère est un attribut qui permet d’établir un lien entre deux relations.
+
+    **c.** Un abonné ne peut pas réserver plusieurs fois la même séance, car le couple `idAbonné, idSéance` est une clé primaire pour la relation **Réservation**. Il est donc impossible d’avoir deux fois la même séance pour le même abonné.
+
+2. **a.** On complète le tableau avec dans l'ordre les valeurs 13, 737, 3 et 2.
+
+    **b.** En SQL on obtient:
+
+    ```sql
+    INSERT INTO Reservation
+    VALUES (13, 737, 3, 2);
+    ```
+    
