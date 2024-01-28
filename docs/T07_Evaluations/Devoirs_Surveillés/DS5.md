@@ -9,6 +9,7 @@
     Troisième passage: 4-2 (la pile est gagnante)
 
 2. La pile gagnante est la pile B.
+
 3. 
 
     ```python linenums='1'
@@ -20,7 +21,9 @@
             empiler(p, b) # on ne supprime pas b donc on l'empile
         empiler(p, a) # dans tous les cas on empile a
     ```
-4. **a.** Il faut au minimum 3 éléments pour pouvoir simplifier et qu'il n'en reste que deux.
+4.  
+
+    **a.** Il faut au minimum 3 éléments pour pouvoir simplifier et qu'il n'en reste que deux.
 
     **b.** 
     ```python linenums='1'
@@ -146,3 +149,59 @@
     DELETE FROM Seance
     WHERE idSeance = 135;
     ```
+
+
+## Exercice 3: Réseaux/routage
+
+### Partie 1: adresses IP
+
+1. Il s'agit de celle d'Alice.
+
+2. - Pour le réseau L1, le masque s'écrit en binaire 11111111.11111111.11111111.00000000 et en décimal 255.255.255.0. On peut y connecter $2^8-2=254$ machines.
+    - Pour le réseau L2, le masque s'écrit en binaire 11111111.11111111.11111111.11000000 et en décimal 255.255.192.0. On peut y connecter $2^6-2=62$ machines.
+
+3. L'adresse IP 192.168.2.88 partage les 3 premiers octets (24 bits) de l'adresse réseau de L2. Mais 88 s'écrit 01011000 en binaire et ne commence pas par 00 donc elle n'a pas les même 26 premiers bits identiques à celle du réseau L2. Donc la réponse est négative.
+
+### Partie 2: le protocole RIP
+
+4. Dans le protocole RIP les routeurs s'échangent leurs tables de routage toutes les 30 secondes et les mettent à jour en prenant pour chaque destination la distance la plus courte au sens du nombre de sauts (entre deux routeurs), jusqu'à stabilisation des tables.
+
+5. On obtient le tableau:
+
+| Routeur | Destination | Passerelle | Distance |
+|:-------:|:-----------:|:----------:|:--------:|
+|    A    |      G      |      B     |     3    |
+|    B    |      G      |      F     |     2    |
+|    C    |      G      |      B     |     3    |
+|    D    |      G      |      E     |     3    |
+|    E    |      G      |      F     |     2    |
+|    F    |      G      |      -     |     1    |
+
+6. Le message transite via les routeurs A -> B -> F -> G.
+
+7. Le routeur B envoie la distance 16 (l'infini) car il n'a plus de route vers G.
+
+8. **a.** Trivial.
+
+    **b.** Par exemple, la table de routage de A sera modifiée pour la destination E avec une passerelle H et une distance de 2 (contre C / 3 auparavant).
+
+    **c.** On obtient la table:
+
+    | Destination | Passerelle | Distance |
+    |:-----------:|:----------:|:--------:|
+    |      A      |      -     |     1    |
+    |      B      |      A     |     2    |
+    |      C      |      A     |     2    |
+    |      D      |      E     |     2    |
+    |      E      |      -     |     1    |
+    |      F      |      E     |     2    |
+
+### Partie 3: le protocole OSPF
+
+9. Le débit maximal de référence est de 1 Gbits/s, soit $10^9$ bits/s et le débit du réseau est de 100 Mbits/s soit $100\times 10^6 = 10^8$ bits/s. Le coût est donc bien de $\dfrac{10^9}{10^8}=10$.
+
+10. Le coût étant 2 fois moindre que le précédent, on en déduit que le débit est deux fois plus rapide, soit 200 Mbits/s.
+
+11. **a.** On obtient le chemin G -> F -> B -> -> C -> A pour un coût total de 16.
+
+    **b.** C'est le routeur B.
