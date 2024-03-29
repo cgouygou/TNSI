@@ -22,21 +22,23 @@
 === "Déroulement de l'épreuve"
     Le candidat est évalué sur la base d’un **dialogue** avec un professeur-examinateur. Un examinateur évalue au maximum quatre élèves. L’examinateur ne peut pas évaluer un élève qu’il a eu en classe durant l’année en cours. L’évaluation de cette partie se déroule au cours du deuxième trimestre pendant la période de l’épreuve écrite de spécialité.
 
-    **Premier exercice**
+    !!! example "Premier exercice"
 
-    Le premier exercice consiste à programmer un algorithme figurant explicitement au programme, ne présentant pas de difficulté particulière, dont on fournit une spécification. Il s’agit donc de restituer un algorithme rencontré et travaillé à plusieurs reprises en cours de formation. Le sujet peut proposer un jeu de test avec les réponses attendues pour permettre au candidat de vérifier son travail.
+        Le premier exercice consiste à programmer un algorithme figurant explicitement au programme, ne présentant pas de difficulté particulière, dont on fournit une spécification. Il s’agit donc de restituer un algorithme rencontré et travaillé à plusieurs reprises en cours de formation. Le sujet peut proposer un jeu de test avec les réponses attendues pour permettre au candidat de vérifier son travail.
 
-    **Deuxième exercice**
+    !!! example "Deuxième exercice"
 
-    Pour le second exercice, un programme est fourni au candidat. Cet exercice ne demande pas l’écriture complète d’un programme, mais permet de valider des compétences de programmation suivant des modalités variées : le candidat doit, par exemple, compléter un programme « à trous » afin de répondre à une spécification donnée, ou encore compléter un programme pour le documenter, ou encore compléter un programme en ajoutant des assertions, etc.
+        Pour le second exercice, un programme est fourni au candidat. Cet exercice ne demande pas l’écriture complète d’un programme, mais permet de valider des compétences de programmation suivant des modalités variées : le candidat doit, par exemple, compléter un programme « à trous » afin de répondre à une spécification donnée, ou encore compléter un programme pour le documenter, ou encore compléter un programme en ajoutant des assertions, etc.
 
 === "Banque de sujets"
     
-    :new: Vous pouvez retrouver en libre accès les 45 sujets de la session **2023** à l'épreuve pratique de NSI: [https://cyclades.education.gouv.fr/delos/public/listPublicECE](https://cyclades.education.gouv.fr/delos/public/listPublicECE){:target="_blank"}. **Attention, certains sujets peuvent comporter des erreurs.**
+    :new: Vous pouvez retrouver en libre accès les 47 sujets de la session **2024** à l'épreuve pratique de NSI: [https://cyclades.education.gouv.fr/delos/public/listPublicECE](https://cyclades.education.gouv.fr/delos/public/listPublicECE){:target="_blank"}. **Attention, certains sujets peuvent comporter des erreurs.**
 
-    Les sujets **2022** à télécharger en [un seul fichier pdf](BNS_2022_total_V2.pdf) (718 ko).
+    - Les sujets **2022** à télécharger en [un seul fichier pdf](data/BNS_2022_total_V2.pdf).
+    - Les sujets **2023** à télécharger en [un seul fichier pdf](data/BNS_2023_pdf_unique.pdf).
+    - Les sujets **2024** à télécharger en [un seul fichier pdf](data/BNS_2024_pdf_unique.pdf).
 
-    ???+ info "Sujets 2022 par thème"
+    ??? info "Exemple: Sujets 2022 par thème"
 
         |Sujet |Exercice 1 |Exercice 2|
         |:---:|:---:|:---:|
@@ -106,72 +108,70 @@
     ![](images/GO2.png){: .center} 
 
 === "Élaboration de la question"
-    ## L’analyse du sujet
+    !!! gear "L’analyse du sujet"
 
-    C’est une étape indispensable à la préparation de la recherche documentaire mais aussi pour élaborer votre
-    futur plan de votre oral et votre introduction. Pour cela, vous devez :
+        C’est une étape indispensable à la préparation de la recherche documentaire mais aussi pour élaborer votre
+        futur plan de votre oral et votre introduction. Pour cela, vous devez :
 
-    - définir les termes et les limites (chrono-spatiales) de votre sujet
-    - noter les notions en lien avec votre sujet et auxquelles il faudra faire référence au cours de votre oral
-    - noter les idées-clés, dates essentielles, acteurs, etc.
+        - définir les termes et les limites (chrono-spatiales) de votre sujet
+        - noter les notions en lien avec votre sujet et auxquelles il faudra faire référence au cours de votre oral
+        - noter les idées-clés, dates essentielles, acteurs, etc.
 
-    ## Les références bibliographiques
+    !!! link "Les références bibliographiques"
 
-    La recherche bibliographique est indispensable pour trouver les arguments et exemples nécessaires à votre oral.
-    Les outils à disposition :
+        La recherche bibliographique est indispensable pour trouver les arguments et exemples nécessaires à votre oral.
+        Les outils à disposition :
+        
+        - Le moteur de recherche E-Sidoc, disponible depuis Lycée connecté qui vous permet ensuite d’avoir accès aux
+        richesses de la médiathèque, à l’Encyclopédia Universalis et aux vidéos sélectionnées pour leur fiabilité par l’INA.
+
+            Petit tutoriel pour comprendre comment utiliser E-sidoc : [https://youtu.be/EXnNfcqGT7M](https://youtu.be/EXnNfcqGT7M){:target="_blank"} 
+        
+        - La médiathèque du lycée : livres, périodiques, usuels (encyclopédies, dictionnaires etc)
+        - Médiathèque ou bibliothèque municipale
+        - Web : préférez les sites institutionnels aux blogs, les sites de journaux spécialisés, ceux donnés en page d'accueil par ex. (onglet **Liens utiles**).
     
-    - Le moteur de recherche E-Sidoc, disponible depuis Lycée connecté qui vous permet ensuite d’avoir accès aux
-    richesses de la médiathèque, à l’Encyclopédia Universalis et aux vidéos sélectionnées pour leur fiabilité par l’INA.
 
-        Petit tutoriel pour comprendre comment utiliser E-sidoc : [https://youtu.be/EXnNfcqGT7M](https://youtu.be/EXnNfcqGT7M){:target="_blank"} 
-    
-    - La médiathèque du lycée : livres, périodiques, usuels (encyclopédies, dictionnaires etc)
-    - Médiathèque ou bibliothèque municipale
-    - Web : préférez les sites institutionnels aux blogs, les sites de journaux spécialisés, ceux donnés en page d'accueil par ex. (onglet **Liens utiles**).
-    
+    !!! tip "Conseils"
 
-    ## Conseils
-
-    - Varier les sources
-    - Vérifier la fiabilité de vos sources
-    - Noter vos références afin de retrouver les informations
+        - Varier les sources
+        - Vérifier la fiabilité de vos sources
+        - Noter vos références afin de retrouver les informations
 
 === "J'organise mon argumentaire"
-    ## Introduction
+    !!! note "Introduction"
+        Elle doit être soignée car elle donne la 1ère impression sur votre prestation orale. Elle doit
+        comporter les éléments suivants :
 
-    Elle doit être soignée car elle donne la 1ère impression sur votre prestation orale. Elle doit
-    comporter les éléments suivants :
+        - une accroche (ex : un fait d’ actualité en lien avec le sujet etc.)
+        - définir les enjeux de votre Question et justifier le choix de votre sujet
+        - La QUESTION
+        - L’annonce du plan
 
-    - une accroche (ex : un fait d’ actualité en lien avec le sujet etc.)
-    - définir les enjeux de votre Question et justifier le choix de votre sujet
-    - La QUESTION
-    - L’annonce du plan
-
-    ## Conclusion
-
-    Ne pas la négliger car c’est la dernière impression que vous laissez à votre jury. Elle doit
-    comporter 
+    !!! note "Développement"
+        - Il est composé de parties (2 ou 3) qu’il faut rappeler pour que votre jury puisse suivre votre
+        exposé.
+        - Chaque partie comporte des sous-parties, chacune d’elles présentant un argument et un
+        exemple pour appuyer votre démonstration
     
-    - la réponse claire à votre QUESTION
-    - Le bilan de votre argumentation (elle peut comporter une ouverture)
-    
-    ## Développement
-    - Il est composé de parties (2 ou 3) qu’il faut rappeler pour que votre jury puisse suivre votre
-    exposé.
-    - Chaque partie comporte des sous-parties, chacune d’elles présentant un argument et un
-    exemple pour appuyer votre démonstration
+    !!! note "Conclusion"
+        Ne pas la négliger car c’est la dernière impression que vous laissez à votre jury. Elle doit
+        comporter 
+        
+        - la réponse claire à votre QUESTION
+        - Le bilan de votre argumentation (elle peut comporter une ouverture)
     
     
-    ### Ne pas oublier qu’il s’agit d’un oral. Penser aussi aux éléments suivants (voir grille d’évaluation) :
+    !!! info "Ne pas oublier qu’il s’agit d’un oral !"
+        Penser aussi aux éléments suivants (voir grille d’évaluation) :
 
-
-    - la voix : être audible avec un débit adapté et fluide
-    - le regard : dirigé vers le jury (se détacher de ses notes)
-    - la respiration : faire de courtes pauses
-    - la posture : debout lors des 5 premières mn (puis vous pouvez vous assoir), droit , souriant
-    - la gestuelle : éviter les gestes parasites
-    - le vocabulaire/niveau de langue adapté
-    - respecter le temps imparti (+/- 30 s)
+        - la voix : être audible avec un débit adapté et fluide
+        - le regard : dirigé vers le jury (se détacher de ses notes)
+        - la respiration : faire de courtes pauses
+        - la posture : debout lors des 5 premières mn (puis vous pouvez vous assoir), droit , souriant
+        - la gestuelle : éviter les gestes parasites
+        - le vocabulaire/niveau de langue adapté
+        - respecter le temps imparti (+/- 30 s)
 
     ![](images/GO4.png){: .center} 
 
