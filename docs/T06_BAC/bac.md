@@ -12,6 +12,14 @@
 - L'épreuve **écrite** de spécialité NSI dure 3h30.
 - Elle comporte **trois** exercices indépendants les uns des autres, portant sur l'intégralité du programme de première et de terminale.
 
+!!! warning "Sujets 2024"
+    <span class='centre'>
+    [Amérique du Nord Jour 1 :material-download:](data/24_Am_Nord_J1.pdf){.center .md-button }
+    [Amérique du Nord Jour 2 :material-download:](data/24_Am_Nord_J2.pdf){.center .md-button }
+    </span>
+
+
+
 ## Épreuve pratique
 
 === "Qu'est-ce que c'est?"
