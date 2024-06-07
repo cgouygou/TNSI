@@ -16,6 +16,8 @@
     <span class='centre'>
     [Amérique du Nord Jour 1 :material-download:](data/24_Am_Nord_J1.pdf){.center .md-button }
     [Amérique du Nord Jour 2 :material-download:](data/24_Am_Nord_J2.pdf){.center .md-button }
+    [Centres étrangers Jour 1 :material-download:](data/24_NSIJ1G1.pdf){.center .md-button }
+    [Centres étrangers Jour 2 :material-download:](data/24_NSIJ2G1.pdf){.center .md-button }
     </span>
 
 
