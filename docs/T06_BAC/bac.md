@@ -5,6 +5,18 @@
     pratique, chacune notée sur 20. La note de la partie écrite a un coefficient de 0,75 et celle de la partie pratique
     a un coefficient de 0,25. La note globale de l’épreuve est donnée sur 20 points.
 
+    ```python linenums='1'
+    def note_bac_nsi(note_ecrit:int, note_pratique:int) -> int:
+        """
+        Calcule la note de spécialité NSI au bac à partir des notes obtenues aux épreuves écrite
+        et pratique.
+        """
+        assert note_ecrit >=0 and note_ecrit <= 20, "note non valide"
+        assert note_pratique >=0 and note_pratique <= 20, "note non valide"
+        return int(0.75*note_ecrit + 0.25*note_pratique)
+    ```
+    
+
 
 
 ## Épreuve écrite
@@ -16,8 +28,16 @@
     <span class='centre'>
     [Amérique du Nord Jour 1 :material-download:](data/24_Am_Nord_J1.pdf){.center .md-button }
     [Amérique du Nord Jour 2 :material-download:](data/24_Am_Nord_J2.pdf){.center .md-button }
+    </span>
+    
+    <span class='centre'>
     [Centres étrangers Jour 1 :material-download:](data/24_NSIJ1G1.pdf){.center .md-button }
     [Centres étrangers Jour 2 :material-download:](data/24_NSIJ2G1.pdf){.center .md-button }
+    </span>
+
+    <span class='centre'>
+    [Asie Jour 1 :material-download:](data/24_Asie_J1.pdf){.center .md-button }
+    [Asie Jour 2 :material-download:](data/24_Asie_J2.pdf){.center .md-button }
     </span>
 
 
@@ -26,7 +46,7 @@
 
 === "Qu'est-ce que c'est?"
     - L'épreuve **pratique** de spécialité NSI dure 1h.
-    - Elle comporte **deux** exercices de **programmation** sur ordinateur, notés chacun sur 4 points, pour un total donc de 8 points.
+    - Elle comporte **deux** exercices de **programmation** sur ordinateur, notés chacun sur 10 points, pour un total donc de 20 points.
 
 
 === "Déroulement de l'épreuve"
@@ -113,7 +133,7 @@
 
 === "Déroulement de l'épreuve"
 
-    Le support réalisé pendant la préparation (vous avez le droit à 2 feuilles de brouillon) peut être conservé par l’élève et donné au jury (schéma, carte mentale, croquis, etc.).
+    Le support réalisé pendant la préparation (vous avez le droit à plusieurs feuilles de brouillon) peut être conservé par l’élève et donné au jury (schéma, carte mentale, croquis, etc.).
 
     ![](images/GO2.png){: .center} 
 
@@ -178,7 +198,7 @@
         - la voix : être audible avec un débit adapté et fluide
         - le regard : dirigé vers le jury (se détacher de ses notes)
         - la respiration : faire de courtes pauses
-        - la posture : debout lors des 5 premières mn (puis vous pouvez vous assoir), droit , souriant
+        - la posture : debout lors des 10 premières mn (puis vous pouvez vous assoir), droit , souriant
         - la gestuelle : éviter les gestes parasites
         - le vocabulaire/niveau de langue adapté
         - respecter le temps imparti (+/- 30 s)

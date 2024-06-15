@@ -10,18 +10,18 @@
 === "Programme"
     Le [programme](data/Tle_NSI_Specialite_Voie_G_1126614.pdf) de terminale NSI est articulé autour de cinq thèmes.
 
-    Nous traiterons les différentes entrées du programme dans les chapitres suivants, où la mention  **→ BAC** indique les chapitres pouvant être évalués lors de l'épreuve écrite terminale de mars 2023.
+    Nous traiterons les différentes entrées du programme dans les chapitres suivants.
 
     === "Thème 1"
         **[Thème 1: Structures de données](https://cgouygou.github.io/TNSI/T01_StructuresDonnees/accueil/)**
 
-        1.1 Listes chaînées **→ BAC**
+        1.1 Listes chaînées 
         
-        1.2 Piles et Files **→ BAC**
+        1.2 Piles et Files 
 
-        1.3 Dictionnaires **→ BAC**
+        1.3 Dictionnaires 
 
-        1.4 Arbres **→ BAC**
+        1.4 Arbres 
         
         1.5 Graphes
 
@@ -29,9 +29,9 @@
     === "Thème 2"
         **[Thème 2:  Langages et programmation](https://cgouygou.github.io/TNSI/T02_Programmation/accueil/)**
 
-        2.1 Programmation orientée objet **→ BAC**
+        2.1 Programmation orientée objet 
 
-        2.2 Récursivité **→ BAC**
+        2.2 Récursivité 
 
         2.3 Calculabilité et décidabilité
 
@@ -40,7 +40,7 @@
     === "Thème 3"
         **[Thème 3: Algorithmique](https://cgouygou.github.io/TNSI/T03_Algorithmique/accueil/)**
 
-        3.1 Diviser pour régner **→ BAC**
+        3.1 Diviser pour régner 
 
         3.2 Programmation dynamique
 
@@ -49,17 +49,17 @@
     === "Thème 4"
         **[Thème 4: Bases de données](https://cgouygou.github.io/TNSI/T04_BasesDonnees/accueil/)**
 
-        4.1 Modèle relationnel **→ BAC**
+        4.1 Modèle relationnel 
 
-        4.2 Langage SQL **→ BAC**
+        4.2 Langage SQL
 
 
     === "Thème 5"
         **[Thème 5: Architectures matérielles, systèmes d'exploitation et réseaux](https://cgouygou.github.io/TNSI/T05_ArchiMaterielle/accueil/)**
 
-        5.1 Protocoles de routage **→ BAC**
+        5.1 Protocoles de routage
 
-        5.2 Gestion des processus **→ BAC**
+        5.2 Gestion des processus
 
         5.3 Sécurisation des communications
 
@@ -165,72 +165,4 @@
     !!! capytale "Lien vers activité Capytale"
 
     !!! pydefi "Pydéfi - c0d1ng UP"
-    
-<!-- === "Progression"
-    Cette progression est découpée selon les 5 périodes entre les vacances.
-
-    === "Période 1"
-
-        6.1 Prise en main de Python
-
-        1.1 Écriture d'un entier positif dans une base $b \geqslant 2$ (2, 10 ou 16).
-        
-        6.2 Utilisation de bibliothèques
-
-        1.2 Valeurs et expressions booléennes
-
-        1.3 Représentation binaire d'un entier relatif
-    
-    === "Période 2"
-
-        6.3 Jeux de tests
-
-        6.4 Spécification
-
-        2.1 Tableaux et listes
-
-        7.1 Parcours séquentiel d'un tableau
-
-        1.4 Codage des caractères
-
-        4.1 Pages Web et interactions
-
-    === "Période 3"
-
-        5.1 Modèle de Von Neumann
-
-        2.2 Dictionnaires
-
-        3.1 Manipulation, recherche et tri de tables
-
-        3.2 Fusion et jointure de tables
-
-        5.2 Systèmes d'exploitation
-
-        7.2 Algorithmes de tri
-    
-    === "Période 4"
-
-        4.2 Protocole HTTP
-
-        4.3 Requêtes GET/POST et formulaires d'une page Web
-
-        7.3 Recherche dichotomique dans un tableau trié
-
-        5.3 Architecture d'un réseau
-
-        1.5 Représentation des réels: nombres flottants
-    
-    === "Période 5"
-
-        7.4 Algorithmes gloutons
-
-        5.4 IHM, capteurs (Microbit)
-
-        7.5 Algorithme des $k$ plus proches voisins
-
-    ![](images/progression1NSI.png){: .center} 
-
-    <!-- https://cgouygou.github.io/1NSI/index.html -->
- 
-
+   
