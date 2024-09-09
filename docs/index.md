@@ -105,6 +105,7 @@
     - Un [podcast](https://pixees.fr/podcast/pod-nsi-orientation-post-bac/){:target="_blank"} sur les poursuites d'études (CPGE MPI, IUT, Université) après avoir choisi NSI comme spécialité au lycée.
     - [Zoom sur les métiers des mathématiques et de l'informatique](data/Zoom_metiers_maths.pdf){:target="_blank"} 
     - [Onisep](https://www.onisep.fr/Decouvrir-les-metiers/Actus-2022/Journee-nationale-NSI-numerique-et-sciences-informatiques){:target="_blank"} 
+    - Les [métiers de la cybersécurité](https://www.demainspecialistecyber.fr/){:target="_blank"} 
 
 
     **Pour se creuser la tête**
@@ -114,16 +115,18 @@
     - [PyDéfis](https://pydefis.callicode.fr/){:target="_blank"} 
     - [Codémoi](https://iremsinfo.callicode.fr/concours/infos/){:target="_blank"}
     - [Advent of Code](https://adventofcode.com/){:target="_blank"} 
-    - [MicroContest](http://www.microcontest.com/){:target="_blank"} 
     - [Hackinscience](https://www.hackinscience.org/){:target="_blank"} 
+    - [The OSINT Project](https://the-osint-project.fr/){:target="_blank"} :fr:
+    - [Root me](https://www.root-me.org/){:target="_blank"} :fr:
+    - [Try hack me](https://tryhackme.com/){:target="_blank"} :gb:
 
     **Pour se former en autonomie**
 
     Au cas où vous vous ennuieriez...
 
-    - [France-IOI](http://www.france-ioi.org/){:target="_blank"} 
-    - [CheckIO](https://checkio.org/){:target="_blank"} 
-    - [CodinGame](https://www.codingame.com/start){:target="_blank"} 
+    - [France-IOI](http://www.france-ioi.org/){:target="_blank"} :fr:
+    - [CheckIO](https://checkio.org/){:target="_blank"} :gb:
+    - [CodinGame](https://www.codingame.com/start){:target="_blank"} :fr: 
 
 === "Sources"
     L'essentiel des sources des contenus de ce site:
