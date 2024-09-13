@@ -1,9 +1,26 @@
 # Cours de Terminale NSI - M. Gouygou
 
-![mdv](images/logo_MdV_site.png){: .center width=640} 
+![mdv](images/logo_MdV_site.png){: .center width=480} 
 
 
 [Lien vers le site de Première.](https://cgouygou.github.io/1NSI/){:target="_blank"}
+
+<br>
+
+!!! info "Mini-exposés"
+    Durant toute l'année, il vous sera proposé quelques sujets de mini-exposés (moins de 5 minutes) à préparer en autonomie.
+
+    - **Blue Team vs. Red Team** → Télio - 17/09/24
+    - **Injonctions SQL** 
+    - **Le bug de Minecraft**
+    - **Heartbleed**
+    - **Test de Turing**
+    - **Richard Stallman et le driver de l'imprimante**
+    - **Panne informatique mondiale de juillet 2024**
+
+
+
+
 
 <br>
 
