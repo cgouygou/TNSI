@@ -77,7 +77,7 @@
 		def somme_liste(tab:list) -> int:
 			somme = 0
 			for nb in tab:
-				somme += n
+				somme += nb
 			return somme
 
 		assert somme_liste([5, 1, 2]) == 8
