@@ -109,8 +109,50 @@ Les fonctions Python permettant d'obtenir le code Unicode d'un caractère et ré
         '''
         pass
     ```
-    
+
 ### Partie 3 - Bonus
 
 Résoudre le pydéfi suivant : [La clé endommagée](https://pydefis.callicode.fr/defis/MasqueJetable/txt){:target="_blank"} 
 
+
+
+!!! check "Proposition de correction"
+    **Partie 1**
+
+    1. Les deux caractères sont codés respectivement par `63` et `46` en hexadécimal, il s'agit donc des caractères `'c'` et `'F'`.
+    2. On obtient `1000 1101 1011 0110`.
+    3. |x|y|x XOR y| (x XOR y) XOR y
+        |:-:|:-:|:-:|:-:|
+        |F|F|F|F|
+        |F|V|V|F|
+        |V|F|V|V|
+        |V|V|F|V|
+    4. D'après la table de vérité précédente, on s'aperçoit que `(x XOR y) XOR y = x`, c'est-à-dire que deux `XOR` consécutifs par le même nombre s'annulent.
+    Pour déchiffrer le message crypté, il suffit donc d'effectuer un `XOR` du message crypté avec la clé.
+
+    **Partie 2**
+
+    Notez l'utilisation du «modulo» (opérateur `#!py %`) pour revenir au début de la clé.
+    ```python linenums='1'
+    def xor(a:str, b:str) -> str:
+        '''
+        revoie le résultat d'un XOR (ou exclusif) entre les caractères
+        a et b, après conversion en code Unicode
+        '''
+        return chr(ord(a) ^ ord(b))
+
+    def masque_jetable(message:str, cle:str) -> str:
+        '''
+        renvoie la chaîne chiffrée par la méthode du masque jetable.
+        message: chaîne à chiffrer
+        cle: clé de chiffrement
+
+        Si la longueur de cle est inférieure à celle de message, on revient au début de cle.
+        '''
+        texte_chiffre = ''
+        for k in range(len(message)):
+            texte_chiffre += xor(message[k], cle[k%len(cle)])
+        return texte_chiffre
+
+    ```
+    
