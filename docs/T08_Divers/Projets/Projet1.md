@@ -1,6 +1,6 @@
 # Projet 1
 
-## Sujet 1 : Life & Death
+## Le jeu de la vie de John Conway
 
 !!! example "Énoncé"
     On considère une grille - théoriquement infinie - dont les cases appellées *cellules* peuvent prendre deux états distincts : «vivante» ou «morte».
@@ -44,26 +44,28 @@
 
 
 !!! abstract "Consignes"
-    - Utiliser le module `pygame` pour animer la grille génération après génération.
+    - Le programme principal devra contenir deux classes: `Cellule` et `Jeu`.
+    - La classe `Jeu` devra contenur (entre autres):
+        + un attribut `grille`: un tableau d'objets `Cellule`
+        + une méthode `actualisation` (ou `update`) qui consistera à actualiser l'état de la grille (c'est à dire de chacune de ses cellules) ainsi qu'à afficher la grille.
     - L'état initial de la grille sera choisi aléatoirement.
-    - Le programme principal devra contenir deux classes: `Grille` et `Cellule`.
-    - La classe `Grille` contiendra une méthode `actualisation` (ou `update`) qui consistera à actualiser l'état de la grille (c'est à dire de chacune de ses cellules) ainsi qu'à afficher la grille.
+    - Utiliser le module `pygame` pour animer la grille génération après génération.
 
-        La boucle des événements sera donc réduite à (avec par exemple `G` instance de la classe `Grille`):
-        ```python linenums='1'
-        continuer = True
-        while continuer:
-            for evenement in pygame.event.get(): 
-                if evenement.type == QUIT:
-                    continuer = False
+    La boucle des événements sera donc réduite à (avec par exemple `j` instance de la classe `Jeu`):
+    ```python linenums='1'
+    continuer = True
+    while continuer:
+        for evenement in pygame.event.get(): 
+            if evenement.type == QUIT:
+                continuer = False
 
-            G.actualisation()
-            pygame.display.flip()
-            pygame.time.delay(100)
-        ```
-   
+        j.actualisation()
+        pygame.display.flip()
+        pygame.time.delay(100)
+    ```
 
 
+<!-- 
 ## Sujet 2: Promenade d'une puce
 
 !!! example "Énoncé"
@@ -92,4 +94,4 @@
             G.actualisation()
             pygame.display.flip()
 
-        ```
+        ``` -->
