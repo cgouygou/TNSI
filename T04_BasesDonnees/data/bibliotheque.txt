@@ -1,0 +1,33 @@
+Livres
+-
+titre string 
+éditeur string
+année int
+ISBN string PK
+
+Auteurs
+-
+id_auteur int
+nom string
+prénom string
+
+Auteur_de
+-
+id_auteur PK int FK >- Auteurs.id_auteur
+ISBN PK string FK >- Livres.ISBN
+
+Emprunts
+-
+ISBN int PK FK >- Livres.ISBN
+id_usager int FK >- Usagers.id_usager
+date_retour date
+
+
+Usagers
+-
+id_usager PK int
+nom string
+prénom string
+mail string
+age int
+adresse string
