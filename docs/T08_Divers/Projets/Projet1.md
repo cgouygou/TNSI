@@ -69,13 +69,15 @@
 
     |Item |Contenu|Points|
     |-----|-------|:----:|
-    |POO|Les classes sont correctement conçues et l'interface est cohérente et claire. L'utilisation de la POO est maîtrisée.|5|
+    |POO|Les classes sont correctement conçues et l'interface est cohérente et claire. L'utilisation de la POO est maîtrisée (utilisation de setters par ex.).|5|
     |Travail de groupe|Les tâches sont définies et réparties au sein du groupe|3|
     |Projet abouti|Le projet tourne sans erreur et répond aux consignes.|4|
     |Qualité du code|Code aéré, spécifié, lisible, noms de variables pertinents...|4|
     |Oral| Restitution orale|4|
     |Total||20|
     |Bonus|Code en :gb: |2|
+    |Malus|Code récupéré sur le web (ChatGPT, forums, github, etc) |-50, Game Over|
+
 <!-- 
 ## Sujet 2: Promenade d'une puce
 
