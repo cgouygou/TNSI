@@ -64,7 +64,18 @@
         pygame.time.delay(100)
     ```
 
+!!! info "Grille d'évaluation"
+    Sur ce projet, vous serez évalués sur la grille suivante:
 
+    |Item |Contenu|Points|
+    |-----|-------|:----:|
+    |POO|Les classes sont correctement conçues et l'interface est cohérente et claire. L'utilisation de la POO est maîtrisée.|5|
+    |Travail de groupe|Les tâches sont définies et réparties au sein du groupe|3|
+    |Projet abouti|Le projet tourne sans erreur et répond aux consignes.|4|
+    |Qualité du code|Code aéré, spécifié, lisible, noms de variables pertinents...|4|
+    |Oral| Restitution orale|4|
+    |Total||20|
+    |Bonus|Code en :gb: |2|
 <!-- 
 ## Sujet 2: Promenade d'une puce
 
