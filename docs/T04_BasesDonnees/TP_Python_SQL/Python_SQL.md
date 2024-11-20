@@ -252,7 +252,28 @@ Exécuter le code suivant et contrôler en même temps avec **DB Browser**.
 
         ![](../images/ezgif-ex1-2.gif){: .center} 
 
+    === "Aide"
+
+        Pour la gestion des choix, on pourra utiliser le code suivant:
+
+        ```python linenums='1'
+        go = True
+
+        while go:
+            choix = input("Menu \n1. Saisir des notes\n2. Consulter des notes\n3. Quitter\nVotre choix: ")
+            if choix == '1':
+                saisie()
+            elif choix == '2':
+                consultation()
+            else:
+                go = False
+        ```
+
+        Il vous faut donc écrire les fonctions `#!py saisie` et `#!py consultation` et à insérer ce code dans l'*architecture* de l'exemple donné.
+        
     === "Correction" 
+        {{ correction(False, 
+        "
         ```python
         import sqlite3
 
@@ -264,11 +285,11 @@ Exécuter le code suivant et contrôler en même temps avec **DB Browser**.
         
         # ---- début des instructions SQL
         #Création d'une table
-        c.execute("""
+        c.execute(\"\"\"
             CREATE TABLE IF NOT EXISTS devoir(
             nom TEXT,
             note INTEGER);
-            """)
+            \"\"\")
         
         def saisie():
             go = True
@@ -278,7 +299,7 @@ Exécuter le code suivant et contrôler en même temps avec **DB Browser**.
                     go = False
                 else:
                     note = int(input('Note ? '))
-                    c.execute("INSERT INTO devoir VALUES (?, ?);", [nom, note])
+                    c.execute(\"INSERT INTO devoir VALUES (?, ?);\", [nom, note])
         
         def consultation():
             go = True
@@ -287,16 +308,16 @@ Exécuter le code suivant et contrôler en même temps avec **DB Browser**.
                 if nom.lower() == 'q':
                     go = False
                 else:
-                    rq = c.execute("SELECT note FROM devoir WHERE nom = ?;", [nom]).fetchone()
+                    rq = c.execute(\"SELECT note FROM devoir WHERE nom = ?;\", [nom]).fetchone()
                     if rq is None:
-                        print("Elève inconnu")
+                        print(\"Elève inconnu\")
                     else:
-                        print("Note: ", rq[0])
+                        print(\"Note: \", rq[0])
         
         go = True
         
         while go:
-            choix = input("Menu \n1. Saisir des notes\n2. Consulter des notes\n3. Quitter\nVotre choix: ")
+            choix = input(\"Menu \n1. Saisir des notes\n2. Consulter des notes\n3. Quitter\nVotre choix: \")
             if choix == '1':
                 saisie()
             elif choix == '2':
@@ -312,24 +333,12 @@ Exécuter le code suivant et contrôler en même temps avec **DB Browser**.
         
         #Déconnexion
         connexion.close()
-
+        
         ```
+        "
+        ) }}
 
 
+        
+        
 
-!!! example "Mini-Projet"
-    === "Énoncé" 
-        Dans ce mini-projet, vous devez écrire un système d'authentification par login/mot de passe à un service qui permet de stocker une phrase secrète. Comme précédemment le menu doit contenir trois choix:
-
-        - **login** : s'authentifier puis afficher la phrase secrète. Proposer de changer cette phrase.
-        - **register**: s'enregistrer puis saisir la phrase secrète à stocker.
-        - **quit**: pour ... quitter le programme.
-
-        **Remarques:**
-
-        - les données doivent bien entendu être stockées dans une base de données.
-        - on ne doit pas pouvoir choisir un login déjà utilisé.
-        - les mots de passe doivent être hachés. Voir [ici](https://fr.wikipedia.org/wiki/Fonction_de_hachage){:target="_blank"}  pour le principe et [ici](https://docs.python.org/fr/3/library/hashlib.html){:target="_blank"} pour la fonction de hachage à utiliser.
-
-    === "Proposition de correction" 
-       
