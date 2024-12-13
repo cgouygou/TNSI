@@ -272,7 +272,7 @@ Exécuter le code suivant et contrôler en même temps avec **DB Browser**.
         Il vous faut donc écrire les fonctions `#!py saisie` et `#!py consultation` et à insérer ce code dans l'*architecture* de l'exemple donné.
         
     === "Correction" 
-        {{ correction(False, 
+        {{ correction(True, 
         "
         ```python
         import sqlite3
