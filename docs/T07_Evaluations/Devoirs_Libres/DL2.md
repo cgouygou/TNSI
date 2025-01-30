@@ -1,6 +1,10 @@
 # DL 0010: No space left on device
 
+**Énoncé inspiré de l'épreuve «Day 7» de l'[Advent of Code 2022](https://adventofcode.com/2022){:target="_blank"}.**
+
 *Thèmes abordés: commandes UNIX, structure d'arbre, POO, récursivité*
+
+![](../images/meme_space.jpg){: .center width=320} 
 
 Un ami vous confie - en tant qu'expert.e UNIX - un appareil qui dysfonctionne pour le réparer. Vous tentez d'exécuter une mise à jour du système mais vous obtenez le message d'erreur suivant:
 
@@ -8,7 +12,7 @@ Un ami vous confie - en tant qu'expert.e UNIX - un appareil qui dysfonctionne po
 Error: No space left on device
 ```
 
-Peut-être pouvez-vous supprimer des fichiers pour faire place à la mise à jour ?
+Peut-être pouvez-vous supprimer des fichiers pour faire de la place pour la mise à jour ?
 
 Vous naviguez sur le système de fichiers pour évaluer la situation et vous sauvegardez la sortie du terminal. Par exemple (les lignes qui commencent par `$` sont les commandes que vous avez exécutées):
 
@@ -68,7 +72,7 @@ Par exemple, la taille totale du répertoire `e` est 584 puisqu'il ne contient q
 
 !!! question "Question 2"
     1. Vérifier que la taille totale du répertoire `a` est 94853.
-    2. Donner la taille des répertoires `d` et `\`.
+    2. Donner la taille des répertoires `d` et `/`.
 
 Au travail maintenant. Vous optez pour la stratégie suivante:
 
@@ -76,71 +80,98 @@ Au travail maintenant. Vous optez pour la stratégie suivante:
 2. Parcourir le [fichier de sortie du terminal](../data/sortie_terminal.txt) pour construire les données.
 3. Analyser les données pour sélectionner seulement les répertoires dont la taille totale est inférieure à 100000.
 
-!!! question "Questions"
-    === "Question 3"
-        La classe `Repertoire`
+!!! question "Questions 3 à 6"
+    === "Question 3: les attributs"
+        La classe `Repertoire` comporte 4 attributs:
 
+        - un attribut `nom`, de type `#!py str`, correspondant au nom du répertoire (par exemple `'/'`, `'a'`, etc.) et donné en paramètre du constructeur;
+        - un attribut `parent`, de type `#!py Repertoire`, correspondant au répertoire parent (par exemple `'/'` pour `'a'`, `'a'` pour `'e'` et `#!py None` pour `'/'`) et donné en paramètre du constructeur;
+        - un attribut `enfants`, de type `#!py list` et vide par défaut, qui contiendra la liste des répertoires enfants;
+        - un attribut `fichiers`, de type `#!py list` et vide par défaut, qui contiendra **la taille** des fichiers directement contenus dans le répertoire.
+
+        Dans le code à compléter ci-dessous:
+
+        1. Compléter le constructeur `#!py __init__` de la classe `Repertoire`.
+        2. Dans la partie *Création des données*, instancier l'objet `racine` correspondant au répertoire... racine.
+
+    === "Question 4: les méthodes"
+        La classe `Repertoire` comporte 4 méthodes:
+
+        - une méthode `ajoute_fichier` qui prend en paramètre une taille de fichier et l'ajoute à l'attribut `fichiers`;
+        - une méthode `ajoute_enfant` qui prend en paramètre un répertoire et l'ajoute à l'attribut `enfants`;
+        - une méthode `selection_enfant` qui prend en paramètre un nom de répertoire et renvoie le répertoire parmi les enfants qui correspond à ce nom;
+        - une méthode `taille` qui calcule et renvoie la somme des tailles des fichiers contenus dans le répertoire et des tailles des répertoires enfants. Cette fonction est donc récursive.
+        
+
+        Compléter le code de ces 4 méthodes.
+
+        **Remarque:**  la fonction `#!py sum` renvoie la somme des éléments d'une liste donnée en paramètre.
+
+    === "Question 5: la création des données"
+
+    === "Question 6: l'analyse des données"
+
+
+??? question "Bonus"
+    L'espace total du disque est de 70000000. Pour installer la mise à jour, vous avez besoin d'un espace libre de 30000000.
+
+    Trouvez le nom du plus petit répertoire (en terme de taille) à supprimer pour pouvoir installer la mise à jour du système.
 
         
+
 !!! code "Code à compléter"
-    ```python
+    ```python linenums='1'
     #=======================#
     # Création de la classe #
     #=======================#
 
     class Repertoire:
-        def __init__(self, nom, p):
-            self.name = name
-            self.parent = p
-            self.enfants = []
-            self.fichiers = []
+        def __init__(self, , ):
+            self.name = 
+            self.parent = 
+            self.enfants = 
+            self.fichiers = 
 
-        def add_file(self, f):
-            self.files.append(f)
+        def ajoute_fichier(self, f:int):
+            ...
 
-        def add_child(self, d):
-            self.children.append(d)
+        def ajoute_enfant(self, rep:Repertoire):
+            ...
 
-        def size(self):
-            return sum(self.files) + sum([c.size() for c in self.children])
+        def selection_enfant(self, nom:str) -> Repertoire:
+            ...
 
-        def select_child(self, name:str) -> Directory:
-            for child in self.children:
-                if child.name == name:
-                    return child
+        def taille(self) -> int:
+            return sum(...) + sum([... for ... in self.enfants])
+
 
     #=======================#
     # Création des données  #
     #=======================#
 
     donnees = open("sortie_terminal.txt").read().splitlines()
-    home = Directory('/', None)
-    current_dir = home
+    donnees.pop(0)
+    racine = 
+    rep_courant = 
 
-    for line in data[1:]:
+    for ligne in donnees:
         if line == '$ cd ..':
-            current_dir = current_dir.parent
-        elif line[:5] == '$ cd ':
-            dir_name = line.split()[-1]
-            current_dir = current_dir.select_child(dir_name)
-        elif line == '$ ls':
+            rep_courant = 
+        elif ligne[:5] == '$ cd ':
+            nom_repertoire = 
+            rep_courant = 
+        elif ligne == '$ ls':
             pass
-        elif line[:3] == 'dir':
-            current_dir.add_child(Directory(line.split()[-1], current_dir))
+        elif ligne[:3] == 'dir':
+            ...
         else:
-            current_dir.add_file(int(line.split()[0]))
+            ...
+
 
     #==============================#
     # Parcours/analyse des données #
     #==============================#
     
-    small_sizes = []
-    def find_small_sizes(d):
-        s = d.size()
-        if s <= 100000:
-            small_sizes.append(s)
-        for child in d.children:
-            find_small_sizes(child)
-
-    find_small_sizes(home)
     ```
+
+
