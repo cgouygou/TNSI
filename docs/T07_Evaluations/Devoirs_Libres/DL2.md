@@ -6,7 +6,7 @@
 
 ![](../images/meme_space.jpg){: .center width=320} 
 
-Un ami vous confie - en tant qu'expert.e UNIX - un appareil qui dysfonctionne pour le réparer. Vous tentez d'exécuter une mise à jour du système mais vous obtenez le message d'erreur suivant:
+Un ami vous confie - en tant qu'expert·e UNIX - un appareil qui dysfonctionne pour le réparer. Vous tentez d'exécuter une mise à jour du système mais vous obtenez le message d'erreur suivant:
 
 ```bash
 Error: No space left on device
@@ -66,7 +66,7 @@ Compte tenu des commandes et de la sortie dans l'exemple ci-dessus, vous pouvez 
 
 Ici, il y a quatre répertoires : `/` (le répertoire racine), `a` et `d` (qui sont dans le répertoire `/`), et `e` (qui est dans `a`). Ces répertoires contiennent également des fichiers de différentes tailles.
 
-Puisque le disque est plein, votre première étape devrait probablement être de trouver des répertoires qui sont de bons candidats à la suppression. Pour ce faire, vous devez déterminer la taille totale de chaque répertoire. La taille totale d'un répertoire est la somme des tailles des fichiers qu'il contient, directement ou indirectement. Les répertoires eux-mêmes ne comptent pas comme ayant une taille intrinsèque.
+Puisque le disque est plein, votre première étape devrait probablement être de trouver des répertoires qui sont de bons candidats à la suppression. Pour ce faire, vous devez déterminer la taille totale de chaque répertoire. La taille totale d'un répertoire est la somme des tailles des fichiers qu'il contient directement, ou indirectement (c'est-à-dire dans ses sous-répertoires). Les répertoires eux-mêmes ne comptent pas comme ayant une taille intrinsèque.
 
 Par exemple, la taille totale du répertoire `e` est 584 puisqu'il ne contient qu'un seul fichier de taille 584.
 
@@ -76,7 +76,7 @@ Par exemple, la taille totale du répertoire `e` est 584 puisqu'il ne contient q
 
 Au travail maintenant. Vous optez pour la stratégie suivante:
 
-1. Choisir un modèle adapté pour représenter les données (vous choisissez de construire une classe `Repertoire`).
+1. Choisir un modèle adapté pour représenter les données (vous choisissez de construire une classe `Repertoire` qui reprend une structure d'arbre).
 2. Parcourir le [fichier de sortie du terminal](../data/sortie_terminal.txt) pour construire les données.
 3. Analyser les données pour sélectionner seulement les répertoires dont la taille totale est inférieure à 100000.
 
@@ -105,12 +105,58 @@ Au travail maintenant. Vous optez pour la stratégie suivante:
 
         Compléter le code de ces 4 méthodes.
 
-        **Remarque:**  la fonction `#!py sum` renvoie la somme des éléments d'une liste donnée en paramètre.
+        **Remarque:**  pour la méthode `taille`, on peut utiliser la fonction `#!py sum` qui renvoie la somme des éléments d'une liste donnée en paramètre. Vous pouvez réécrire complètement cette méthode sans l'utiliser, ou l'utiliser pour l'écrire en une seule ligne avec une liste en compréhension.
 
     === "Question 5: la création des données"
+        Il s'agit maintenant de lire le fichier texte contenant les instructions et leurs résultats en console.
+
+        Pour cela le fichier est chargé dans une variable `donnees` qui contient **une liste** dont les éléments sont les chaînes de caractères correspondant à chaque ligne du fichier. L'instruction suivante supprime la première ligne, inutile ici.
+
+        Avec l'exemple de l'introduction, la variable `donnees` serait donc la suivante:
+
+        ```python linenums='1'
+        ["$ ls", "dir a", "14848514 b.txt", "8504156 c.dat", "dir d", "$ cd a", ..., "7214296 k"]
+        ```
+
+        Le principe est bien entendu de parcourir cette liste, et d'agir en fonction de la chaîne de caractères lue: ajouter un répertoire enfant, ajouter des fichiers ou se déplacer dans l'arborescence des répertoires. **Il est donc impératif de gérer le répertoire courant !**
+
+        - la chaîne **est** `#!py "$ cd .."`: on gère le répertoire courant;
+        - la chaîne **commence par** `#!py "$ cd"` : on gère le répertoire courant en sélectionnant le répertoire grâce son nom;
+        - la chaîne est `#!py $ ls`: il n'y a rien à faire:
+        - la chaîne **commence par** `#!py "$ dir"` : on ajoute un répertoire enfant;
+        - sinon la chaîne correspond à un fichier...
+        
+        !!! code "Rappel"
+            La méthode `#!py split` permet de scinder une chaîne de caractères sur les caractères espaces et de récupérer une liste des «morceaux». Voir [ici](https://cgouygou.github.io/1NSI/T08_Extras/4Divers/4Chaines/Strings/){:target="_blank"} par exemple.
+
+            En particulier, `#!py ligne.split()[0]` permet de récupérer la chaîne des caractères de la variable `ligne` jusqu'au premier caractère espace, et `#!py ligne.split()[-1]` permet de récupérer la chaîne des caractères de la variable `ligne` du dernier caractère espace jusqu'à la fin:
+
+            ```python
+            >>> ligne = "la nsi c'est la vie"
+            >>> ligne.split()
+            ["la", "nsi", "c'est", "la", "vie"]
+            >>> ligne.split()[0]
+            "la"
+            >>> ligne.split()[-1]
+            "vie"
+            ```
+        
+        Compléter la partie *Création des données*.
 
     === "Question 6: l'analyse des données"
+        Maintenant que l'arborescence est construite, on peut donc enfin déterminer les répertoires dont la taille est inférieure à une taille donnée (ici 100000).
 
+        On va donc écrire une fonction `cherche_petit_repertoire` qui prend en paramètre un objet de classe `Repertoire` et un entier `n` et qui va chercher dans le répertoire donné en paramètre les répertoires dont la taille est inférieure (ou égale) à `n`. Cette fonction **ne renvoie rien**, elle ajoute à la variable (globale) `petits_repertoires` de type `#!py list` les tailles inférieures à `n`trouvées:
+
+        - si la taille du répertoire est inférieure à `n`, on l'ajoute;
+        - on recommence avec les enfants du répertoire.
+
+        Compléter la partie *Parcours/analyse des données*.
+
+        **Indice:** après avoir lancé votre programme, la variable `petits_repertoires` doit avoir une longueur de 26. Le plus petit élément est 23754 et le plus grand est 95112.
+
+!!! question "Question 7"
+    La classe `Repertoire` représente une structure d'arbre, adaptée pour l'exercice. À quel type de parcours correspond la fonction `cherche_petit_repertoire`?
 
 ??? question "Bonus"
     L'espace total du disque est de 70000000. Pour installer la mise à jour, vous avez besoin d'un espace libre de 30000000.
@@ -121,16 +167,21 @@ Au travail maintenant. Vous optez pour la stratégie suivante:
 
 !!! code "Code à compléter"
     ```python linenums='1'
+    
+    # Dans ce code à compléter, les ... sont donnés à titre indicatif.
+    # Si vous avez besoin de plus de lignes de code, ajoutez-en, ce ne sera pas pénalisé.
+       
+    
     #=======================#
     # Création de la classe #
     #=======================#
 
     class Repertoire:
         def __init__(self, , ):
-            self.name = 
-            self.parent = 
-            self.enfants = 
-            self.fichiers = 
+            self.name = ...
+            self.parent = ...
+            self.enfants = ...
+            self.fichiers = ...
 
         def ajoute_fichier(self, f:int):
             ...
@@ -142,7 +193,10 @@ Au travail maintenant. Vous optez pour la stratégie suivante:
             ...
 
         def taille(self) -> int:
-            return sum(...) + sum([... for ... in self.enfants])
+            s = sum(...)
+            for enfant in ... :
+                s += ...
+            return s
 
 
     #=======================#
@@ -151,15 +205,15 @@ Au travail maintenant. Vous optez pour la stratégie suivante:
 
     donnees = open("sortie_terminal.txt").read().splitlines()
     donnees.pop(0)
-    racine = 
-    rep_courant = 
+    racine = ...
+    rep_courant = ...
 
     for ligne in donnees:
-        if line == '$ cd ..':
-            rep_courant = 
+        if ligne == '$ cd ..':
+            rep_courant = ...
         elif ligne[:5] == '$ cd ':
-            nom_repertoire = 
-            rep_courant = 
+            nom_repertoire = ...
+            rep_courant = ...
         elif ligne == '$ ls':
             pass
         elif ligne[:3] == 'dir':
@@ -172,6 +226,16 @@ Au travail maintenant. Vous optez pour la stratégie suivante:
     # Parcours/analyse des données #
     #==============================#
     
+    petits_repertoires = []
+    def cherche_petit_repertoire(rep: Repertoire, n:int):
+        ...
+        ...
+        ...
+        ...
+        ...
+
+    cherche_petit_repertoire(..., ...)
+    print(petits_repertoires)
     ```
 
 

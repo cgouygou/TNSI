@@ -11,7 +11,7 @@
     Durant toute l'année, il vous sera proposé quelques sujets de mini-exposés (moins de 5 minutes) à préparer en autonomie.
 
     - **Blue Team vs. Red Team** → Télio - 17/09/24
-    - **Injonctions SQL** → Zachary
+    - **Injections SQL** → Zachary - 21/01/25
     - **Le bug de Minecraft**
     - **Heartbleed**
     - **Test de Turing**
