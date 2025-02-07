@@ -123,7 +123,7 @@ Au travail maintenant. Vous optez pour la stratégie suivante:
         - la chaîne **est** `#!py "$ cd .."`: on gère le répertoire courant;
         - la chaîne **commence par** `#!py "$ cd"` : on gère le répertoire courant en sélectionnant le répertoire grâce son nom;
         - la chaîne est `#!py $ ls`: il n'y a rien à faire:
-        - la chaîne **commence par** `#!py "$ dir"` : on ajoute un répertoire enfant;
+        - la chaîne **commence par** `#!py "dir"` : on ajoute un répertoire enfant;
         - sinon la chaîne correspond à un fichier...
         
         !!! code "Rappel"
