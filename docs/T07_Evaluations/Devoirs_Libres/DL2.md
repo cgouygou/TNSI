@@ -239,7 +239,7 @@ Au travail maintenant. Vous optez pour la stratégie suivante:
     ```
 
 
-!!! check "Proposition de correction"
+!!! success "Proposition de correction"
 
     **Question 1:** 
 
