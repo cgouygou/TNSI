@@ -239,3 +239,91 @@ Au travail maintenant. Vous optez pour la stratégie suivante:
     ```
 
 
+!!! check "Proposition de correction"
+    **Question 1:** 
+
+    La commande `cd` sert à changer de répertoire courant et la commande `ls` à lister le contenu d'un répertoire.
+
+    **Question 2:** 
+    
+    - répertoire `a`: 584 + 29116 + 2557 + 62596 = 94853
+    - répertoire `d`: 4060174 + 8033020 + 5626152 + 7214296 = 24933642
+    - répertoire `/`: 94853 + 24933642 + 14848514 + 8504156 = 48381165
+
+    **Question 7:**
+
+    La fonction `cherche_petit_repertoire` correspond à un parcours en profondeur **préfixe**.
+
+    ** Questions 3 à 6:**
+    
+    ```python linenums='1'
+    #=======================#
+    # Création de la classe #
+    #=======================#
+
+    class Repertoire:
+        def __init__(self, nom, parent):
+            self.nom = nom
+            self.parent = parent
+            self.enfants = []
+            self.fichiers = []
+
+        def ajoute_fichier(self, f:int):
+            self.fichiers.append(f)
+
+        def ajoute_enfant(self, rep):
+            self.enfants.append(rep)
+
+        def selection_enfant(self, nom:str):
+            for enfant in self.enfants:
+                if enfant.nom == nom:
+                    return enfant
+
+        def taille(self) -> int:
+            s = sum(self.fichiers)
+            for enfant in self.enfants:
+                s += enfant.taille()
+            return s
+
+    #=======================#
+    # Création des données  #
+    #=======================#
+
+    donnees = open("sortie_terminal.txt").read().splitlines()
+    donnees.pop(0)
+    racine = Repertoire('/', None)
+    rep_courant = racine
+
+    for ligne in donnees:
+        if ligne == '$ cd ..':
+            rep_courant = rep_courant.parent
+        elif ligne[:5] == '$ cd ':
+            nom_repertoire = ligne.split()[-1]
+            rep_courant = rep_courant.selection_enfant(nom_repertoire)
+        elif ligne == '$ ls':
+            pass
+        elif ligne[:3] == 'dir':
+            nom_repertoire = ligne.split()[-1]
+            enfant = Repertoire(nom_repertoire, rep_courant)
+            rep_courant.ajoute_enfant(enfant)
+        else:
+            fichier = int(ligne.split()[0])
+            rep_courant.ajoute_fichier(fichier)
+
+    #==============================#
+    # Parcours/analyse des données #
+    #==============================#
+
+    petits_repertoires = []
+    def cherche_petit_repertoire(rep: Repertoire, n:int):
+        taille = rep.taille()
+        if taille <= n:
+            petits_repertoires.append(taille)
+        for enfant in rep.enfants:
+            cherche_petit_repertoire(enfant, n)
+
+    cherche_petit_repertoire(racine, 100000)
+    print(petits_repertoires)
+
+
+    ```
