@@ -240,11 +240,12 @@ Au travail maintenant. Vous optez pour la stratégie suivante:
 
 
 !!! check "Proposition de correction"
+
     **Question 1:** 
 
     La commande `cd` sert à changer de répertoire courant et la commande `ls` à lister le contenu d'un répertoire.
 
-    **Question 2:** 
+    **Question 2:**
     
     - répertoire `a`: 584 + 29116 + 2557 + 62596 = 94853
     - répertoire `d`: 4060174 + 8033020 + 5626152 + 7214296 = 24933642
@@ -254,8 +255,8 @@ Au travail maintenant. Vous optez pour la stratégie suivante:
 
     La fonction `cherche_petit_repertoire` correspond à un parcours en profondeur **préfixe**.
 
-    ** Questions 3 à 6:**
-    
+    **Questions 3 à 6:**
+
     ```python linenums='1'
     #=======================#
     # Création de la classe #
