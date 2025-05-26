@@ -62,7 +62,7 @@
 
 === "Banque de sujets"
     
-    :new: Vous pouvez retrouver en libre accès les 47 sujets de la session **2024** à l'épreuve pratique de NSI: [https://cyclades.education.gouv.fr/delos/public/listPublicECE](https://cyclades.education.gouv.fr/delos/public/listPublicECE){:target="_blank"}. **Attention, certains sujets peuvent comporter des erreurs.**
+    :new: Vous pouvez retrouver en libre accès les 47 sujets de la session **2024** à l'épreuve pratique de NSI: [https://sujets.examens-concours.gouv.fr/delos/public/bgt/nsi](https://sujets.examens-concours.gouv.fr/delos/public/bgt/nsi){:target="_blank"}. **Attention, certains sujets peuvent comporter des erreurs.**
 
     - Les sujets **2022** à télécharger en [un seul fichier pdf](data/BNS_2022_total_V2.pdf).
     - Les sujets **2023** à télécharger en [un seul fichier pdf](data/BNS_2023_pdf_unique.pdf).
