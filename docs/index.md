@@ -10,13 +10,13 @@
 !!! info "Mini-exposés"
     Durant toute l'année, il vous sera proposé quelques sujets de mini-exposés (moins de 5 minutes) à préparer en autonomie.
 
-    - **Blue Team vs. Red Team** → Télio - 17/09/24
-    - **Injections SQL** → Zachary - 21/01/25
+    - **Blue Team vs. Red Team** 
+    - **Injections SQL** 
     - **Le bug de Minecraft**
     - **Heartbleed**
     - **Test de Turing**
     - **Richard Stallman et le driver de l'imprimante**
-    - **Panne informatique mondiale de juillet 2024** → Younès
+    - **Panne informatique mondiale de juillet 2024**
 
 
 
