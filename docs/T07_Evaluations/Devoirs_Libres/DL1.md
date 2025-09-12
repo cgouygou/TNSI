@@ -115,7 +115,7 @@ Les fonctions Python permettant d'obtenir le code Unicode d'un caractère et ré
 Résoudre le pydéfi suivant : [La clé endommagée](https://pydefis.callicode.fr/defis/MasqueJetable/txt){:target="_blank"} 
 
 
-
+<!--
 !!! check "Proposition de correction"
     **Partie 1**
 
@@ -155,4 +155,4 @@ Résoudre le pydéfi suivant : [La clé endommagée](https://pydefis.callicode.f
         return texte_chiffre
 
     ```
-    
+-->
