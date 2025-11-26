@@ -5,6 +5,7 @@
 
 [Lien vers le site de Première.](https://cgouygou.github.io/1NSI/){:target="_blank"}
 
+[Pour s'entraîner et réviser les bases](https://codex.forge.apps.education.fr/){:target="_blank"} 
 <br>
 
 !!! info "Mini-exposés"
