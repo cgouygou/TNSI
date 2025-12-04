@@ -272,72 +272,7 @@ Exécuter le code suivant et contrôler en même temps avec **DB Browser**.
         Il vous faut donc écrire les fonctions `#!py saisie` et `#!py consultation` et à insérer ce code dans l'*architecture* de l'exemple donné.
         
     === "Correction"
-        {{ correction(True, 
-        "
-        ```python
-        import sqlite3
-
-        #Connexion
-        connexion = sqlite3.connect('mondevoir.db')
-        
-        #Récupération d'un curseur
-        c = connexion.cursor()
-        
-        # ---- début des instructions SQL
-        #Création d'une table
-        c.execute(\"\"\"
-            CREATE TABLE IF NOT EXISTS devoir(
-            nom TEXT,
-            note INTEGER);
-            \"\"\")
-        
-        def saisie():
-            go = True
-            while go:
-                nom = input('Nom ? ')
-                if nom.lower() == 'q':
-                    go = False
-                else:
-                    note = int(input('Note ? '))
-                    c.execute(\"INSERT INTO devoir VALUES (?, ?);\", [nom, note])
-        
-        def consultation():
-            go = True
-            while go:
-                nom = input('Nom ? ')
-                if nom.lower() == 'q':
-                    go = False
-                else:
-                    rq = c.execute(\"SELECT note FROM devoir WHERE nom = ?;\", [nom]).fetchone()
-                    if rq is None:
-                        print(\"Elève inconnu\")
-                    else:
-                        print(\"Note: \", rq[0])
-        
-        go = True
-        
-        while go:
-            choix = input(\"Menu\n1. Saisir des notes\n2. Consulter des notes\n3. Quitter\nVotre choix: \")
-            if choix == '1':
-                saisie()
-            elif choix == '2':
-                consultation()
-            else:
-                go = False
-                
-                
-        # ---- fin des instructions SQL
-        
-        #Validation
-        connexion.commit()
-        
-        #Déconnexion
-        connexion.close()
-        
-        ```
-        "
-        ) }}
-
+  
 
         
         
