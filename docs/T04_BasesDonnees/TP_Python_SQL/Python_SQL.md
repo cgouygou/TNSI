@@ -31,12 +31,14 @@ Exécuter le code suivant et contrôler en même temps avec **DB Browser**.
         c.execute("INSERT INTO prof VALUES (1, 'Gouygou', 'NSI');")
 
         autre_profs = [(2, 'Morel', 'Maths'),
-                       (3, 'Philippe', 'Maths'),
-                       (4, 'Atingdobe', 'Philosophie'),
+                       (3, 'Vauzelle', 'Maths'),
+                       (4, 'Maslowski', 'Philosophie'),
                        (5, 'Renault', 'Arts Plastiques'),
-                       (6, 'Sartorel', 'Histoire-Géographie'),
-                       (7, 'Touchais', 'Anglais'),
-                       (8, 'Gouygou', 'Maths')]
+                       (6, 'Larose', 'Histoire-Géographie'),
+                       (7, 'Cornette', 'Anglais'),
+                       (8, 'Gouygou', 'Maths'),
+                       (9, 'Ravon', 'Français')
+                       ]
         c.executemany("INSERT INTO prof VALUES (?, ?, ?)", autre_profs)
 
         requete = c.execute("SELECT id, nom FROM prof WHERE matière = 'Maths';")
