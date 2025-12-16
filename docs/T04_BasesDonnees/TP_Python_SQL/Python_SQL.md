@@ -281,7 +281,72 @@ Exécuter le code suivant et contrôler en même temps avec **DB Browser**.
 
         Il vous faut donc écrire les fonctions `#!py saisie` et `#!py consultation` et à insérer ce code dans l'*architecture* de l'exemple donné.
         
-    === "Correction"
+    === "Proposition de correction"
+
+        ```python linenums='1'
+        import sqlite3
+
+        #Connexion
+        connexion = sqlite3.connect('mabase.db')
+        
+        #Récupération d'un curseur
+        c = connexion.cursor()
+        
+        # ---- début des instructions SQL
+        #Création d'une table
+        c.execute("""
+            CREATE TABLE IF NOT EXISTS devoir(
+            nom TEXT PRIMARY KEY,
+            note INTEGER);
+            """)
+        
+        def saisie():
+            go = True
+            while go:
+                nom = input('Nom ? ')
+                if nom.lower() == 'q':
+                    go = not go
+                else:
+                    note = int(input('Note ? '))
+                    if c.execute("SELECT * FROM devoir WHERE nom = ?", [nom]).fetchone() is None:
+                        c.execute("INSERT INTO devoir VALUES (?, ?)", [nom, note])
+                    else:
+                        print(f'Note déjà attribuée à {nom}')
+        
+        def consultation():
+            go = True
+            while go:
+                nom = input('Nom ? ')
+                if nom.lower() == 'q':
+                    go = not go
+                else:
+                    resultat = c.execute("SELECT note FROM devoir WHERE nom = ?", [nom])
+                    premier_tuple = resultat.fetchone()
+                    if premier_tuple == None:
+                        print("Elève inconnu")
+                    else:
+                        note = premier_tuple[0]
+                        print(note)
+                
+                
+        go = True
+        while go:
+            choix = input("Menu \n1. Saisir des notes\n2. Consulter des notes\n3. Quitter\nVotre choix: ")
+            if choix == '1':
+                saisie()
+            elif choix == '2':
+                consultation()
+            else:
+                go = False
+        
+        # ---- fin des instructions SQL
+        
+        #Validation
+        connexion.commit()
+        
+        #Déconnexion
+        connexion.close()
+        ```
   
 
         
