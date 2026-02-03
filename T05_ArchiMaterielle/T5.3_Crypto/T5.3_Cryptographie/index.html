@@ -1,0 +1,4118 @@
+<!DOCTYPE html><html lang="fr" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://cgouygou.github.io/TNSI/T05_ArchiMaterielle/T5.3_Crypto/T5.3_Cryptographie/">
+      
+      
+        <link rel="prev" href="../../T5.2_Processus/T5.2_Processus/">
+      
+      
+        <link rel="next" href="../../T5.4_Puce/T5.1_Puce/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../xtra/favicon_orange.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>T5.3 Cryptographie - Cours de Terminale NSI - M. Gouygou</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+  
+  
+    
+      
+      
+    
+  
+  
+  <style>:root{--md-admonition-icon--note:url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20512%20512%22%3E%3C%21--%21%20Font%20Awesome%20Free%207.1.0%20by%20%40fontawesome%20-%20https%3A//fontawesome.com%20License%20-%20https%3A//fontawesome.com/license/free%20%28Icons%3A%20CC%20BY%204.0%2C%20Fonts%3A%20SIL%20OFL%201.1%2C%20Code%3A%20MIT%20License%29%20Copyright%202025%20Fonticons%2C%20Inc.--%3E%3Cpath%20d%3D%22M471.6%2021.7c-21.9-21.9-57.3-21.9-79.2%200L368%2046.1l97.9%2097.9%2024.4-24.4c21.9-21.9%2021.9-57.3%200-79.2zm-299.2%20220c-6.1%206.1-10.8%2013.6-13.5%2021.9l-29.6%2088.8c-2.9%208.6-.6%2018.1%205.8%2024.6s15.9%208.7%2024.6%205.8l88.8-29.6c8.2-2.7%2015.7-7.4%2021.9-13.5L432%20177.9%20334.1%2080zM96%2064c-53%200-96%2043-96%2096v256c0%2053%2043%2096%2096%2096h256c53%200%2096-43%2096-96v-96c0-17.7-14.3-32-32-32s-32%2014.3-32%2032v96c0%2017.7-14.3%2032-32%2032H96c-17.7%200-32-14.3-32-32V160c0-17.7%2014.3-32%2032-32h96c17.7%200%2032-14.3%2032-32s-14.3-32-32-32z%22/%3E%3C/svg%3E');}</style>
+
+
+
+    
+    
+    
+      
+    
+    <script src="../../../xtra/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../../xtra/gifplayer/gif-player.es6.js" defer async></script>
+    <!-- Load CDNs : Pyodide (Python in WASM), Ace (Editor) and JQuery (Terminal) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ext-language_tools.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.js"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.17.0/full/pyodide.asm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.terminal@2.23.0/js/jquery.terminal.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/jquery.terminal@2.23.0/css/jquery.terminal.min.css" rel="stylesheet">
+
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../xtra/stylesheets/pyoditeur.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="deep-orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#t53-cryptographie" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href="../../.." title="Cours de Terminale NSI - M. Gouygou" class="md-header__button md-logo" aria-label="Cours de Terminale NSI - M. Gouygou" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M64 96c0-35.3 28.7-64 64-64h384c35.3 0 64 28.7 64 64v240h-64V96H128v240H64zM0 403.2C0 392.6 8.6 384 19.2 384h601.6c10.6 0 19.2 8.6 19.2 19.2 0 42.4-34.4 76.8-76.8 76.8H76.8C34.4 480 0 445.6 0 403.2M281 209l-31 31 31 31c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-48-48c-9.4-9.4-9.4-24.6 0-33.9l48-48c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9zm112-34 48 48c9.4 9.4 9.4 24.6 0 33.9l-48 48c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l31-31-31-31c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0z"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cours de Terminale NSI - M. Gouygou
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              T5.3 Cryptographie
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="deep-orange" aria-label="Mode sombre" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mode sombre" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="deep-orange" aria-label="Mode clair" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mode clair" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/cgouygou/TNSI" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    cgouygou/TNSI
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Accueil
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../T01_StructuresDonnees/accueil/" class="md-tabs__link">
+          
+  
+  
+  T1 Structures de données
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../T02_Programmation/TP0_corrige/" class="md-tabs__link">
+          
+  
+  
+  T2 Programmation
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../T03_Algorithmique/accueil/" class="md-tabs__link">
+          
+  
+  
+  T3 Algorithmique
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../T04_BasesDonnees/accueil/" class="md-tabs__link">
+          
+  
+  
+  T4 Bases de données
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../accueil/" class="md-tabs__link">
+          
+  
+  
+  T5 Architecture matérielle
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../T06_BAC/bac/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  BAC NSI
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../T07_Evaluations/accueil_eval/" class="md-tabs__link">
+          
+  
+  
+  Évaluations
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../T08_Divers/01_GitHub/Github/" class="md-tabs__link">
+          
+  
+  
+  Projets
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../T09_Extras/Dijkstra/" class="md-tabs__link">
+          
+  
+  
+  Extras
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Cours de Terminale NSI - M. Gouygou" class="md-nav__button md-logo" aria-label="Cours de Terminale NSI - M. Gouygou" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M64 96c0-35.3 28.7-64 64-64h384c35.3 0 64 28.7 64 64v240h-64V96H128v240H64zM0 403.2C0 392.6 8.6 384 19.2 384h601.6c10.6 0 19.2 8.6 19.2 19.2 0 42.4-34.4 76.8-76.8 76.8H76.8C34.4 480 0 445.6 0 403.2M281 209l-31 31 31 31c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-48-48c-9.4-9.4-9.4-24.6 0-33.9l48-48c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9zm112-34 48 48c9.4 9.4 9.4 24.6 0 33.9l-48 48c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l31-31-31-31c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0z"></path></svg>
+
+    </a>
+    Cours de Terminale NSI - M. Gouygou
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/cgouygou/TNSI" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    cgouygou/TNSI
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Accueil
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T1 Structures de données
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    T1 Structures de données
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T01_StructuresDonnees/accueil/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thème 1 : Structures de données
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T01_StructuresDonnees/TP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP d'introduction: le crêpier psycho-rigide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T01_StructuresDonnees/T1.1_Listes/T1.1_Listes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T1.1 Listes chaînées
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T01_StructuresDonnees/T1.2_FifoLifo/T1.2_FifoLifo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T1.2 Piles et Files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T01_StructuresDonnees/T1.3_Dictionnaires/T1.3_Dictionnaires/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T1.3 Dictionnaires
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6">
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T1.4 Arbres
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    T1.4 Arbres
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T01_StructuresDonnees/T1.4_Arbres/T1.4.1_Arbres/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T1.4.1 Généralités sur les arbres
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T01_StructuresDonnees/T1.4_Arbres/T1.4.2_Arbres_binaires/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T1.4.2 Arbres binaires
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T01_StructuresDonnees/T1.4_Arbres/T1.4_TP1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ▶ TP Arbres binaires
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T01_StructuresDonnees/T1.4_Arbres/T1.4.3_ABR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T1.4.3 Arbres Binaires de Recherche (ABR)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7">
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T1.5 Graphes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    T1.5 Graphes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T01_StructuresDonnees/T1.5_Graphes/T1.5.1_Graphes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T1.5.1 Graphes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T01_StructuresDonnees/T1.5_Graphes/T1.5.2_Parcours_graphes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T1.5.2 Parcours de graphes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T01_StructuresDonnees/T1.5_Graphes/T1.5.3_TP_Labyrinthe/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ▶ TP Labyrinthe
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T2 Programmation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    T2 Programmation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T02_Programmation/TP0_corrige/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Corrigé du TP Zéro
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T02_Programmation/accueil/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thème 2 : Langages et Programmation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T2.1 POO
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    T2.1 POO
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T02_Programmation/T2.1_POO/T2.1_TP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP : introduction à Pygame
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T02_Programmation/T2.1_POO/T2.1_POO1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T2.1 POO : Programmation Orientée Objet (part one)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T02_Programmation/T2.1_POO/T2.1_Exercices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T2.1 POO: Exercices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T02_Programmation/T2.1_POO/T2.1_POO2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T2.1 POO (part two)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T02_Programmation/T2.2_Recursivite/T2.2_Recursivite/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T2.2 Récursivité
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T3 Algorithmique
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    T3 Algorithmique
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T03_Algorithmique/accueil/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thème 3 : Algorithmique
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T03_Algorithmique/T3.1_Diviser/T3.1_Diviser/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T3.1 Diviser pour régner
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T03_Algorithmique/T3.2_ProgDyn/T3.2_ProgDyn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T3.2 Programmation dynamique
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T03_Algorithmique/T3.3_Texte/T3.3_RechercheTexte/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T3.3 Recherche textuelle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T4 Bases de données
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    T4 Bases de données
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T04_BasesDonnees/accueil/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thème 4 : Bases de données
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T04_BasesDonnees/prequel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prequel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T04_BasesDonnees/T4.1_ModeleRel/T4.1_ModeleRel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T4.1 Modèle relationnel
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T04_BasesDonnees/T4.2_SBGD/T4.2_SGBD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T4.2 SGBD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_5">
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T4.3 SQL
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    T4.3 SQL
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T04_BasesDonnees/T4.3_SQL/T4.3_SQL1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T4.3 Langage SQL (partie 1)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T04_BasesDonnees/T4.3_SQL/T4.3_SQL2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T4.3 Langage SQL (partie 2)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_6">
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercices
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Exercices
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T04_BasesDonnees/Exercices/Exercices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercices interactifs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T04_BasesDonnees/Exercices/Exo1_22MEJ2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercice BAC 1 : Base de données musicale
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T04_BasesDonnees/Exercices/Exo2_22CEJ1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exercice BAC 2: Mesures du réchauffement climatique
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T04_BasesDonnees/TP_Python_SQL/Python_SQL/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TP Python et SQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T5 Architecture matérielle
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    T5 Architecture matérielle
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../accueil/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thème 5 : Architecture matérielle
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T5.1_Routage/T5.1_Protocoles_routage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T5.1 Protocoles de routage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T5.2_Processus/T5.2_Processus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T5.2 Gestion des processus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T5.3 Cryptographie
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T5.3 Cryptographie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-chiffrement-symetrique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Chiffrement symétrique
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-chiffrement-asymetrique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Chiffrement asymétrique
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Chiffrement asymétrique">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-echange-de-cles-de-diffie-hellman" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Échange de clés de Diffie-Hellman
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-cryptographie-a-cle-publique" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Cryptographie à clé publique
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-authentification-le-double-cadenas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Authentification: le double cadenas
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-chiffrement-rsa" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Chiffrement RSA
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-https" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. HTTPS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-exercices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Exercices
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../T5.4_Puce/T5.1_Puce/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    T5.4 Systèmes sur puce
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T06_BAC/bac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BAC NSI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Évaluations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Évaluations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/accueil_eval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Évaluations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2">
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Devoirs Libres
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Devoirs Libres
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Libres/accueil/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Devoirs en temps libre
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Libres/DL1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DL 0001 : le masque jetable
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Libres/DL2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DL 0010 (sujet 25AN1J1 - exercice 2 modifié)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3">
+        
+          
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Devoirs Surveillés
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Devoirs Surveillés
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Surveill%C3%A9s/accueil/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Devoirs surveillés
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Surveill%C3%A9s/DS2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DS0010 - Corrigé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T07_Evaluations/Devoirs_Surveill%C3%A9s/DS4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DS0100 - Corrigé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
+        
+          
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projets
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projets
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T08_Divers/01_GitHub/Github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Github
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2">
+        
+          
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projets
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projets
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T08_Divers/Projets/Projet1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projet 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T08_Divers/Projets/Projet2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    (Mini-) Projet 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10">
+        
+          
+          <label class="md-nav__link" for="__nav_10" id="__nav_10_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extras
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Extras
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T09_Extras/Dijkstra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Algorithme de Dijkstra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T09_Extras/Hachage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fonctions de hachage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T09_Extras/Image/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manipulation d'images avec PIL (pillow)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../T09_Extras/Trucs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Trucs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+    
+                  
+
+
+  
+  
+
+
+<h1 id="t53-cryptographie">T5.3 Cryptographie<a class="headerlink" href="#t53-cryptographie" title="Permanent link">⚓︎</a></h1>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/meme_crypto.jpeg" data-desc-position="bottom"><img alt="" class="center" src="../../images/meme_crypto.jpeg" width="480"></a> </p>
+<h2 id="1-chiffrement-symetrique">1. Chiffrement symétrique<a class="headerlink" href="#1-chiffrement-symetrique" title="Permanent link">⚓︎</a></h2>
+<div class="admonition history">
+<p class="admonition-title">Brève historique de la cryptographie</p>
+<p>La <em>cryptographie</em> est la discipline qui consiste à chiffrer et déchiffrer des messages afin de les protéger en les rendant secrets. La <em>cryptanalyse</em> est la discpline qui analyse les messages chiffrés (appelés aussi <em>cryptogrammes</em>) afin de les déchiffrer.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/scytale.png" data-desc-position="bottom"><img alt="" class="center" src="../../images/scytale.png" width="320"></a> </p>
+<p>On trouve des utilisations de cryptographie depuis l'antiquité, comme par exemple l'utilisation d'une <a href="https://fr.wikipedia.org/wiki/Scytale" target="_blank">scytale</a> ou encore le célèbre  <a href="https://fr.wikipedia.org/wiki/Chiffrement_par_d%C3%A9calage" target="_blank">chiffre de César</a> vu en classe de première qui consiste à effectuer un décalage des lettres du message, d'un nombre de lettres fixé à l'avance qui constitue la <strong>clé</strong> du système.</p>
+<p>Bien d'autres procédés ont été inventés par la suite (lire à ce sujet l'excellent <em>Histoire des codes secrets</em>, de Simon Singh, Le Livre de Poche, disponible à la médiathèque du lycée) à des fins bien souvent militaires qui nécessitaient une grande confidentialité...</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/hcs_simonsingh.jpg" data-desc-position="bottom"><img alt="" class="center" src="../../images/hcs_simonsingh.jpg" width="160"></a> </p>
+<p>En 1586 <a href="https://fr.wikipedia.org/wiki/Chiffre_de_Vigen%C3%A8re" target="_blank">Blaise de Vigènere</a>  met au pont un chiffrement <em>polyalphabétique</em> qui résistera près de 3 siècles. Le principe est de choisir une clé (par exemple NSI) et d'utiliser successivement un chiffre de César avec N pour la première lettre, puis un chiffre de César avec S pour la deuxième lettre, puis avec I pour la troisième, puis avec N pour la quatrième, puis avec S pour la cinquième, etc.</p>
+<p>Au XX-ème siècle, l'avènement de l'ordinateur et de sa puissance de calcul a motivé de nombreuses recherches et découvertes dans le domaine de la cryptographie pour réussir à sécuriser non seulement les secrets militaires, mais également les transactions bancaires et plus généralement l'échange de nos données personnelles sur le web...</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Principe d'un chiffrement</p>
+<p>Un <strong>chiffrement</strong> est la transformation - à l'aide d'un algorithme - d'un texte clair en un texte incompréhensible, dit <em>chiffré</em>, à l'aide d'une <strong>clé</strong> de chiffrement.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/algo_crypto.png" data-desc-position="bottom"><img alt="" class="center" src="../../images/algo_crypto.png" width="640"></a> </p>
+<p>L'algorithme est la plupart du temps connu, et la sécurité du chiffrement doit résider <strong>dans le secret de la clé</strong> (<a href="https://fr.wikipedia.org/wiki/Principe_de_Kerckhoffs" target="_blank">Principe de Kerckhoffs</a>).</p>
+<p>Cette clé peut être la même pour chiffrer et déchiffrer: on parle alors de <strong>chiffrement  symétrique</strong>. Si la clé de chiffrement et la clé de déchiffrement sont différentes, on parle de <strong>chiffrement asymétrique</strong>.</p>
+<p>En pratique la clé est un nombre ou une fonction mathématique. Mais c'est parfois un texte ou une image...</p>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exercice  1: chiffre de César</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Énoncé</label><label for="__tabbed_1_2">Correction</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ol>
+<li>Combien de clés différentes existe-t-il pour le chiffre de César?</li>
+<li>
+<p>Compléter le code suivant (utiliser les fonctions <code class="highlight"><span class="nb">ord</span></code> et <code class="highlight"><span class="nb">chr</span></code> pour la fonction <code class="highlight"><span class="n">decale</span></code>):</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">decale</span><span class="p">(</span><span class="n">lettre</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">cle</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">'''</span>
+<span class="sd">    Décale une lettre majuscule de cle rangs dans l'alphabet.</span>
+<span class="sd">    '''</span>
+    <span class="n">rang</span> <span class="o">=</span> <span class="o">...</span><span class="p">(</span><span class="n">lettre</span><span class="p">)</span> <span class="o">-</span> <span class="o">...</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="n">rang</span> <span class="o">=</span> <span class="p">(</span><span class="n">rang</span> <span class="o">+</span> <span class="o">...</span><span class="p">)</span> <span class="o">%</span> <span class="o">...</span>
+    <span class="k">return</span> <span class="o">...</span><span class="p">(</span><span class="n">rang</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">chiffre_cesar</span><span class="p">(</span><span class="n">phrase</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">cle</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">'''</span>
+<span class="sd">    Chiffre le texte phrase avec la clé cle et renvoie le texte chiffré</span>
+<span class="sd">    '''</span>
+    <span class="n">texte_chiffre</span> <span class="o">=</span> <span class="s2">""</span>
+    <span class="k">for</span> <span class="o">...</span> <span class="ow">in</span> <span class="o">...</span><span class="p">:</span>
+        <span class="n">texte_chiffre</span> <span class="o">+=</span> <span class="o">...</span>
+    <span class="k">return</span> <span class="n">texte_chiffre</span>
+</code></pre></div></td></tr></tbody></table></div>
+</li>
+<li>
+<p>Déchiffrer le message suivant:</p>
+<p><code class="highlight"><span class="s1">'PRZRFFNTRARPBAGVRAGEVRAQVAGRERFFNAGZNVFVYRFGFHSSVFNZRAGYBATCBHEDHRPRFBVGCRAVOYRQRYRQRPUVSSERENYNZNVA'</span></code> </p>
+</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<ol>
+<li>Il existe 26 clés, ou plutôt 25 (si on exclut la clé 0 qui ne crée aucun décalage).</li>
+<li>
+<p>On obtient un message lisible avec une clé égale à 13:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">decale</span><span class="p">(</span><span class="n">lettre</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">cle</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">'''</span>
+<span class="sd">    Décale une lettre majuscule de cle rangs dans l'alphabet.</span>
+<span class="sd">    '''</span>
+    <span class="n">rang</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="n">lettre</span><span class="p">)</span> <span class="o">-</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">'A'</span><span class="p">)</span>
+    <span class="n">rang</span> <span class="o">=</span> <span class="p">(</span><span class="n">rang</span> <span class="o">+</span> <span class="n">cle</span><span class="p">)</span> <span class="o">%</span> <span class="mi">26</span> <span class="o">+</span> <span class="nb">ord</span><span class="p">(</span><span class="s1">'A'</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nb">chr</span><span class="p">(</span><span class="n">rang</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">chiffre_cesar</span><span class="p">(</span><span class="n">phrase</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">cle</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">'''</span>
+<span class="sd">    Chiffre le texte phrase avec la clé cle et renvoie le texte chiffré</span>
+<span class="sd">    '''</span>
+    <span class="n">texte_chiffre</span> <span class="o">=</span> 
+    <span class="k">for</span> <span class="n">lettre</span> <span class="ow">in</span> <span class="n">phrase</span><span class="p">:</span>
+        <span class="n">texte_chiffre</span> <span class="o">+=</span> <span class="n">decale</span><span class="p">(</span><span class="n">lettre</span><span class="p">,</span> <span class="n">cle</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">texte_chiffre</span>
+
+<span class="n">msg_chiffre</span> <span class="o">=</span> <span class="s1">'PRZRFFNTRARPBAGVRAGEVRAQVAGRERFFNAGZNVFVYRFGFHSSVFNZRAGYBATCBHEDHRPRFBVGCRAVOYRQRYRQRPUVSSERENYNZNVA'</span>
+<span class="k">for</span> <span class="n">cle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">26</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">cle</span><span class="p">,</span> <span class="n">chiffre_cesar</span><span class="p">(</span><span class="n">msg_chiffre</span><span class="p">,</span> <span class="n">cle</span><span class="p">))</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>Plus intelligent, si on souhaite éviter de lire des messages inutiles, on peut utiliser un principe simple d'analyse de fréquences : on mise sur le fait que la lettre la plus fréquente dans le message clair sera le E, donc on compte le nombre de E dans chaque message, et on n'affiche que celui qui en comporte le plus (c'est une «simple» recherche de maximum, une fois de plus).</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">msg_chiffre</span> <span class="o">=</span> <span class="s1">'PRZRFFNTRARPBAGVRAGEVRAQVAGRERFFNAGZNVFVYRFGFHSSVFNZRAGYBATCBHEDHRPRFBVGCRAVOYRQRYRQRPUVSSERENYNZNVA'</span>
+<span class="n">nbE_max</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">cle</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">26</span><span class="p">):</span>
+    <span class="n">nbE</span> <span class="o">=</span> <span class="n">chiffre_cesar</span><span class="p">(</span><span class="n">msg_chiffre</span><span class="p">,</span> <span class="n">cle</span><span class="p">)</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s1">'E'</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">nbE</span> <span class="o">&gt;</span> <span class="n">nbE_max</span><span class="p">:</span>
+        <span class="n">nbE_max</span> <span class="o">=</span> <span class="n">nbE</span>
+        <span class="n">cle_probable</span> <span class="o">=</span> <span class="n">cle</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cle_probable</span><span class="p">,</span> <span class="n">chiffre_cesar</span><span class="p">(</span><span class="n">msg_chiffre</span><span class="p">,</span> <span class="n">cle_probable</span><span class="p">))</span>
+</code></pre></div></td></tr></tbody></table></div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exercice  2: masque jetable ou chiffre de Vernam</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">Énoncé</label><label for="__tabbed_2_2">Correction</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Dans le <a href="https://cgouygou.github.io/TNSI/T07_Evaluations/Devoirs_Libres/DL1/" target="_blank">DL 0001</a>, on a vu le principe du chiffre de Vernam, plus communément appelé masque jetable.</p>
+<p>On y avait établi les fonctions:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">xor</span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">'''</span>
+<span class="sd">    Renvoie le résultat d'un XOR (ou exclusif) entre les caractères</span>
+<span class="sd">    a et b, après conversion en code Unicode</span>
+<span class="sd">    '''</span>
+    <span class="k">return</span> <span class="nb">chr</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">^</span> <span class="nb">ord</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">masque_jetable</span><span class="p">(</span><span class="n">chaine</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">cle</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">'''</span>
+<span class="sd">    Chiffre la chaine de caractère chaine selon le chiffre de</span>
+<span class="sd">    Vernam avec la clé cle.</span>
+<span class="sd">    '''</span>
+    <span class="n">texte_chiffre</span> <span class="o">=</span> <span class="s1">''</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">chaine</span><span class="p">)):</span>
+        <span class="n">texte_chiffre</span> <span class="o">+=</span> <span class="n">xor</span><span class="p">(</span><span class="n">chaine</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">cle</span><span class="p">[</span><span class="n">k</span><span class="o">%</span><span class="nb">len</span><span class="p">(</span><span class="n">cle</span><span class="p">)])</span>
+    <span class="k">return</span> <span class="n">texte_chiffre</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>Déchiffrer le message : <code class="highlight"><span class="s2">"</span><span class="se">\x0c</span><span class="s2">!(8&lt;en</span><span class="se">\x12</span><span class="s2">%/=i</span><span class="se">\x1a</span><span class="s2">&amp;;'=.n ,&lt;2 :s/'6;n7,n%&amp;; h"</span></code> sachant que la clé comporte trois lettres majuscules et que c'est moi qui l'ai choisie...</p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">masque_jetable</span><span class="p">(</span><span class="s2">"!(8&lt;en%/=i&amp;;'=.n ,&lt;2 :s/'6;n7,n%&amp;; h"</span><span class="p">,</span> <span class="s2">"NSI"</span><span class="p">)</span>
+<span class="s1">'Bravo, Alan Turing serait fier de vous!'</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+</div>
+<p>Dans le cas du masque jetable, si la clé (le masque) est aussi longue que le texte clair, alors il est <strong>impossible</strong> de retrouver le texte initial! En revanche, il faut impérativement changer le masque à chaque utilisation (d'où le terme jetable).</p>
+<div class="admonition info">
+<p class="admonition-title">Avantage et inconvénient d'un chiffrement symétrique</p>
+<ul>
+<li>
+<p><strong>Avantage</strong>: Les chiffrements symétriques sont souvent rapides, consommant peu de ressources et donc adaptés au chiffrement de flux important d'informations.</p>
+<p>Comme nous le verrons, la sécurisation des données transitant par le protocole https est basée sur un chiffrement symétrique.</p>
+</li>
+<li>
+<p><strong>Inconvénient</strong>: La clé ! Si deux personnes (Alice et Bob dans la suite du cours) ont besoin d'utiliser un chiffrement pour se parler, comment peuvent-ils échanger leurs clés puisque leur canal de transmission n'est pas sûr ?</p>
+<p>Le chiffrement symétrique impose qu'Alice et Bob aient pu se rencontrer physiquement au préalable pour convenir d'une clé secrète, ou bien qu'ils aient réussi à établir une connexion sécurisée pour s'échanger cette clé.</p>
+</li>
+</ul>
+</div>
+<h4 id="quels-sont-les-chiffrements-symetriques-modernes">Quels sont les chiffrements symétriques modernes ?<a class="headerlink" href="#quels-sont-les-chiffrements-symetriques-modernes" title="Permanent link">⚓︎</a></h4>
+<p>L'algorithme de chiffrement symétrique le plus utilisé actuellement est le chiffrement <a href="https://fr.wikipedia.org/wiki/Advanced_Encryption_Standard" target="_blank">AES</a>, pour Advanced Encryption Standard.</p>
+<ul>
+<li>chiffrement par bloc de 128 bits, répartis dans une matrice de 16 octets (matrice carrée de taille 4).</li>
+<li>ces 128 bits sont transformés par des rotations, multiplications, transpositions, [...] de la matrice initiale, en faisant intervenir dans ces transformations une clé de 128, 192 ou 256 bits.</li>
+<li>pour l'AES-256 (avec une clé de 256 bits), l'attaque par force brute nécessiterait <span class="arithmatex">\(2^{256}\)</span> opérations, soit un nombre à 78 chiffres...</li>
+<li>il n'existe pas d'attaque connue efficace à ce jour. Les seules attaques sont des attaques sur des faiblesses d'implémentation, ou par <a href="https://fr.wikipedia.org/wiki/Attaque_par_canal_auxiliaire" target="_blank">canal auxiliaire</a>.</li>
+</ul>
+<h2 id="2-chiffrement-asymetrique">2. Chiffrement asymétrique<a class="headerlink" href="#2-chiffrement-asymetrique" title="Permanent link">⚓︎</a></h2>
+<p>Bien que certains chiffrements symétriques sont efficaces, ils sont vulnérables si la clé est connue puisqu'elle sert également à déchiffrer. Parfois la clé de déchiffrement n'est pas exactement la même (comme dans le chiffre de César, où si <span class="arithmatex">\(n\)</span> est la clé pour chiffrer alors on déchiffre avec <span class="arithmatex">\(-n\)</span> ou <span class="arithmatex">\(26-n\)</span>) mais elle se déduit de façon très simple de la clé de chiffrement.</p>
+<p>Pour résoudre le problème de l'échange des clés, Whitfield Diffie et Martin Hellman (chercheurs à Stanford) proposent en 1976 un protocole qui repose en partie sur une information connue de tous et en partie sur une information gardée secrète par Alice et Bob...</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/diffie-hellman-merkle.jpg" data-desc-position="bottom"><img alt="" class="center" src="../../images/diffie-hellman-merkle.jpg" width="320"></a> </p>
+<p></p><center>
+Photo de Whitfield Diffie (à droite), Martin Hellman (au centre) et Ralph Merkle (à gauche) prise en 1977
+<br>
+Crédit: Stanford News Service
+</center><p></p>
+<h3 id="21-echange-de-cles-de-diffie-hellman">2.1 Échange de clés de Diffie-Hellman<a class="headerlink" href="#21-echange-de-cles-de-diffie-hellman" title="Permanent link">⚓︎</a></h3>
+<div class="admonition gear">
+<p class="admonition-title">Principe</p>
+<p>L'analogie la plus courante pour illustrer le protocole d'échange de clés de Diffie-Hellman est celui des pots de peinture: il est facile de mélanger deux peintures de couleurs différentes mais le contraire est impossible.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/Diffie-Hellman_Key_Exchange.png" data-desc-position="bottom"><img alt="" class="center" src="../../images/Diffie-Hellman_Key_Exchange.png" width="320"></a> </p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:4"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><input id="__tabbed_3_3" name="__tabbed_3" type="radio"><input id="__tabbed_3_4" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">Étape 1</label><label for="__tabbed_3_2">Étape 2</label><label for="__tabbed_3_3">Étape 3</label><label for="__tabbed_3_4">Étape 4</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Alice et Bob s'entendent sur une couleur (le jaune) et se la partagent publiquement.</p>
+</div>
+<div class="tabbed-block">
+<p>Alice et Bob choisissent secrètement chacun une couleur: le magenta pour Alice et le cyan pour Bob, puis ils mélangent leur couleur avec la couleur commune.</p>
+</div>
+<div class="tabbed-block">
+<p>Ils s'échangent publiquement les couleurs obtenues (orange et bleu). Même si Ève intercepte ces couleurs, elle ne peut pas les séparer!</p>
+</div>
+<div class="tabbed-block">
+<p>Alice mélange sa couleur secrète (magenta) avec le mélange de Bob, et Bob fait de même avec la sienne et le mélange d'Alice. Au final, ils obtiennent le même mélange: c'est la clé !</p>
+</div>
+</div>
+</div>
+</div>
+<p>En pratique, on n'utilise pas des pots de peinture (ça ne passe pas par la fibre ou la wifi) mais des fonctions mathématiques et des nombres entiers (très grands). L'idée de Diffie-Hellman est d'utiliser des fonctions de la forme <span class="arithmatex">\(x \rightarrow k^x \ (\text{mod}\ p)\)</span> et utilisent les propriétés de l'<em>arithmétique modulaire</em>.</p>
+<div class="admonition info">
+<p class="admonition-title">Arithmétique modulaire</p>
+<p>Faire des calculs <em>modulo</em> un entier <span class="arithmatex">\(n\)</span>, c'est ne garder que le reste de la division euclidienne par <span class="arithmatex">\(n\)</span>.</p>
+<p>Le fait que 15 soit égal à 1 modulo 7 (car <span class="arithmatex">\(15=2 \times 7+1\)</span>) s'écrira <span class="arithmatex">\(15 \equiv 1 \ (\text{mod}\ 7)\)</span>.</p>
+<p>De même, <span class="arithmatex">\(10 \equiv  3 \ (\text{mod}\ 7)\)</span>, <span class="arithmatex">\(25 \equiv 4 \ (\text{mod}\ 7)\)</span>, <span class="arithmatex">\(32 \equiv 2 \ (\text{mod}\ 10)\)</span>, etc.</p>
+</div>
+<p>En effet, s'il est assez simple de calculer une puissance «modulo p», il est en revanche compliqué de faire l'inverse (prendre le logarithme discret) car on ne connaît pas d'algorithme efficace pour certaines grandes valeurs de p. Cette arithmétique fournit donc d'assez bonnes fonctions «à sens unique» (<a href="https://fr.wikipedia.org/wiki/Fonction_%C3%A0_trappe" target="_blank">fonction à trappe</a>).</p>
+<div class="admonition example">
+<p class="admonition-title">Exercice  3</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio"><input id="__tabbed_4_2" name="__tabbed_4" type="radio"><div class="tabbed-labels"><label for="__tabbed_4_1">Énoncé</label><label for="__tabbed_4_2">Correction</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Alice et Bob choisissent d'utiliser la fonction <span class="arithmatex">\(f(x) = 7^x \ (\text{mod}\ 11)\)</span>. C'est le jaune.</p>
+<ol>
+<li>Alice choisit un nombre <span class="arithmatex">\(A=3\)</span> et le garde secret (c'est le magenta). Elle calcule <span class="arithmatex">\(\alpha = f(A)\)</span> (le orange) et l'envoie à Bob. Que reçoit Bob?</li>
+<li>Bob choisit un nombre <span class="arithmatex">\(B=6\)</span> et le garde secret (c'est le cyan). Il calcule <span class="arithmatex">\(\beta = f(B)\)</span> (le bleu) et l'envoie à Alice. Que reçoit Alice?</li>
+<li>Alice reçoit <span class="arithmatex">\(\beta\)</span> de Bob et calcule <span class="arithmatex">\(\beta^A \ (\text{mod}\ 11)\)</span>. Bob reçoit <span class="arithmatex">\(\alpha\)</span> d'Alice et calcule <span class="arithmatex">\(\alpha^B \ (\text{mod}\ 11)\)</span>. Quelle est la clé échangée?</li>
+</ol>
+</div>
+<div class="tabbed-block"></div>
+</div>
+</div>
+</div>
+<p>Deux inconvénients majeurs résident cependant dans ce protocole:</p>
+<ul>
+<li>il nécessite plusieurs échanges entre Alice et Bob;</li>
+<li>il faut qu'ils soient tous les deux disponibles pour faire ces échanges, ce qui peut empêcher un chiffrement immédiat.</li>
+</ul>
+<h3 id="22-cryptographie-a-cle-publique">2.2 Cryptographie à clé publique<a class="headerlink" href="#22-cryptographie-a-cle-publique" title="Permanent link">⚓︎</a></h3>
+<p>Pour pallier à ces inconvénients, Diffie et Hellman imaginent un chiffrement où les clés servant à chiffrer et déchiffrer un message sont différentes: on parle alors de chiffrement asymétrique ou bien de <strong>chiffrement à clé publique</strong>. De plus ces clés ne doivent pas se déduire facilement l'une de l'autre: il faut utiliser une sorte de fonction à sens unique, qui soit simple à utiliser pour chiffrer, mais très difficile à inverser pour déchiffrer.</p>
+<p>Le principe de base est l'existence d'une clé <em>publique</em>, appelée à être distribuée largement, et d'une clé <em>privée</em>, qui ne quitte jamais son propriétaire. </p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/cle_publique_privee.png" data-desc-position="bottom"><img alt="" class="center" src="../../images/cle_publique_privee.png" width="320"></a>     </p>
+<div class="admonition gear">
+<p class="admonition-title">Principe</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio"><input id="__tabbed_5_2" name="__tabbed_5" type="radio"><input id="__tabbed_5_3" name="__tabbed_5" type="radio"><div class="tabbed-labels"><label for="__tabbed_5_1">Étape 1</label><label for="__tabbed_5_2">Étape 2</label><label for="__tabbed_5_3">Étape 3</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Alice fabrique une clé publique (le cadenas) et une clé privée (la clé du cadenas). Elle diffuse la clé à Bob (en réalité, à tout le monde, d'où le terme <em>clé publique</em>).</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/cle_publique_etape1.png" data-desc-position="bottom"><img alt="" class="center" src="../../images/cle_publique_etape1.png" width="480"></a> </p>
+</div>
+<div class="tabbed-block">
+<p>À l'aide de la clé publique d'Alice, Bob peut chiffrer son message et l'envoyer à Alice. Une fois son message chiffré, Bob lui-même ne peut pas revenir en arrière et déchiffrer son propre message puisqu'il ne connaît pas la clé privée d'Alice.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/cle_publique_etape2.png" data-desc-position="bottom"><img alt="" class="center" src="../../images/cle_publique_etape2.png" width="480"></a></p>
+</div>
+<div class="tabbed-block">
+<p>Grâce à sa clé privée, Alice peut déchiffrer et ouvrir le message qui lui est adressé.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/cle_publique_etape3.png" data-desc-position="bottom"><img alt="" class="center" src="../../images/cle_publique_etape3.png" width="320"></a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Pourquoi ça marche?</p>
+<!-- On peut se demander quelle est la différence avec un chiffrement symétrique. -->
+<p>Les clés sont des fonctions mathématiques (ou même simplement des nombres très grands): une fonction <span class="arithmatex">\(P\)</span> qui permet de chiffrer les messages et sa fonction <em>inverse</em> <span class="arithmatex">\(S\)</span> qui permet de déchiffrer, c'est-à-dire que <span class="arithmatex">\(S(P(\text{message})) = \text{message}\)</span>.</p>
+<p>On peut fabriquer simultanément un couple <span class="arithmatex">\((P,S)\)</span>, mais connaissant uniquement <span class="arithmatex">\(P\)</span>, il est impossible (ou au moins très difficile) de retrouver <span class="arithmatex">\(S\)</span>. Et réciproquement.</p>
+<p>La connaissance de <span class="arithmatex">\(P\)</span> par un tiers ne compromet donc pas la sécurité de l'envoi des messages codés, puisqu'elle ne permet pas de retrouver <span class="arithmatex">\(S\)</span>. Il est possible de donner librement <span class="arithmatex">\(P\)</span>, qui mérite bien son nom de clé publique. </p>
+<p>Enfin, il faut comprendre que ces clés ont un <strong>rôle interchangeable</strong>: on peut très bien chiffrer avec la clé privée et déchiffrer avec la clé publique (on verra plus loin dans le cours une utilisation de cette inversion).</p>
+</div>
+<h3 id="23-authentification-le-double-cadenas">2.3 Authentification: le double cadenas<a class="headerlink" href="#23-authentification-le-double-cadenas" title="Permanent link">⚓︎</a></h3>
+<p>Dans la situation du 2.2, Alice (qui a distribué largement sa clé publique) ne peut pas s'assurer que le message vient bien de Bob. Il peut avoir été créé par Ève, qui signe «Bob» et usurpe ainsi son identité. </p>
+<p>Le protocole - appelé <strong>signature électronique</strong> - que nous allons décrire ci-dessous permet :</p>
+<ul>
+<li>d'empêcher qu'un message intercepté soit déchiffré (ce qui était déjà le cas dans le 2.1)</li>
+<li>mais aussi de s'assurer que chaque personne est bien celle qu'elle prétend être : on résout le <strong>problème d'authentification</strong>.</li>
+</ul>
+<div class="admonition gear">
+<p class="admonition-title">Principe</p>
+<p>Alice possède le couple clé publique/clé privée <span class="arithmatex">\((P_A, S_A)\)</span> et Bob le couple <span class="arithmatex">\((P_B, S_B)\)</span>. Alice veut envoyer à Bob le message M.</p>
+<ul>
+<li>
+<p><strong>Phase d'envoi:</strong> Alice chiffre M avec sa <strong>clé privée</strong> <span class="arithmatex">\(S_A\)</span>, c'est-à-dire qu'elle calcule <span class="arithmatex">\(M'=S_A(M)\)</span>. Puis elle chiffre <span class="arithmatex">\(M'\)</span> avec la clé publique de Bob: elle envoie à Bob <span class="arithmatex">\(M''=P_B(M') = P_B(S_A(M))\)</span>.</p>
+</li>
+<li>
+<p><strong>Phase de réception:</strong> À l'aide de sa clé privée <span class="arithmatex">\(S_B\)</span>, Bob déchiffre <span class="arithmatex">\(M''\)</span>, c'est-à-dire qu'il calcule <span class="arithmatex">\(S_B(M'') =S_B(P_B(M')) = M'\)</span>. <strong>Seul lui peut effectuer ce calcul</strong>, d'où la sécurité de l'envoi, Ève ne peut rien faire du message <span class="arithmatex">\(M''\)</span> envoyé par Alice.</p>
+<p>Il calcule ensuite <span class="arithmatex">\(P_A(M')=P_A(S_A(M))=M\)</span>. <strong>Il est alors sûr que c'est Alice</strong> qui lui a envoyé ce message, car elle seule a pu calculer <span class="arithmatex">\(S_A(M)\)</span>.</p>
+</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/auth.png" data-desc-position="bottom"><img alt="" class="center" src="../../images/auth.png" width="480"></a> </p>
+<p><strong>En résumé :</strong></p>
+<ul>
+<li>Alice est sûre que seul Bob pourra déchiffrer le message qu'elle envoie.</li>
+<li>Bob est sûr que le message qu'il reçoit vient bien d'Alice.</li>
+</ul>
+</div>
+<p>Ce protocole, s'il est fiable, est lent puisque deux fois plus lent qu'un algorithme à clé publique (lui-même déjà très lent!). En outre, il ne garantit pas l'intégrité du message, c'est-à-dire que celui-ci n'est pas altéré par des erreurs de transmission. L'utilisation des fonctions de hachage résout ces problèmes.</p>
+<p>Supposons qu'Alice et Bob disposent d'une fonction de hachage <span class="arithmatex">\(h\)</span> (SHA-256 par exemple):</p>
+<ul>
+<li>
+<p><strong>Phase d'envoi:</strong> Alice calcule <span class="arithmatex">\(h(M)\)</span> - le condensé - et envoie à Bob <span class="arithmatex">\(P_B(M)\)</span> (calculé à l'aide de la clé publique de Bob) accompagné de <span class="arithmatex">\(S_A(h(M))\)</span>. </p>
+</li>
+<li>
+<p><strong>Phase de réception:</strong> Bob calcule <span class="arithmatex">\(S_B(P_B(M))=M'\)</span>. Puis il calcule <span class="arithmatex">\(P_A(S_A(h(M)))\)</span>, qu'il compare à <span class="arithmatex">\(h(M')\)</span>. Si les quantités sont égales, il est sûr que c'est bien Alice qui a envoyé le message, et que celui-ci a été correctement transmis. </p>
+</li>
+</ul>
+<h2 id="3-chiffrement-rsa">3. Chiffrement RSA<a class="headerlink" href="#3-chiffrement-rsa" title="Permanent link">⚓︎</a></h2>
+<p>Lorsqu'en 1976 Diffie et Hellman présentent le concept de chiffrement asymétrique, ils en proposent uniquement un modèle théorique, n'ayant pas trouvé une réelle implémentation de leur protocole.</p>
+<p>Trois chercheurs du MIT (Boston), Ron Rivest, Adi Shamir et Len Adleman se penchent alors sur ce protocole, convaincus qu'il est en effet impossible d'en trouver une implémentation pratique. En 1977, au cours de leurs recherches, ils démontrent en fait l'inverse de ce qu'ils cherchaient : ils créent le premier protocole concret de chiffrement asymétrique : le chiffrement <strong>RSA</strong>.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/RSA.jpg" data-desc-position="bottom"><img alt="image" class="center" src="../../images/RSA.jpg" width="480"></a></p>
+<center>
+De gauche à droite: Adi Shamir, Ron Rivest, Len Adleman
+</center>
+
+<p>Au même moment à Londres, Clifford Cocks, (chercheur au très secret <a href="https://fr.wikipedia.org/wiki/Government_Communications_Headquarters" target="_blank">GCHQ</a>) apprend que Rivest Shamir et Adleman viennent de découvrir ce que lui-même a découvert <strong>3 ans auparavant</strong> mais qui est resté classé Secret Défense.</p>
+<p>Il est le véritable inventeur du RSA... mais le reste du monde ne l'apprendra qu'en 1997 au moment de la déclassification de cette information. </p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/clifford.jpg" data-desc-position="bottom"><img alt="image" class="center" src="../../images/clifford.jpg" width="480"></a></p>
+<div class="admonition gear">
+<p class="admonition-title">Principe</p>
+<p>Le chiffrement RSA est basé sur <em>l'arithmétique modulaire</em>. </p>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:6"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio"><input id="__tabbed_6_2" name="__tabbed_6" type="radio"><input id="__tabbed_6_3" name="__tabbed_6" type="radio"><input id="__tabbed_6_4" name="__tabbed_6" type="radio"><input id="__tabbed_6_5" name="__tabbed_6" type="radio"><input id="__tabbed_6_6" name="__tabbed_6" type="radio"><div class="tabbed-labels"><label for="__tabbed_6_1">Étape 1</label><label for="__tabbed_6_2">Étape 2</label><label for="__tabbed_6_3">Étape 3</label><label for="__tabbed_6_4">Étape 4</label><label for="__tabbed_6_5">Étape 5</label><label for="__tabbed_6_6">Étape 6</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Alice choisit 2 grands nombres premiers <span class="arithmatex">\(p\)</span> et <span class="arithmatex">\(q\)</span>. Dans la réalité ces nombres seront vraiment très grands (plus de 100 chiffres). Dans notre exemple, nous prendrons <span class="arithmatex">\(p = 3\)</span> et <span class="arithmatex">\(q = 11\)</span>.</p>
+</div>
+<div class="tabbed-block">
+<p>Alice multiplie ces deux nombres <span class="arithmatex">\(p\)</span> et <span class="arithmatex">\(q\)</span> et obtient ainsi un nombre <span class="arithmatex">\(n\)</span>.</p>
+<blockquote>
+<p>Il est très facile pour Alice de calculer <span class="arithmatex">\(n\)</span> en connaissant <span class="arithmatex">\(p\)</span> et <span class="arithmatex">\(q\)</span>, mais il  extrêmement difficile pour Ève de faire le travail inverse car trouver <span class="arithmatex">\(p\)</span> et <span class="arithmatex">\(q\)</span> en connaissant <span class="arithmatex">\(n\)</span> prend un temps <strong>exponentiel</strong> avec la taille de <span class="arithmatex">\(n\)</span>.<br>
+C'est sur cette difficulté (appelée difficulté de <em>factorisation</em>) que repose la robustesse du système RSA.</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<p>Alice choisit un nombre <span class="arithmatex">\(e\)</span> qui doit être premier avec <span class="arithmatex">\((p-1)(q-1)\)</span>.  On note <span class="arithmatex">\(\phi(n)\)</span> le nombre <span class="arithmatex">\((p-1)(q-1)\)</span>.</p>
+<p>Dans notre exemple, <span class="arithmatex">\((p-1)(q-1) = 20\)</span>, Alice choisit donc <span class="arithmatex">\(e = 3\)</span>. (mais elle aurait pu aussi choisir 7, 9, 13...).</p>
+<p>Le couple <span class="arithmatex">\((e, n)\)</span> sera <strong>la clé publique</strong> d'Alice. Elle la diffuse à qui veut lui écrire.</p>
+<p>Dans notre exemple, la clé publique d'Alice est <span class="arithmatex">\((3, 33)\)</span>.</p>
+</div>
+<div class="tabbed-block">
+<p>Alice calcule maintenant sa clé privée : elle doit trouver un nombre <em>d</em> qui vérifie l'égalité <span class="arithmatex">\(e \times d \equiv 1 \ (\text{mod}\ \phi(n))\)</span>.</p>
+<p>Dans notre exemple, comme <span class="arithmatex">\(7 \times 3  \equiv 1 \ (\text{mod}\ 20)\)</span>, ce nombre <span class="arithmatex">\(d\)</span> est égal à 7.</p>
+<p>En pratique, il existe un algorithme simple (algorithme d'<a href="https://fr.wikipedia.org/wiki/Algorithme_d%27Euclide_%C3%A9tendu" target="_blank">Euclide étendu</a>) pour trouver cette valeur <span class="arithmatex">\(d\)</span>, appelée <em>inverse de e</em> modulo <span class="arithmatex">\(\phi(n)\)</span>.</p>
+<p>Le couple <span class="arithmatex">\((d, n)\)</span> sera <strong>la clé privée</strong> d'Alice. Elle ne la diffuse à personne.</p>
+<p>Dans notre exemple, la clé privée d'Alice est <span class="arithmatex">\((7, 33)\)</span>.</p>
+</div>
+<div class="tabbed-block">
+<p>Supposons que Bob veuille écrire à Alice pour lui envoyer le nombre 4. 
+Il possède la clé publique d'Alice, qui est <span class="arithmatex">\((3, 33)\)</span>.</p>
+<p>Il calcule donc <span class="arithmatex">\(4^3\)</span> modulo 33, qui vaut 31. C'est cette valeur 31 qu'il transmet à Alice.</p>
+<div class="arithmatex">\[4^3 \equiv 31 \ (\text{mod}\ 33)\]</div>
+<blockquote>
+<p>Si Ève intercepte cette valeur 31, même en connaissant la clé publique d'Alice (3,33), elle ne peut pas résoudre l'équation <span class="arithmatex">\(x^3 \equiv 31 \ (\text{mod}\ 33)\)</span> de manière efficace.</p>
+</blockquote>
+</div>
+<div class="tabbed-block">
+<p>Alice reçoit la valeur 31.<br>
+Il lui suffit alors d'élever 31 à la puissance 7 (sa clé privée), et de calculer le reste modulo 33 :</p>
+<p><span class="arithmatex">\(31^7 = 27512614111\)</span></p>
+<p><span class="arithmatex">\(27512614111 \equiv 4 \ (\text{mod}\ 33)\)</span></p>
+<p>Elle récupère la valeur 4, qui est bien le message original de Bob.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Comment ça marche ?</p>
+<p>Grâce au <a href="https://fr.wikipedia.org/wiki/Petit_th%C3%A9or%C3%A8me_de_Fermat" target="_blank">Petit Théorème de Fermat</a>, on démontre (voir <a href="https://fr.wikipedia.org/wiki/Chiffrement_RSA" target="_blank">ici</a>) assez facilement que <span class="arithmatex">\(M^{ed} \equiv M [n]\)</span>.
+Il faut remarquer que <span class="arithmatex">\(M^{ed} = M^{de}\)</span>. On voit que les rôles de la clé publique et de la clé privée sont <strong>symétriques</strong> : un message chiffré avec la clé publique se déchiffrera en le chiffrant avec la clé privée, tout comme un message chiffré avec la clé privée se déchiffrera en le chiffrant avec la clé publique.</p>
+</div>
+<!-- **Animation interactive**
+voir [https://animations.interstices.info/interstices-rsa/rsa.html](https://animations.interstices.info/interstices-rsa/rsa.html){:target="_blank"} -->
+
+<h4 id="rsa-un-systeme-inviolable">RSA, un système inviolable ?<a class="headerlink" href="#rsa-un-systeme-inviolable" title="Permanent link">⚓︎</a></h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/security.png" data-desc-position="bottom"><img alt="" class="center" src="../../images/security.png"></a> </p>
+<p>Le chiffrement RSA a des défauts (notamment une grande consommation des ressources, due à la manipulation de très grands nombres). C'est pourquoi on l'utilise plutôt pour sécuriser l'échange d'une clé d'un chiffrement symétrique (comme AES par exemple).
+Mais le choix d'une clé publique de grande taille (actuellement 1024 ou 2048 bits) le rend pour l'instant inviolable. </p>
+<p>Actuellement, il n'existe pas d'algorithme efficace pour factoriser un nombre ayant plusieurs centaines de chiffres.</p>
+<p>Deux évènements pourraient faire s'écrouler la sécurité du RSA :</p>
+<ul>
+<li>la découverte d'un algorithme efficace de factorisation, capable de tourner sur les ordinateurs actuels. Cette annonce est régulièrement faite, et tout aussi régulièrement contredite par la communauté scientifique. (voir, le 05/03/2021,  <a href="https://www.schneier.com/blog/archives/2021/03/no-rsa-is-not-broken.html" target="_blank">https://www.schneier.com/blog/archives/2021/03/no-rsa-is-not-broken.html</a>)</li>
+<li>l'avènement d'<a href="https://fr.wikipedia.org/wiki/Calculateur_quantique" target="_blank">ordinateurs quantiques</a>, dont la vitesse d'exécution permettrait une factorisation rapide. Il est à noter que l'algorithme de factorisation destiné à tourner sur un ordinateur quantique existe déjà : <a href="https://fr.wikipedia.org/wiki/Algorithme_de_Shor" target="_blank">l'algorithme de Schor</a>.</li>
+</ul>
+<h2 id="4-https">4. HTTPS<a class="headerlink" href="#4-https" title="Permanent link">⚓︎</a></h2>
+<p>Aujourd'hui, plus de 90 % du trafic sur internet est chiffré : les données ne transitent plus en clair (protocole <code>http</code>) mais de manière chiffrée (protocole <code>https</code>), ce qui empêche la lecture de paquets éventuellements interceptés.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/https.png" data-desc-position="bottom"><img alt="" class="center" src="../../images/https.png" width="480"></a> </p>
+<p>Ce protocole n'utilise pas le  chiffrement asymétrique (RSA par exemple), car il est très gourmand en ressources. Le chiffrement/déchiffrement doit être rapide pour ne pas ralentir les communications ou l'exploitation des données par les utilisateurs!</p>
+<p>HTTPS est donc un exemple d'utilisation conjointe d'un chiffrement asymétrique <strong>et</strong> d'un chiffrement symétrique:</p>
+<ul>
+<li>Le chiffrement asymétrique est  réservé à l'échange de clés (au début de la communication).</li>
+<li>Le chiffrement symétrique, bien plus rapide, prend ensuite le relais pour l'ensemble de la communication.</li>
+</ul>
+<div class="admonition gear">
+<p class="admonition-title">Principe</p>
+<p>Le protocole <code>https</code> est la réunion de deux protocoles :</p>
+<ul>
+<li>le protocole <code>TLS</code> (Transport Layer Security, qui a succédé au SSL) : ce protocole, basé sur du <strong>chiffrement asymétrique</strong>, va conduire à la génération d'une clé identique chez le client et chez le serveur.</li>
+<li>le (bon vieux) protocole  <code>http</code>, mais qui convoiera maintenant des données chiffrées avec la clé générée à l'étape précédente. Les données peuvent toujours être interceptées, mais sont illisibles. Le <strong>chiffrement symétrique</strong> utilisé est actuellement le chiffrement AES.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/http_tls.png" data-desc-position="bottom"><img alt="" class="center" src="../../images/http_tls.png" width="480"></a> </p>
+</div>
+<h4 id="fonctionnement-du-tls-explication-du-handshake-hors-programme">Fonctionnement du TLS : explication du <em>handshake</em> (Hors programme)<a class="headerlink" href="#fonctionnement-du-tls-explication-du-handshake-hors-programme" title="Permanent link">⚓︎</a></h4>
+<p>Observons en détail le fonctionnement du protocole <code>TLS</code>, dont le rôle est de générer de manière sécurisée une clé dont disposeront à la fois le client et le serveur, leur permettant ainsi d'appliquer un chiffrement symétrique à leurs échanges.</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../images/handshake.png" data-desc-position="bottom"><img alt="" class="center" src="../../images/handshake.png" width="480"></a> </p>
+<ul>
+<li>
+<p><strong>étape 1</strong> : le «client Hello». Le client envoie sa version de TLS utilisée. </p>
+</li>
+<li>
+<p><strong>étape 2</strong> : le «server Hello». Le serveur répond en renvoyant son certificat prouvant son identité, ainsi que sa clé publique.</p>
+</li>
+<li>
+<p><strong>étape 3</strong> : le client interroge l'autorité de certification pour valider le fait que le certificat est bien valide et que le serveur est bien celui qu'il prétend être. Cette vérification est faite grâce à un mécanisme de chiffrement asymétrique.</p>
+</li>
+</ul>
+<blockquote>
+<p>La présentation du certificat à l'autorité de certification peut se représenter comme le scan d'une pièce d'identité dans un aéroport. L'autorité de certification est alors l'État (dont la base de données est interrogée par un logiciel) qui valide que la pièce d'identité est bien un document officiel.</p>
+</blockquote>
+<ul>
+<li><strong>étape 4</strong> : une fois vérifiée l'authenticité du serveur et que son certificat est valide, le client calcule ce qui sera la future clé de chiffrement symétrique (appelée «clé AES» dans l'infographie). Cette clé est chiffrée avec la clé publique du server (transmise à l'étape 1), ce qui assure la sécurité de son transfert. Le serveur déchiffre cette clé grâce à sa clé privée, et dispose ainsi lui aussi de la clé. </li>
+</ul>
+<p>Le transmission par protocole <code>http</code> de données chiffrées au préalable avec la clé AES peut commencer. </p>
+<blockquote>
+<p>Remarque : en réalité, ce n'est pas la clé AES qui est transmise à l'étape 4, mais un nombre choisi par le client, qui permettra, avec deux autres nombres choisis par le client (étape 1) et le serveur (étape 2) de reconstituer la clé AES, qui sera donc identique côté client et côté serveur.</p>
+</blockquote>
+<div class="admonition info">
+<p class="admonition-title">À propos du certificat</p>
+<p>Sur Firefox par exemple, en cliquant sur l'icone cadenas à gauche de la barre d'adresse, on peut récupérer le certificat (en général un fichier binaire au format X.509) du site au format PEM. À l'aide ensuite d'<a href="https://fr.wikipedia.org/wiki/OpenSSL" target="_blank">OpenSSL</a> par exemple, on peut consulter le contenu du fichier avec:</p>
+<div class="highlight"><pre><span></span><code><span class="go">openssl x509 -in github-io-chain.pem -text</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Certificate:
+Data:
+    Version: 3 (0x2)
+    Serial Number:
+        04:4d:72:d7:7c:dd:a7:02:dd:5a:67:f2:a2:3b:bd:d9
+    Signature Algorithm: sha256WithRSAEncryption
+    Issuer: C = US, O = DigiCert Inc, CN = DigiCert TLS RSA SHA256 2020 CA1
+    Validity
+        Not Before: Feb 21 00:00:00 2023 GMT
+        Not After : Mar 20 23:59:59 2024 GMT
+    Subject: C = US, ST = California, L = San Francisco, O = "GitHub, Inc.", CN = *.github.io
+    Subject Public Key Info:
+        Public Key Algorithm: rsaEncryption
+            Public-Key: (2048 bit)
+            Modulus:
+                00:b8:b0:60:0e:1a:2f:f1:b1:86:4b:64:ec:11:9f:
+                [...]
+                2c:2c:ec:f8:39:09:36:bd:19:8d:03:56:41:66:07:
+                24:e3
+            Exponent: 65537 (0x10001)
+[...]
+Signature Algorithm: sha256WithRSAEncryption
+Signature Value:
+    37:a4:1b:11:22:9f:fc:9f:c9:67:07:8f:aa:86:13:9f:e0:08:
+    1d:6e:0c:8d:65:fb:03:79:50:c6:76:ba:30:90:a0:a4:1c:79:
+    13:07:b9:5a:18:8d:97:4c:05:71:8a:d0:22:17:c6:19:a2:22:
+    8b:03:f6:2c:84:71:6c:55:df:e2:99:43:65:e5:d7:b7:b7:37:
+    4c:c6:c8:e5:f1:d8:a7:7b:07:5d:eb:b8:1c:50:a4:a3:8e:f0:
+    4c:f8:b8:6a:72:59:be:43:0e:8a:de:b5:5e:8f:9e:3f:5a:43:
+    64:82:cc:e0:de:76:f4:be:a6:12:0a:06:68:bb:77:e1:4c:ef:
+    4b:4d:67:af:f6:72:c7:6b:1b:9c:48:53:a7:7f:ed:76:18:5c:
+    f0:f6:c6:4c:24:53:57:57:e1:42:a6:3d:ae:e1:f5:93:f2:6a:
+    fa:29:72:01:3e:b7:06:f1:2f:1a:0e:91:c5:ec:35:bf:f5:da:
+    33:95:de:24:12:0d:f5:c3:23:8d:40:82:d1:5c:eb:de:0a:08:
+    e8:e5:83:e5:0a:8b:3a:5e:98:4e:77:4f:9f:dc:ab:7e:ce:a8:
+    28:4f:aa:79:4f:c9:be:8f:60:88:6e:6b:f9:20:6c:7f:38:96:
+    d6:da:d7:11:03:43:d8:b8:51:87:ce:32:22:4d:64:4c:c4:75:
+    27:d0:e3:df
+</code></pre></div>
+</div>
+<h2 id="5-exercices">5. Exercices<a class="headerlink" href="#5-exercices" title="Permanent link">⚓︎</a></h2>
+<div class="admonition example">
+<p class="admonition-title">Exercice  4: Chiffrement affine</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio"><input id="__tabbed_7_2" name="__tabbed_7" type="radio"><div class="tabbed-labels"><label for="__tabbed_7_1">Énoncé</label><label for="__tabbed_7_2">Correction</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="admonition info">
+<p class="admonition-title">Principe</p>
+<ul>
+<li>Chaque lettre est codée par son rang dans l'alphabet: A → 0, B → 1, etc.</li>
+<li>On applique à chaque rang la transformation affine <span class="arithmatex">\(f(x)=(ax+b)\%26\)</span> où <span class="arithmatex">\(a\)</span> et <span class="arithmatex">\(26\)</span> sont deux nombres entiers, <strong>premiers entre eux</strong> (c'est-à-dire n'admettant pas de diviseur commun autre que 1).</li>
+</ul>
+</div>
+<ol>
+<li>Compléter les fonctions suivantes selon leur spécification.</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">affine</span><span class="p">(</span><span class="n">msg</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">'''</span>
+<span class="sd">    Renvoie le texte msg chiffré avec la méthode du chiffrement affine avec a, b comme clé.</span>
+<span class="sd">    '''</span>
+    <span class="n">msg_chiffre</span> <span class="o">=</span> <span class="s1">''</span>
+    <span class="k">for</span> <span class="n">caractere</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">:</span>
+        <span class="n">rang</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="n">caractere</span><span class="p">)</span> <span class="o">-</span> <span class="mi">65</span>
+        <span class="n">rang_chiffre</span> <span class="o">=</span>  <span class="o">...</span> 
+        <span class="n">caractere_chiffre</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span> <span class="o">...</span> <span class="p">)</span>
+        <span class="n">msg_chiffre</span> <span class="o">+=</span> <span class="o">...</span>
+    <span class="k">return</span> <span class="o">...</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">trouve_cle</span><span class="p">(</span><span class="n">msg</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">mot_clair</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">'''</span>
+<span class="sd">    Renvoie la clé a, b si le chifrement de mot_clair est dans le message msg, </span>
+<span class="sd">    par la méthode de force brute.</span>
+<span class="sd">    '''</span>
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">...</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
+            <span class="n">mot_chiffre</span> <span class="o">=</span> <span class="o">...</span>
+            <span class="k">if</span> <span class="o">...</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">dico_dechiffrement</span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">'''</span>
+<span class="sd">    Construit un dictionnaire de déchiffrement dont les clés sont les lettres</span>
+<span class="sd">    chiffrées et les valeurs les lettres claires.</span>
+<span class="sd">    '''</span>
+    <span class="n">dico</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="o">...</span><span class="p">):</span>
+        <span class="n">caractere</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">65</span> <span class="o">+</span> <span class="n">k</span><span class="p">)</span>
+        <span class="n">dico</span><span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="o">=</span> <span class="n">caractere</span>
+    <span class="k">return</span> <span class="n">dico</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">dechiffre_affine</span><span class="p">(</span><span class="n">msg</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">mot</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">'''</span>
+<span class="sd">    Déchiffre un message chiffré msg connaissant un mot du texte clair.</span>
+<span class="sd">    '''</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="n">msg_clair</span> <span class="o">=</span> <span class="s1">''</span>
+    <span class="n">dico</span> <span class="o">=</span> <span class="o">...</span>
+    <span class="k">for</span> <span class="n">caractere</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">:</span>
+        <span class="n">msg_clair</span> <span class="o">+=</span> <span class="o">...</span>
+    <span class="k">return</span> <span class="o">...</span>
+</code></pre></div></td></tr></tbody></table></div>
+<ol>
+<li>Décoder la phrase <code class="highlight"><span class="n">UCGXLODCMOXPMFMSRJCFQOGTCRSUSXC</span></code>, sachant qu'elle contient le mot <code>TRAVAIL</code> et que <span class="arithmatex">\(a\)</span> et <span class="arithmatex">\(b\)</span> sont inférieurs à 20.</li>
+</ol>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># 1.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">affine</span><span class="p">(</span><span class="n">msg</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">'''</span>
+<span class="sd">    Renvoie le texte msg chiffré avec la méthode du chiffrement affine avec a, b comme clé.</span>
+<span class="sd">    '''</span>
+    <span class="n">msg_chiffre</span> <span class="o">=</span> <span class="s1">''</span>
+    <span class="k">for</span> <span class="n">caractere</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">:</span>
+        <span class="n">rang</span> <span class="o">=</span> <span class="nb">ord</span><span class="p">(</span><span class="n">caractere</span><span class="p">)</span> <span class="o">-</span> <span class="mi">65</span>
+        <span class="n">rang_chiffre</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="n">rang</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">%</span> <span class="mi">26</span>
+        <span class="n">caractere_chiffre</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="n">rang_chiffre</span> <span class="o">+</span> <span class="mi">65</span><span class="p">)</span>
+        <span class="n">msg_chiffre</span> <span class="o">+=</span> <span class="n">caractere_chiffre</span>
+    <span class="k">return</span> <span class="n">msg_chiffre</span>
+
+<span class="c1"># 2.</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">trouve_cle</span><span class="p">(</span><span class="n">msg</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">mot</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">'''</span>
+<span class="sd">    Renvoie la clé a, b si le mot chiffré est dans le message msg.</span>
+<span class="sd">    '''</span>
+    <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">21</span><span class="p">):</span>
+            <span class="n">mot_chiffre</span> <span class="o">=</span> <span class="n">affine</span><span class="p">(</span><span class="n">mot</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">mot_chiffre</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">dico_dechiffrement</span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span><span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">'''</span>
+<span class="sd">    Construit un dictionnaire de déchiffrement dont les clés sont les lettres</span>
+<span class="sd">    chiffrées et les valeurs les lettres claires.</span>
+<span class="sd">    '''</span>
+    <span class="n">dico</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">26</span><span class="p">):</span>
+        <span class="n">caractere</span> <span class="o">=</span> <span class="nb">chr</span><span class="p">(</span><span class="mi">65</span> <span class="o">+</span> <span class="n">k</span><span class="p">)</span>
+        <span class="n">dico</span><span class="p">[</span><span class="n">affine</span><span class="p">(</span><span class="n">caractere</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)]</span> <span class="o">=</span> <span class="n">caractere</span>
+    <span class="k">return</span> <span class="n">dico</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">dechiffre_affine</span><span class="p">(</span><span class="n">msg</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">mot</span><span class="p">:</span><span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">'''</span>
+<span class="sd">    Déchiffre un message chiffré msg connaissant un mot du texte clair.</span>
+<span class="sd">    '''</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">trouve_cle</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="n">mot</span><span class="p">)</span>
+    <span class="n">msg_clair</span> <span class="o">=</span> <span class="s1">''</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">dico_dechiffrement</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">caractere</span> <span class="ow">in</span> <span class="n">msg</span><span class="p">:</span>
+        <span class="n">msg_clair</span> <span class="o">+=</span> <span class="n">d</span><span class="p">[</span><span class="n">caractere</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">msg_clair</span>
+</code></pre></div></td></tr></tbody></table></div>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exercice  5: RSA 1</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio"><input id="__tabbed_8_2" name="__tabbed_8" type="radio"><div class="tabbed-labels"><label for="__tabbed_8_1">Énoncé</label><label for="__tabbed_8_2">Correction</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Le module <code>pycryptodome</code> contient tout un tas d'outils cryptographiques, dont ceux nécessaires pour travailler sur RSA.
+Dans un terminal, installez le avec la commande:</p>
+<p><code>sudo pip3 install pycryptodome</code></p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><th colspan="2" class="filename"><span class="filename">Code à compléter</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">Crypto</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">Crypto.Util.number</span><span class="w"> </span><span class="kn">import</span> <span class="n">bytes_to_long</span><span class="p">,</span> <span class="n">long_to_bytes</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">Crypto.Random</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_random_bytes</span> 
+
+<span class="c1"># Un peu d'arithmétique modulaire</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">euclide_etendu</span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">'''</span>
+<span class="sd">    Renvoie un tuple (u, v) d'entiers tels que a*u + b*v = pgcd(a, b)</span>
+<span class="sd">    '''</span>
+    <span class="n">r</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">rp</span><span class="p">,</span> <span class="n">up</span><span class="p">,</span> <span class="n">vp</span> <span class="o">=</span> <span class="n">a</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">rp</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">q</span> <span class="o">=</span> <span class="n">r</span> <span class="o">//</span> <span class="n">rp</span>
+        <span class="n">r</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">rp</span><span class="p">,</span> <span class="n">up</span><span class="p">,</span> <span class="n">vp</span> <span class="o">=</span> <span class="n">rp</span><span class="p">,</span> <span class="n">up</span><span class="p">,</span> <span class="n">vp</span><span class="p">,</span> <span class="n">r</span> <span class="o">-</span> <span class="n">q</span><span class="o">*</span><span class="n">rp</span><span class="p">,</span> <span class="n">u</span> <span class="o">-</span> <span class="n">q</span><span class="o">*</span><span class="n">up</span><span class="p">,</span> <span class="n">v</span> <span class="o">-</span> <span class="n">q</span><span class="o">*</span><span class="n">vp</span>
+    <span class="k">return</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">inverse</span><span class="p">(</span><span class="n">a</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">m</span><span class="p">:</span><span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">'''</span>
+<span class="sd">    Renvoie l'inverse u de a modulo m, c-a-d tel que a*u = 1 (mod m).</span>
+<span class="sd">    '''</span>
+    <span class="n">u</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">euclide_etendu</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">u</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">u</span> <span class="o">+</span> <span class="n">m</span>
+    <span class="k">return</span> <span class="n">u</span>
+
+<span class="c1">#&nbsp;</span>
+<span class="n">bits</span> <span class="o">=</span> <span class="mi">512</span>
+<span class="n">msg</span> <span class="o">=</span> <span class="s2">"en NSI on fait de la crypto"</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">Crypto</span><span class="o">.</span><span class="n">Util</span><span class="o">.</span><span class="n">number</span><span class="o">.</span><span class="n">getPrime</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="n">randfunc</span><span class="o">=</span><span class="n">get_random_bytes</span><span class="p">)</span>
+<span class="n">q</span> <span class="o">=</span> <span class="n">Crypto</span><span class="o">.</span><span class="n">Util</span><span class="o">.</span><span class="n">number</span><span class="o">.</span><span class="n">getPrime</span><span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="n">randfunc</span><span class="o">=</span><span class="n">get_random_bytes</span><span class="p">)</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">phi</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="n">e</span> <span class="o">=</span> <span class="mi">65537</span>  <span class="c1"># 65537 est un nombre premier, donc forcément premier avec phi</span>
+<span class="n">d</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="n">M</span> <span class="o">=</span> <span class="n">bytes_to_long</span><span class="p">(</span><span class="n">msg</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">))</span>
+
+<span class="n">M_chiffre</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="c1"># M puissance e modulo n</span>
+<span class="n">M_dechiffre</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">long_to_bytes</span><span class="p">(</span><span class="n">M_dechiffre</span><span class="p">))</span>
+</code></pre></div></td></tr></tbody></table></div>
+<ol>
+<li>Compléter le code ci-dessus, puis l'exécuter. Examiner le contenu des différentes variables.</li>
+<li>En adaptant le code précédent, déchiffrer le message suivant, sachant que <span class="arithmatex">\(p\)</span> et <span class="arithmatex">\(q\)</span> sont les 13ème et 14ème nombres premiers de Mersenne.
+    <code>3321201356966590346561115071776627133387292843371714010408399835551061020050045365398836013027686993987632768071673564690778259745221441566760245236779498669656980590070600792357065491110399368931370008478330254358972461518602964119545062624451642219086661534670622352070903070456403667523575064863364819845990986678472406418837664850717889</code></li>
+</ol>
+</div>
+<div class="tabbed-block"></div>
+</div>
+</div>
+</div>
+<div class="admonition example">
+<p class="admonition-title">Exercice  6: RSA 2</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio"><input id="__tabbed_9_2" name="__tabbed_9" type="radio"><div class="tabbed-labels"><label for="__tabbed_9_1">Énoncé</label><label for="__tabbed_9_2">Correction</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>En règle générale, les clés publiques sont échangées en PEM qui est une version texte encodée en <a href="https://fr.wikipedia.org/wiki/Base64" target="_blank">Base64</a> comme par exemple:</p>
+<details class="info">
+<summary>À propos de la Base64</summary>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">base64</span>
+
+<span class="n">msg</span> <span class="o">=</span> <span class="s2">"en NSI on fait de la crypto"</span>
+<span class="n">msg_bytes</span> <span class="o">=</span> <span class="n">msg</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">msg_bytes</span><span class="p">)</span>
+<span class="n">msg_b64</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">msg_bytes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">msg_b64</span><span class="p">)</span>
+<span class="n">msg_b64_decode</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span><span class="p">(</span><span class="n">msg_b64</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">msg_b64_decode</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">msg_b64_decode</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">'utf-8'</span><span class="p">))</span>
+</code></pre></div></td></tr></tbody></table></div>
+</details>
+<div class="highlight"><pre><span></span><code>-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzPtKIAxSBQXAyDp+uH3p
+wroOSTVSPr/K1I7MQYqXhd2bZ1Y1ZosYsRaKyKIRScoez4yoI0+9Li4yMh692tHV
+phInz0+FmocAqsQlUeozsdRt0mUJi20ujjwkRozesZY5J5RB+54oxX5uk9XRAFmf
+HdNqZO3lNvM5QZC9CjowDJu/Cs7khHoUPDX1SeKKYd7iv70DYwDG/NYtBf+gaxY6
+gaFdTmduFMN3wOnxnaRrl5f8tyNTHMHpRWPti1Q/N+CNIbM7NySb3IJMMKj+hj/N
+xhk+lGizdIG469OZqICuDkSLBwxxaj9gb26uVv4/W7HLv9oXR1wwAB210rKSoQBz
+5wIDAT+Z
+-----END PUBLIC KEY-----
+</code></pre></div>
+<p>On peut l'obtenir par exemple ainsi:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">Crypto.PublicKey</span><span class="w"> </span><span class="kn">import</span> <span class="n">RSA</span>
+
+<span class="n">cle_privee</span> <span class="o">=</span> <span class="n">Crypto</span><span class="o">.</span><span class="n">PublicKey</span><span class="o">.</span><span class="n">RSA</span><span class="o">.</span><span class="n">construct</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">e</span><span class="p">,</span> <span class="n">d</span><span class="p">))</span>
+<span class="n">cle_publique</span> <span class="o">=</span> <span class="n">cle_privee</span><span class="o">.</span><span class="n">publickey</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cle_publique</span><span class="o">.</span><span class="n">exportKey</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">())</span>
+</code></pre></div></td></tr></tbody></table></div>
+<p>On peut également récupérer très facilement l'exposant (<code>e</code>) et le module (<code>n</code>) connaissant la clé publique:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">Crypto.PublicKey</span><span class="w"> </span><span class="kn">import</span> <span class="n">RSA</span>
+
+<span class="n">cle_publique</span> <span class="o">=</span> <span class="n">RSA</span><span class="o">.</span><span class="n">importKey</span><span class="p">(</span><span class="s2">"""</span><span class="se">\</span>
+<span class="s2">-----BEGIN PUBLIC KEY-----</span>
+<span class="s2">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzPtKIAxSBQXAyDp+uH3p</span>
+<span class="s2">wroOSTVSPr/K1I7MQYqXhd2bZ1Y1ZosYsRaKyKIRScoez4yoI0+9Li4yMh692tHV</span>
+<span class="s2">phInz0+FmocAqsQlUeozsdRt0mUJi20ujjwkRozesZY5J5RB+54oxX5uk9XRAFmf</span>
+<span class="s2">HdNqZO3lNvM5QZC9CjowDJu/Cs7khHoUPDX1SeKKYd7iv70DYwDG/NYtBf+gaxY6</span>
+<span class="s2">gaFdTmduFMN3wOnxnaRrl5f8tyNTHMHpRWPti1Q/N+CNIbM7NySb3IJMMKj+hj/N</span>
+<span class="s2">xhk+lGizdIG469OZqICuDkSLBwxxaj9gb26uVv4/W7HLv9oXR1wwAB210rKSoQBz</span>
+<span class="s2">5wIDAQAB</span>
+<span class="s2">-----END PUBLIC KEY-----"""</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">cle_publique</span><span class="o">.</span><span class="n">e</span><span class="p">,</span> <span class="n">cle_publique</span><span class="o">.</span><span class="n">n</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+<ol>
+<li>Récupérer les exposants et les modules des deux clés publiques données . Que remarque-t-on?</li>
+<li>
+<p>Une faille de RSA consiste justement à conserver le même module en changeant uniquement les exposants, ce qui pourrait pourtant être pratique plutôt que de créer un nouveau module de chiffrement à chaque utilisation de RSA.</p>
+<p>C'est le point de départ de l'<em>attaque des modules communs</em>, qui nécessite d'obtenir le même message chiffré avec deux clés publiques <span class="arithmatex">\((e_1, n)\)</span> et <span class="arithmatex">\((e_2, n)\)</span>.</p>
+<p>Les voici:</p>
+<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">message1</span> <span class="o">=</span> <span class="s1">'A4ZTqgJUEUp3mJoaoNEkempFbBtUoDtX0Ak8sZembkpdR2FlgftR20u+ymLKGydBH9sV10vHhFEVGsaEfigaEZGC9wu7eo0irPY2J7khDP3QOA7qg3WJmvefne5VxeMU/gh65irNjp6O1jiXtdqTvMypqzHDIKuw68XIEF2J/aCw5nhIwCbBgQdIy7PYdxytoCbA4A0mJkdh4B2fVAoym0M+vDM7IP9ep371TLP/kPhcyrrv0FmGZCz3xM2Q+zsKrlqLkEb736KREg6JTpNjwfzaKHrTe/XP2sailo1x2IQIxltuR5Lv/9vFq7TP5qYG5aAfW0ReiLGhXTIXWBrgjQ=='</span>
+
+<span class="n">message2</span> <span class="o">=</span> <span class="s1">'IJmhgMZG5YscMcnlmyQkrWb2P1WLDRx1JxxCTcK4OVJVetAtPIX5DvNGBhaWh7Rp9EXPq0k4YP/DI+k4Hq5i+2/RxUIaKXRYkBbOFx5WMloyn9wU0unRktdFX1Lv+Lg+uXA6oYFTQQkjc/lBWS9MEPRzzenPU+y/zghNs7k7lYj93e51jdQAz/LNz08KOqh0lalPtqjsrmDZ/6HVqESz7y4EkdZmk1iU9eg0E2/OWx0n5eC/jytemtIVrsOHfMXjmcY/MmZP93i1MTX1QzkFZrRe/55VgY6/fOLDYY7kTF1E8w+f16lfJFo31Ir+a6y9vjMZCBj3AkaW2DKCVFeLHw=='</span>
+</code></pre></div></td></tr></tbody></table></div>
+<div class="admonition gear">
+<p class="admonition-title">Principe (mathématique) de l'attaque</p>
+<p>Puisque les deux exposants <span class="arithmatex">\(e_1\)</span> et <span class="arithmatex">\(e_2\)</span> sont des nombres premiers (c'est le cas en général en pratique, le vérifier ici...), ils sont premiers entre eux donc le théorème de Bezout assure l'existence de deux entiers <span class="arithmatex">\(u\)</span> et <span class="arithmatex">\(v\)</span> tels que <span class="arithmatex">\(e_1\times u + e_2\times v =1\)</span>.</p>
+<p>Or si on note <span class="arithmatex">\(C_1\)</span> et <span class="arithmatex">\(C_2\)</span> les deux messages chiffrés et <span class="arithmatex">\(M\)</span> le message clair, on a <span class="arithmatex">\(C_1 = M^{e_1} (\text{mod } n)\)</span> et <span class="arithmatex">\(C_2 = M^{e_2} (\text{mod } n)\)</span>.</p>
+<p>Donc un «simple» calcul montre que <span class="arithmatex">\(C_1^u \times C_2^v = (M^{e_1})^u \times (M^{e_2})^v = M^{e_1 \times u + e_2 \times v} = M (\text{mod } n)\)</span> !</p>
+<p>En revanche, il reste un point un peu compliqué: en réalité <span class="arithmatex">\(v\)</span> est négatif... Pour calculer <span class="arithmatex">\(C_2^v\)</span>, il faut en fait calculer son inverse modulo <span class="arithmatex">\(n\)</span> puis élever celui-ci à la puissance <span class="arithmatex">\(-v\)</span>.</p>
+</div>
+<p>Vous disposez donc:</p>
+<ul>
+<li>de la fonction <code>euclide_etendu</code> qui fournit les coefficients <span class="arithmatex">\(u\)</span> et <span class="arithmatex">\(v\)</span>;</li>
+<li>de la fonction <code>inverse</code>;</li>
+<li>de la fonction <code class="highlight"><span class="n">base64</span><span class="o">.</span><span class="n">b64decode</span></code> qui convertit de la Base64 en <em>bytes</em> (octets);</li>
+<li>des fonctions <code>bytes_to_long</code> et <code>long_to_bytes</code> qui font les conversions octets ⟷ entiers.</li>
+</ul>
+<p>Décodez donc le message échangé...</p>
+</li>
+</ol>
+</div>
+<div class="tabbed-block"></div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+    <script src="../../../js/ide.js"></script> 
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      CC BY-SA / C. Gouygou
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:cedric.gouygou@ac-poitiers.fr" target="_blank" rel="noopener" title="Écrire à l'auteur" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/cgouygou/TNSI" target="_blank" rel="noopener" title="Dépôt git" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://lyceevalois.com" target="_blank" rel="noopener" title="Lycée Marguerite de Valois - Angoulême (16)" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M0 192c0-35.3 28.7-64 64-64h64L255.9 12.9c18.3-16.4 46-16.4 64.2 0L448 128h64c35.3 0 64 28.7 64 64v256c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64zm224 184v88h128v-88c0-22.1-17.9-40-40-40h-48c-22.1 0-40 17.9-40 40m-112 8c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16zm16-144v-32c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16m368 144c8.8 0 16-7.2 16-16v-32c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16zm16-144v-32c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16m-224 16a64 64 0 1 0 0-128 64 64 0 1 0 0 128"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tabs", "navigation.top", "toc.integrate", "header.autohide", "content.code.annotate", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
