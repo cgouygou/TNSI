@@ -2,6 +2,7 @@
 
 ![mdv](images/logo_MdV_site.png){: .center width=480} 
 
+**NEW !!!** [Corrigé du sujet d'entraînement pour le bac blanc](data/correction_sujet_07.pdf)
 
 [Lien vers le site de Première.](https://cgouygou.github.io/1NSI/){:target="_blank"}
 
