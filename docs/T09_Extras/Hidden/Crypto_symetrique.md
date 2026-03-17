@@ -99,7 +99,7 @@ Only for you, Cécile :wink:
         '''
         for a in range(1, 21):
             for b in range(21):
-                if math.gcd(a, b) == 1:
+                if math.gcd(a, 26) == 1:
                     mot_chiffre = affine(mot, a, b)
                     if mot_chiffre in msg:
                         return a, b
