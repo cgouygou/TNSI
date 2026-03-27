@@ -18,10 +18,10 @@
 
     ```python linenums='1'
     def calcul_temps_total(d):
-        temps = 0
-        for t in temps_etapes[d]:
-            temps += t
-        return temps
+        temps_total = 0
+        for temps in temps_etapes[d]:
+            temps_total += temps
+        return temps_total
     ```
     
 3. ligne 8 : `#!py element[1] < classement[pos][1]`
@@ -113,8 +113,8 @@ pas encore été créée dans la table Etapes, ce qui va provoquer une erreur.
 1. 010
 2. Le texte est «espion».
 3. Il s'agit d'un parcours en largeur.
-4. La somme des nombres d'occurences à gauche est 1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 + 2 = 11 et celle à droite est 3 + 4 + 4 = 11. Comme elles sont égales, il n'y apas de meilleurs séparation possible.
-5. La hauteur de l'arbre est 5.
+4. La somme des nombres d'occurences à gauche est 1 + 1 + 1 + 1 + 1 + 1 + 1 + 2 + 2 = 11 et celle à droite est 3 + 4 + 4 = 11. Comme elles sont égales, il n'y a pas de meilleure séparation possible.
+5. La hauteur de l'arbre est 5: c'est la longueur maximale (en bits) du code d'un caractère.
 6. Le texte comporte 22 caractères, donc le codage ASCII nécessite 22 octets, soit $22\times 8 = 176$ bits.
 
     Avec le codage se Shannon-Fano:
@@ -167,12 +167,9 @@ pas encore été créée dans la table Etapes, ce qui va provoquer une erreur.
     def encode_shannon(texte):
         dico = creer_dico_occ(texte)
         tab = creer_tab_trie(dico)
-        dico_shannon = {}
-        for symbole in dico:
-            dico_shannon[symbole] = shannon(symbole, tab)
         code = ''
         for caractere in texte:
-            code = code + dico_shannon[caractere]
+            code += shannon(caractere, tab)
         return code
     ```
     
