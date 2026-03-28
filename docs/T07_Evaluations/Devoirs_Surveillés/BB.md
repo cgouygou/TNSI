@@ -117,7 +117,7 @@ pas encore été créée dans la table Etapes, ce qui va provoquer une erreur.
 5. La hauteur de l'arbre est 5: c'est la longueur maximale (en bits) du code d'un caractère.
 6. Le texte comporte 22 caractères, donc le codage ASCII nécessite 22 octets, soit $22\times 8 = 176$ bits.
 
-    Avec le codage se Shannon-Fano:
+    Avec le codage de Shannon-Fano:
 
     | Caractère | Code | Longueur du code (en bits) | Nombre d'occurences |
     |:---------:|:----:|:--------------------------:|:-------------------:|
