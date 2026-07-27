@@ -1,15 +1,18 @@
 # Cours de Terminale NSI - M. Gouygou
 
-![mdv](images/logo_MdV_site.png){: .center width=480} 
+![mdv](images/lycee-rostand-valois-angouleme-web.svg){: .center width=480} 
 
-**NEW !!!** [Corrigé du sujet d'entraînement pour le bac blanc](data/correction_sujet_07.pdf)
 
-[Lien vers le site de Première.](https://cgouygou.github.io/1NSI/){:target="_blank"}
+!!! warning "News"
 
-[Pour s'entraîner et réviser les bases](https://codex.forge.apps.education.fr/){:target="_blank"} 
+    :link: [Lien vers le site de Première.](https://cgouygou.github.io/1NSI/){:target="_blank"}
+
+    :link: [Codex : pour s'entraîner et réviser les bases](https://codex.forge.apps.education.fr/){:target="_blank"} 
+
+
 <br>
 
-!!! info "Mini-exposés"
+??? info "Mini-exposés"
     Durant toute l'année, il vous sera proposé quelques sujets de mini-exposés (moins de 5 minutes) à préparer en autonomie.
 
     - **Blue Team vs. Red Team** 
