@@ -1,7 +1,9 @@
-# Corrigé du TP Zéro
+# TP Zéro
+
+Sur Capytale, :link: [https://capytale2.ac-paris.fr/web/c/a303-3862465/mlc](https://capytale2.ac-paris.fr/web/c/a303-3862465/mlc){:target="_blank"} 
 
 
-!!! example "Exercice 1"
+<!-- !!! example "Exercice 1"
 	Écrire une fonction `maximum` qui prend deux entiers en paramètres et qui renvoie le plus grand des deux.
 
 	**Fonction `#!py max` interdite**.
@@ -105,4 +107,4 @@
 		tab[j] = temp
 		return tab
 	```
-
+ -->

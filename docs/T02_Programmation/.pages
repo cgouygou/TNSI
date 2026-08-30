@@ -1,1 +1,5 @@
 title: T2 Programmation
+nav:
+- accueil.md
+- TP0.md
+- ...

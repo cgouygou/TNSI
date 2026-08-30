@@ -11,8 +11,8 @@
         Calcule la note de spécialité NSI au bac à partir des notes obtenues aux épreuves écrite
         et pratique.
         """
-        assert note_ecrit >=0 and note_ecrit <= 20, "note d'écrit non valide"
-        assert note_pratique >=0 and note_pratique <= 20, "note de pratique non valide"
+        assert note_ecrit >= 0 and note_ecrit <= 20, "note d'écrit non valide"
+        assert note_pratique >= 0 and note_pratique <= 20, "note de pratique non valide"
         return int(0.75*note_ecrit + 0.25*note_pratique)
     ```
     
@@ -24,7 +24,9 @@
 - L'épreuve **écrite** de spécialité NSI dure 3h30.
 - Elle comporte **trois** exercices indépendants les uns des autres, portant sur **l'intégralité** du programme de première **et** de terminale.
 
-
+<span class='centre'>
+[Sujet Métropole 2026 - J2 :material-download:](data/26-NSIJ2ME1.pdf){.center .md-button }
+</span>
 
 ## Épreuve pratique
 
@@ -44,7 +46,7 @@
 
 === "Banque de sujets"
     
-    :link: Vous pouvez retrouver en libre accès les 47 sujets de la session précédente à l'épreuve pratique de NSI:
+    :link: Vous pouvez retrouver en libre accès les 23 sujets de la session précédente à l'épreuve pratique de NSI:
     
     [https://sujets.examens-concours.gouv.fr/delos/public/bgt/nsi](https://sujets.examens-concours.gouv.fr/delos/public/bgt/nsi){:target="_blank"}.
     
