@@ -67,13 +67,17 @@ tab = [[0 for _ in range(3)] for _ in range(5)]
         Écrire en compréhension les listes suivantes:
 
         1. liste des puissances de 2 d'exposant compris entre 2 et 12 (inclus).
-        2. liste des initiales (c'est-à-dire à l'indice `#!py 0`) des éléments de la liste `#!py ['Sonia', 'Ibrahim', 'Xavier', 'Sandro', 'Estelle', 'Valentine', 'Enzo', 'Naomi']`.
+        2. liste des initiales (c'est-à-dire à l'indice `#!py 0`) des éléments de la liste `#!py prenoms = ['Sonia', 'Ibrahim', 'Xavier', 'Sandro', 'Estelle', 'Valentine', 'Enzo', 'Naomi']`.
         2. liste des longueurs (`#!py len`) des éléments de la liste `#!py ['nsi', 'programmation', 'algorithme']`.
         3. liste des nombres premiers inférieurs ou égaux à 1000 (utilier la fonction `#!py isprime` du module `#!py scipy`).
 
     === "Correction" 
-        {{ correction(False, 
+        {{ correction(True, 
         "
+        1. `#!py [2 ** n for n in range(2, 13)]` 
+        2. `#!py [prenom[0] for prenom in prenoms]` 
+        3. `#!py [len(mot) for mot in ['nsi', 'programmation', 'algorithme']]` 
+        4. `#!py [n for n in range(1001) is sympy.isprime(n)]` 
         "
         ) }}
 
@@ -84,8 +88,9 @@ tab = [[0 for _ in range(3)] for _ in range(5)]
         Écrire en compréhension la liste contenant «la première colonne», c'est-à-dire les éléments d'indice `#!py 0`  de chaque élément de `#!py tab`.
 
     === "Correction" 
-        {{ correction(False, 
+        {{ correction(True, 
         "
+        `#!py [ligne[0] for ligne in tab]` 
         "
         ) }}
     
@@ -102,10 +107,12 @@ tab = [[0 for _ in range(3)] for _ in range(5)]
         **Bonus:** utiliser la méthode `#!py join` pour concaténer les éléments de la liste `#!py sol`.
 
     === "Correction" 
-        {{ correction(False, 
+        {{ correction(True, 
         "
         ```python linenums='1'
         sol = [chr(code) for code in lst if code >= 65 and code <= 90]
+
+        sol_jointe = ''.join(sol)
         ```
 
         "
