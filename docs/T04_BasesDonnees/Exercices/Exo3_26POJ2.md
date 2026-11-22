@@ -1,4 +1,6 @@
-# EXERCICE 1 (6 points)
+# Exercice BAC 3: Qualité de l'air
+
+> D'après 2026, Polynésie, J2, Ex. 1
 
 Cet exercice porte sur les bases de données relationnelles et le langage SQL.
 
@@ -120,11 +122,9 @@ Chaque jour des mesures sont réalisées. Il faut ajouter ces mesures à la base
 5. Écrire une requête SQL permettant de rajouter à la table `Mesure` la mesure de valeur 34, du polluant PM10 (type d'influence "Trafic"), le 20/06/2022 de 10h à 11h pour la station "Annecy Rocade".
 
 6. L’attribut `StationId` dans la table `Mesure` est une clé étrangère faisant référence à l’identifiant d’une station. Lors de l'ajout à la table `Mesure` de la mesure de valeur 13.5, du polluant O3 (type d'influence "Fond"), le 20/06/2022 de 00h à 01h pour la station d'identifiant "FR41017", l'exécution échoue et l'exception suivante est levée :
-
    ```text
    IntegrityError: FOREIGN KEY constraint failed
    ```
-
    Expliquer cette erreur.
 
 ## Partie C : Exploitation de la base de données
@@ -134,14 +134,12 @@ Chaque jour des mesures sont réalisées. Il faut ajouter ces mesures à la base
 8. Écrire une requête SQL permettant d'afficher le nombre total de stations.
 
 9. Expliquer à quoi sert la requête suivante :
-
    ```sql
    SELECT Station.Nom, Station.TypeImplantation
    FROM AASQA JOIN Station ON AASQA.Id = Station.AASQAId
    WHERE AASQA.Nom = "ATMO AUVERGNE-RHONE-ALPES";
    ```
-
-Pour les questions suivantes, on considère l’AASQA "Air Pays de la Loire" et la station "Mazagran" (qui sont connues dans la base de données).
+   **Pour les questions suivantes, on considère l’AASQA "Air Pays de la Loire" et la station "Mazagran" (qui sont connues dans la base de données).**
 
 10. Écrire une requête SQL permettant d'afficher la date de début, la date de fin et la valeur du polluant PM10 pour la station "Mazagran".
 
