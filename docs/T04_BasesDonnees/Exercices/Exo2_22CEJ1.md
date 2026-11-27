@@ -71,3 +71,60 @@ SELECT * FROM Centres WHERE latitude = (SELECT MIN(latitude) FROM Centres);
 ```
 
 **4.b.** Écrire une requête SQL donnant la liste des villes dans lesquelles on a enregistré une température inférieure à 10 °C en octobre 2021. On utilisera le mot clé `#!sql DISTINCT` afin d'éviter d'avoir des doublons. On rappelle que l'on peut utiliser les opérateurs de comparaison avec les dates.
+
+??? check "Proposition de correction"
+  **1.a.** `id_mesure` peut être une clé primaire pour la relation `Mesures` car c'est le seul attribut susceptible de prendre des valeurs différentes pour chaque enregistrement.
+
+  **1.b.** Avce l'attribut `id_centre`.
+
+  **2.a.** La requête affiche les centres météorologiques situés dans une ville d'altitude supérieure à 500m. C'est-à-dire sur l'exemple:
+
+  | `id_centre` | `nom_ville`     | `latitude` | `longitude` | `altitude` |
+  | ----------: | :-------------- | ---------: | ----------: | ---------: |
+  |         138 | Grenoble        |     45.185 |       5.723 |        550 |
+  |         185 | Tignes          |     45.469 |       6.909 |       2594 |
+  |         126 | Le Puy-en-Velay |     45.042 |       3.888 |        744 |
+  |         317 | Gérardmer       |     48.073 |       6.879 |        855 |
+
+  **2.b.** 
+
+  ```sql
+  SELECT nom_ville FROM Centres WHERE altitude > 700 AND altitude < 1200;
+  ```
+
+  **2.c.**
+
+  ```sql
+  SELECT longitude, nom_ville
+  FROM Centres
+  WHERE longitude > 5
+  ORDER BY nom_ville;
+  ```
+
+  **3.a.** La requête affiche toutes les mesures effectuées le 30 octobre 2021. 
+
+  | `id_mesure` | `id_centre` | `date_mesure` | `temperature` | `pression` | `pluviometrie` |
+  | ----------: | ----------: | :------------ | ------------: | ---------: | -------------: |
+  |        2174 |         126 | 2021-10-30    |          18.2 |       1023 |              0 |
+  |        2200 |         185 | 2021-10-30    |           5.6 |        989 |             20 |
+
+  **3.b.** 
+
+  ```sql
+  INSERT INTO Mesures
+  VALUES (3650, 138, '2021-11-08', 11, 1013, 0);
+  ```
+
+  **4.a.** La requête renvoie les centres météorologiques dont l'altitude est minimale.
+
+  **4.b** 
+
+  ```sql
+  SELECT DISTINCT nom_ville
+  FROM Centres
+  JOIN Mesures ON Centres.id_centre = Mesures.id_centre
+  WHERE Mesures.temperature < 10 AND date_mesure >= "2021-10-01" AND date_mesure <= "2021-10-31"
+  ORDER BY nom_ville;
+  ```
+  
+
